@@ -162,26 +162,25 @@ Price formation in DeFi <a name="defi"></a></h1>
 <br />
 
 ### Price discovery
-* Prices are irrelevant in the memory pool
-* Vehicle for price discovery in blockchains:  priority fees
+* Additional vehicle for price discovery in blockchains:  priority fees
 
 ---
 
 # Illustration of trading mechanisms
 
-<img style="float: right;" src="./images/tradingmech1.png" width="630" />
+<img style="float: right;" src="./images/formation1.png" width="930" />
 
 ---
 
 # Illustration of trading mechanisms
 
-<img style="float: right;" src="./images/tradingmech2.png" width="630" />
+<img style="float: right;" src="./images/formation2.png" width="930" />
 
 ---
 
 # Illustration of trading mechanisms
 
-<img style="float: right;" src="./images/tradingmech3.png" width="630" />
+<img style="float: right;" src="./images/formation3.png" width="930" />
 
 ---
 
@@ -198,6 +197,13 @@ Price formation in DeFi <a name="defi"></a></h1>
 <p style="text-align: center;"><h1>
 Priority Gas Auctions: a first model <a name="defi"></a></h1>
 </p>
+
+---
+
+## Assumptions and market
+* Trading is conducted in an AMM for a pair of securities $X$ and $Y$ 
+    * Trading function $\Phi$
+    * Initial liquidity supply $y_0$
 
 ---
 
@@ -243,7 +249,7 @@ $$
 #### Assumptions on the market
 
 * Two informed traders $i$ and $j$ compete to buy $Y$
-* They receive private information $v_i>0$ and $v_j>0$ about the liquidation value $V = V(v_i,v_j)$
+* They receive private information $v_i>0$ and $v_j>0$ about the liquidation value
 * They wish to buy volumes $\delta_i = \delta(v_i)$ and $\delta_j = \delta(v_j)$
 * The demand function $\delta$ is continuously differentiable and increasing.
 * They submit priority fees $\varphi_i$ and $\varphi_j$ **per unit of security traded** at the end of block time
@@ -287,12 +293,12 @@ $$
 ## Competition for execution priority
 <br /><br />
 
-* Let $V_i = V(v_i)$ denote the expected value of $V$ from the perspective of trader $i$.
+* Let $V_i = \mathbb E[V\mid v=v_i ]= V(v_i)$ denote the expected value of $V$ from the perspective of trader $i$.
 * The expected wealth is 
 $$
 \mathbb{E}\left[W_{i}\right]= P_{i}\,\mathbb E[W_{i}\left(\text{win}\right)] + (1-P_{i})\,\mathbb E[W_{i}\left(\text{win}\right)] = P_{i}\,\delta_i\,\left(-\varphi_{i}+2\,k\,\delta_{i}\right)-3\,k\,\delta_{i}^{2}+\delta_{i}\,V_{i}
 $$
-* where $P_i=\mathbb E_i\left[\varphi_i>\varphi_j\right]$
+ $\qquad\qquad\qquad\qquad\qquad\qquad\qquad\text{where } P_i=\mathbb E_i\left[\varphi_i>\varphi_j\right]$
 <br /><br />
 
 * The optimisation problem of trader $i$
@@ -300,6 +306,16 @@ $$
 U_{i}=\sup_{\varphi_{i}}\left\{ P_{i}\,\left(-\varphi_{i}+2\,k\,\delta_{i}\right)\right\} \,,
 $$
 <br /><br />
+
+---
+
+## Competition for execution priority
+<br /><br />
+* The equilibrium priority fee 
+$$
+\varphi^\star_i=2\,k\,\left(\delta_{i}-\frac{\int_{\underline{\delta}}^{\delta_{i}}G\left(x\right)\,dx}{G\left(\delta_{i}\right)}\right)=2\,k\,\left(\delta\left(v_{i}\right)-\frac{\int_{0}^{v_{i}}\delta^{'}\left(x\right)\,F\left(x\right)\,dx}{F\left(v_{i}\right)}\right)\,
+$$
+<br />
 
 ---
 
@@ -322,8 +338,16 @@ the signal value and the trading volume
 
 ## Trading volume of informed traders
 
+* Trader $i$ solves the following problem
+$$
+J_{i}=\sup_{\delta_{i}}\Bigg\{P_{i}\,\left(-\delta_{i}\,\varphi_{i}^\star+2\,k\,\delta_{i}^{2}\right)-3\,k\,\delta_{i}^{2}+\delta_{i}\,V_{i}\Bigg\}\,.
+$$
 
-* The trading volume solves the problem
+---
+
+## Trading volume of informed traders
+
+* Trader $i$ solves the following problem
 $$
 J_{i}=\sup_{\delta_{i}}\Bigg\{P_{i}\,\left(-\delta_{i}\,\varphi_{i}^\star+2\,k\,\delta_{i}^{2}\right)-3\,k\,\delta_{i}^{2}+\delta_{i}\,V_{i}\Bigg\}\,.
 $$
@@ -344,12 +368,13 @@ $$
 $$
 \delta_{i}^{\star}\times\varphi_{i}^{\star}=2\,k\,\left(\delta^{\star}\left(v_{i}\right)^{2}-\delta^{\star}\left(v_{i}\right)\frac{\int_{0}^{v_{i}}\delta^{'}\left(x\right)\,F\left(x\right)\,dx}{F\left(v_{i}\right)}\right)
 $$
+
+* The depth of liquidity drives market frictions of informed traders up
+
 $$
 \partial_{k} \{\delta_{i}^{\star}\times\varphi_{i}^{\star}\}<0.
 $$
 <br />
-
-* The depth of liquidity drives market frictions of informed traders upward
 
 ---
 
@@ -369,8 +394,8 @@ $$
 $$
 
 * The total priority fee is **increasing in the signal variance**
-* The total priority fee is **increasing in the liquidity supply**
 
+* **In practice:** cryptocurrencies are volatile, large price fluctuations observed in Binance provide large signals, and liquidity supply is significant (noise LPs).
 ---
 
 <br /><br /><br /><br /><br /><br />
@@ -380,21 +405,107 @@ Liquidity supply <a name="defi"></a></h1>
 
 ---
 
-# A general model
-<br />
+# Liquidity supply
+<br /><br />
 
 ### Assumptions
 
-*  Three types of agents
-    * a representative liquidity supplier 
-    * two informed liquidity takers (traders)
-        * Traders know whether $V>V_0$ or $V<V_0$ and become both either buyers or sellers
-        * They receive signals $v_i$ and $v_j$ where $|v_i|$ is drawn from $[0,\overline v]$ according to the density $f$
-    * noise liquidity takers
-        * they do not compete strategically and bid the base fee
-* The liquidity supplier assigns a probability $1/2$ to $V>V_0$ and $1/2$ to $V<V_0$
+*  A risk-neutral liquidity supplier provides liquidity with a transaction sent in the preceding block
+
+* The fee rate in the pool is $\pi$
+
+*  The LP does not have information about $V$ and assumes $v_i$ and $v_j$ are drawn from $[-\overline v, \overline v]$
+
+* The LP balances losses to informed traders from adverse selection with fee revenue from noise traders
+
+* Noise traders submit transactions with an absolute total volume $N$ which nets to zero
+
+* Let $\kappa = 1/k$ denote the liquidity supply
 
 ---
+
+### Losses to informed traders
+
+$$
+\text{IL} \approx - \frac{1}{\kappa}\, \mathbb E[(\delta^\star(v_i) + \delta^\star(v_j))^2]
+= \kappa \, I(\overline v)
+$$
+
+* IL is increasing the liquidity supply
+
+<br />
+
+---
+
+### Losses to informed traders
+
+$$
+\text{IL} \approx - \frac{1}{\kappa}\, \mathbb E[(\delta^\star(v_i) + \delta^\star(v_j))^2]
+= \kappa \, I(\overline v)
+$$
+
+* IL is increasing the liquidity supply
+
+<br />
+
+### Price-sensitive noise trading 
+
+*  We assume that not all of this flow necessarily reaches the DEX (Uniswap router)
+
+* The fee revenue from noise trading is
+$$
+\pi\,N\,\frac{1}{1+k\,s}\,,
+$$
+
+* ${1}/{1+k\,s}$ is a sensitivity function. $s$ measures the sensitivity  to the price of liquidity.
+    * For a fixed noise volume, higher values of $s$ indicate that attracting the volume requires more liquidity supply.
+    * For example, capturing half of the noise volume in the AMM requires a liquidity supply  $1/k = s$.
+
+---
+
+### The optimisation problem
+
+$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
+
+
+
+---
+
+
+### The optimisation problem
+
+$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
+
+
+### The equilibrium liquidity supply
+
+$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
+
+* The liquidity supply is increasing in the fee rate $\pi$ and the noise volume $N$, and decreasing in informed trading flow and the sensitivity $s$ 
+
+* Conditions for the viability of liquidity provision: the fee revenue must exceed the losses to informed traders.
+
+    * All else being equal, as the sensitivity parameter $s$ increases, the viability of liquidity provision necessitates either more noise trading flow or higher fee rates.
+
+---
+
+### The optimisation problem
+
+$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
+
+
+### The equilibrium liquidity supply
+
+$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
+
+* Competition in memory pools reduces informed volume $\implies$  cheaper liquidity for noise traders.
+
+* As we will see: this is at the cost of decreased price efficiency and increased infrastructure costs. 
+
+* **In practice:** the permissionless nature of blockchains facilitates easier entry into the liquidity provision business, particularly by less sophisticated liquidity suppliers. 
+    * Strategic LPs do not set the price for liquidity
+    * Let the liquidity provided by noise LPs be $\kappa'$. The strategic LP either reaches the target supply when $\kappa^\star > \kappa'$, or refrains from LP'ing if $\kappa^\star < \kappa'$.
+--- 
 
 <br /><br /><br /><br /><br /><br />
 <p style="text-align: center;"><h1>
