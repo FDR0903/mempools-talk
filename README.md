@@ -1,4 +1,4 @@
-# BONE: Bayesian online learning in non-stationary environments
+# Memory Pools
 
 ## Run locally
 To start the slide show:
