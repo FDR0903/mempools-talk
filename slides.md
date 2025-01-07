@@ -532,16 +532,15 @@ Priority fees in Proof-of-Stake blockchains <a name="defi"></a></h1>
 
 ---
 
-# The game
+# $\qquad\qquad\qquad\qquad\qquad\qquad$ The game
 
-<img style="float: right;" src="./images/PoS_Game.png" width="530" />
+![thePGA](./images/thePGA.png){style="transform: translate(10%, 25%); width: 400px"}
+
+![PoSGame](./images/PoS_Game.png){style="transform: translate(-90%, -45%); width: 600px"}
 
 ---
 
-# The Priority Gas Auction
-<br />
-
-<img style="float: right;" src="./images/thePGA.png" width="530" />
+# Priority fees and trading volume:<br /> Three configurations
 
 ---
 
@@ -555,5 +554,5 @@ Priority fees in Proof-of-Work blockchains <a name="defi"></a></h1>
 layout: end
 ---
 
-[gerdm.github.io/posts/bone-slides](https://gerdm.github.io/posts/bone-slides)  
-[arxiv.org/abs/2411.10153](https://arxiv.org/abs/2411.10153)
+[faycaldrissi.com/mempools-talk](https://www.faycaldrissi.com/mempools-talk/41)  
+[faycaldrissi.com](https://www.faycaldrissi.com)
