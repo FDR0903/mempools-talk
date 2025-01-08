@@ -42,7 +42,7 @@ Price formation in DeFi <a name="defi"></a></h1>
 
 ### Decentralised exchanges
 
-* Liquidity supply and price of liquidity
+* Liquidity depth and price of liquidity
 
 <br />
 <br />
@@ -331,7 +331,7 @@ $$
 the signal value and the trading volume
 ![PF1](./images/PF1.png){style="transform: translate(-10%, 10%); width: 600px"}
 
-* For fixed demand functions, <br /> priority fees are decreasing in the liquidity <br />supply
+* For fixed demand functions, <br /> priority fees are decreasing in the depth <br />of liquidity
 <br /><br />
 
 ---
@@ -357,7 +357,7 @@ $$
 $$
 ![TV1](./images/qtty.png){style="transform: translate(-10%, 25%); width: 500px"}
 <br />
-* The trading volume is **increasing** in <br /> the **signal** and  in **the liquidity supply** <br />(similar to traditional markets)
+* The trading volume is **increasing** in <br /> the **signal** and  in **the liquidity depth** <br />(similar to traditional markets)
 
 ---
 
@@ -390,7 +390,7 @@ $$
 * The total priority fee
 
 $$
-\delta^{\star}\left(v_{i}\right)=\frac{\overline{v}^{2}}{2\,k}+\frac{7\,\overline{v}^{2}}{24\,k\,v_{i}}\left(\frac{\sqrt{3\,\overline{v}}}{\sqrt{3\overline{v}-2\,v_{i}}}\left(13\overline{v}-6v_{i}\right)-13\,\overline{v}\right)
+\varphi^{\star}\left(v_{i}\right)=\frac{\overline{v}^{2}}{2\,k}+\frac{7\,\overline{v}^{2}}{24\,k\,v_{i}}\left(\frac{\sqrt{3\,\overline{v}}}{\sqrt{3\overline{v}-2\,v_{i}}}\left(13\overline{v}-6v_{i}\right)-13\,\overline{v}\right)
 $$
 
 * The total priority fee is **increasing in the signal variance**
@@ -400,12 +400,12 @@ $$
 
 <br /><br /><br /><br /><br /><br />
 <p style="text-align: center;"><h1>
-Liquidity supply <a name="defi"></a></h1>
+Liquidity depth <a name="defi"></a></h1>
 </p>
 
 ---
 
-# Liquidity supply
+# Liquidity depth
 <br /><br />
 
 ### Assumptions
@@ -420,7 +420,7 @@ Liquidity supply <a name="defi"></a></h1>
 
 * Noise traders submit transactions with an absolute total volume $N$ which nets to zero
 
-* Let $\kappa = 1/k$ denote the liquidity supply
+* Let $\kappa = 1/k$ denote the depth of liquidity
 
 ---
 
@@ -431,7 +431,7 @@ $$
 = \kappa \, I(\overline v)
 $$
 
-* IL is increasing the liquidity supply
+* IL is increasing the liquidity depth
 
 <br />
 
@@ -444,7 +444,7 @@ $$
 = \kappa \, I(\overline v)
 $$
 
-* IL is increasing the liquidity supply
+* IL is increasing the liquidity depth
 
 <br />
 
@@ -458,8 +458,8 @@ $$
 $$
 
 * ${1}/{1+k\,s}$ is a sensitivity function. $s$ measures the sensitivity  to the price of liquidity.
-    * For a fixed noise volume, higher values of $s$ indicate that attracting the volume requires more liquidity supply.
-    * For example, capturing half of the noise volume in the AMM requires a liquidity supply  $1/k = s$.
+    * For a fixed noise volume, higher values of $s$ indicate that attracting the volume requires more depth
+    * For example, capturing half of the noise volume in the AMM requires a liquidity depth  $1/k = s$.
 
 ---
 
@@ -467,21 +467,24 @@ $$
 
 $$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
 
+### The equilibrium liquidity depth
 
-
----
-
-
-### The optimisation problem
-
-$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
-
-
-### The equilibrium liquidity supply
 
 $$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
 
-* The liquidity supply is increasing in the fee rate $\pi$ and the noise volume $N$, and decreasing in informed trading flow and the sensitivity $s$ 
+---
+
+
+### The optimisation problem
+
+$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
+
+
+### The equilibrium liquidity depth
+
+$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
+
+* The liquidity depth is increasing in the fee rate $\pi$ and the noise volume $N$, and decreasing in informed trading flow and the sensitivity $s$ 
 
 * Conditions for the viability of liquidity provision: the fee revenue must exceed the losses to informed traders.
 
@@ -493,8 +496,7 @@ $$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\l
 
 $$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
 
-
-### The equilibrium liquidity supply
+### The equilibrium liquidity depth
 
 $$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
 
@@ -502,9 +504,33 @@ $$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\l
 
 * As we will see: this is at the cost of decreased price efficiency and increased infrastructure costs. 
 
+--- 
+
+### The optimisation problem
+
+$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
+
+### The equilibrium liquidity depth
+
+$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
+
+* **In practice:** validators have priority in the block without competition and extract MEV
+    * Depth of liquidity should decrease
+
+--- 
+
+### The optimisation problem
+
+$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
+
+### The equilibrium depth of liquidity
+
+$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
+
 * **In practice:** the permissionless nature of blockchains facilitates easier entry into the liquidity provision business, particularly by less sophisticated liquidity suppliers. 
     * Strategic LPs do not set the price for liquidity
-    * Let the liquidity provided by noise LPs be $\kappa'$. The strategic LP either reaches the target supply when $\kappa^\star > \kappa'$, or refrains from LP'ing if $\kappa^\star < \kappa'$.
+    * Let the liquidity provided by noise LPs be $\kappa'$. The strategic LP either reaches the target depth when $\kappa^\star > \kappa'$, or refrains from LP'ing if $\kappa^\star < \kappa'$.
+
 --- 
 
 <br /><br /><br /><br /><br /><br />
@@ -512,23 +538,19 @@ $$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\l
 Priority fees in Proof-of-Stake blockchains <a name="defi"></a></h1>
 </p>
 
----
-
-# A general model
+<!--- # A general model
 <br />
 
 ### The game
 
-1. The liquidity supplier chooses the liquidity supply by balancing fee revenue from noise LTs and adverse selection costs from informed traders.
+1. The liquidity supplier chooses the liquidity depth by balancing fee revenue from noise LTs and adverse selection costs from informed traders.
     * In the block preceding that of traders
 2. Informed traders receive  information about the liquidation value $V$ of the asset
     * At the start of the block time
 3. The informed traders determine their priority fee bidding strategies and trading volumes
     *  Two-round two-trader game under uncertainty
 
-4. A new block is created and the final liquidation value of the security is realised
-
-### **The equilibrium of this game is solved using backward induction**
+4. A new block is created and the final liquidation value of the security is realised--->
 
 ---
 
@@ -538,9 +560,78 @@ Priority fees in Proof-of-Stake blockchains <a name="defi"></a></h1>
 
 ![PoSGame](./images/PoS_Game.png){style="transform: translate(-90%, -45%); width: 600px"}
 
+**$\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad\qquad \qquad \qquad$ The equilibrium is solved <br /> 
+$\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad\qquad \qquad \qquad$ using backward induction**
+
 ---
 
-# Priority fees and trading volume:<br /> Three configurations
+# Two possible equilibria
+### When traders do not bid in round one
+
+* The payoff of both traders is 
+$$
+U_{i}^{\text{nc}}=2\,k\,\int_{0}^{v_{i}}\delta^{'}\left(x\right)\,F\left(x\right)\,dx
+$$
+
+
+---
+
+# Two possible equilibria
+### When traders bid in round one
+
+* Both traders know each other's information in round two
+* The bidder with the highest signal bids the second highest signal
+* Assume $v_i>v_j$. The priority fees are
+$$\varphi_i^\star=2\,k\,\delta_{j}\,, \quad \text{and} \quad \varphi_j^\star=0\,.$$
+* In this case, the average priority fees are lower and traded volume is higher
+$$ \mathbb E[\varphi^\text{c}] < \mathbb E[\varphi^\text{nc}]$$
+$$ \delta^\text{c} > \delta^\text{nc}$$
+
+* From round one, the payoff of both traders is
+$$ U_{i}^{\text{c}}=2\,k\,\left(\delta(v_{i})\,F\left(v_{i}\right)-\int_{0}^{v_{i}}\delta\left(x\right)\,f\left(x\right)\,dx\right) > U_{i}^{\text{nc}}$$
+
+---
+
+# Deviations from equilibrium
+### When only one trade bids in round one
+
+* Let trader $i$ be the more informed trader: she knows $\delta_j$
+* The game is asymmetric
+* Trader $j$ randomises her bid according to the CDF $R$ across an interval $[\underline \varphi, 2\,k\,\delta_j]$
+$$
+r(x)=\left[\frac{1}{G^{-1}\left[G(\underline{\varphi})\sqrt{\frac{2\,k\,\delta_{j}-\underline{\varphi}}{2\,k\,\delta_{j}-x}}\right]-x}\right]R(x)
+$$
+
+* Trader $i$ employs the pure strategy 
+
+$$
+\varphi_i^\star = 2 \, k \, \delta_j - \frac{\left(2 \, k \, \delta_j-\underline \varphi\right)\,G\left(\underline \varphi\right)}{G(\delta_i)}
+$$
+
+---
+
+# Deviations from equilibrium
+### When only one trade bids in round one
+
+* Trader $i$ benefits from an informational advantage over trader $j$, which should improve her performance. On the other hand, trader $j$ may compensate for her disadvantage by bidding more aggressively.
+
+* It is never profitable to deviate from the equilibrium where both traders do not bid in round one
+$$
+U_{j}^{\text{dev}} < U_{i}^{\text{nc}}
+$$
+
+* It is profitable to deviate from the equilibrium where both traders bid in round one
+$$
+U_{i}^{\text{dev}} > U_{i}^{\text{c}}
+$$
+
+* The profitability of deviating decreases with $\overline v$, and increases with liquidity depth.
+
+---
+
+# Price efficiency
+
+![PE1](./images/PE1.png){style="transform: translate(-50%, -55%); width: 800px"}
 
 ---
 
@@ -548,6 +639,135 @@ Priority fees in Proof-of-Stake blockchains <a name="defi"></a></h1>
 <p style="text-align: center;"><h1>
 Priority fees in Proof-of-Work blockchains <a name="defi"></a></h1>
 </p>
+
+---
+
+# $\qquad\qquad\qquad\qquad\qquad\qquad$ The game
+
+![thePGA](./images/thePGA2.png){style="transform: translate(10%, 25%); width: 400px"}
+
+![PoSGame](./images/PoW_Game.png){style="transform: translate(-90%, -45%); width: 600px"}
+
+---
+
+# Two possible equilibria
+### When traders do not bid in round one
+
+* The payoff of trader $i$ in PoW blockchains, when both traders bid a priority fee in round one, is
+$$J_{i}^\text{nc}=\left(1-\tau\right)\,U_{i}^{\text{nc}}\,.$$
+
+### When traders bid in round one
+$$
+J_{i}^\text{c}=\tau \,U_{i}^{\text{nc}}+\left(1-\tau\right)\,U_{i}^{\text{c}}
+$$
+
+### Profitability of round-one bidding
+* For all value of $\tau$, it is more profitable to bid in round one 
+$$J_{i}^\text{d}>J_{i}^\text{c}.$$
+
+---
+
+# Deviations from equilibrium
+
+* The only possible deviation for trader $i$ is to conceal information in round one. The payoff is
+$$J_i^{\text{dev}}=\left(1-\tau\right)\,U^{\text{dev}}_i\,,$$
+
+where $U^{\text{dev}}$ is the expected payoff when trader $i$ is the informationally advantaged trader
+
+* Bidding in both rounds holds in equilibrium whenever $\tau>\overline \tau,$ where
+
+$$\overline{\tau}=\max_{v_i}\frac{1}{1+\frac{U_{i}^{\text{nc}}(v_i)}{U^{\text{dev}}(v_i)-U_{i}^{\text{c}}(v_i)}}\,.$$
+
+* $\overline \tau$ decreases in $\overline v$ and increases with liquidity depth
+
+* When $\tau > \overline \tau$
+    * Priority fees are (significantly) lower
+    * Information is disseminated faster
+    * Informed trading volumes are higher: prices are more efficient
+    * Liquidity is more expensive for noise traders
+
+--- 
+
+# Literature on random opening and ending of auctions
+
+#### Biais, Hillion and Spatt (1999) 
+<!-- and Medrano and Vives (2001).-->
+
+* Three hypotheses for the informativeness of preopening prices
+    * Full-information hypothesis: preopening prices reflect full-information values
+
+    * Pure-noise hypothesis: preopening prices do not contain any new information. There is no trading during the  period and orders can be canceled. Strategies may obstruct price discovery
+
+    * Learning hypothesis: preopening price discovery is a learning process; information content of prices increases steadily as opening time approaches
+
+---
+
+# Literature on random opening and ending of auctions
+
+#### Medrano and Vives (2001)
+
+* model price discovery for opening call auctions with preopening periods that end at
+random times, in markets with and without manipulation. 
+*  they show that strategic informed traders have an incentive to manipulate the market from the beginning
+of the preopening period
+* The reason is that keeping the price uninformative from the
+beginning of the period allows them to trade more aggressively later, when the market is
+likely to open. They predict that bj,t is always bounded below one, because manipulators
+prevent the full revelation of information no matter how long the preopening period is. In
+contrast, in a competitive market with no manipulation, the preopening price converges to
+the full-information price.
+* Prediction: in a market with no manipulation, preopening prices converge to their full information values.
+
+--- 
+
+# Literature on random opening and ending of auctions
+
+#### Bommel, Hoffmann (2011). Transparency and Ending Times of Call Auctions: A Comparison of Euronext and Xetra
+
+* Compare the call auction mechanisms of
+    * The French Euronext auctions disclose five levels of limit orders and have fixed ending times. 
+    * The German Xetra auctions only disclose the virtual clearing price and volume, and have random ending times. 
+
+* Euronext auctions are more liquid
+* Euronext auctions contribute more to price discovery, and are followed by lower bid-ask spreads. 
+<!--* Both exchanges see significant reversals after their auctions, implying positive expected profits for liquidity suppliers. -->
+
+---
+
+# Literature on random opening and ending of auctions
+#### Hauser, Kamara, Shurki (2012). 
+
+* Study the effects of randomizing the opening time on the     performance of a stock market under stress
+
+* Derivatives settle in cash at opening prices
+* Euronext, Xetra, TASE exchanges switched
+from opening trade with a call auction that ends at a fixed time to one that ends at a random time  to
+    * reduce manipulation from derivatives trading and illiquidity
+    * improve price discovery
+* How trading rules influence behavior and help to resolve these problems
+* the way prices incorporate information
+* They find that randomization has significantly reduced manipulation effects on opening stock prices.
+
+---
+
+# Literature on random opening and ending of auctions
+
+#### Stoll and Whaley (1990) 
+* find that lack of disclosure and inability to revise orders before NYSE opens resulted in structurally-induced volatility in opening prices and price reversals afterward. 
+
+#### Cao, Ghysels, and Hatheway (2000)
+
+* study preopening on NASDAQ in 1995–1996, when market makers submitted nonbinding bid and ask quotes,
+which were disseminated along with their identities. They find that the quotes contained significant information.
+
+#### Davies (2003) 
+* studies the preopening process on the Toronto Stock Exchange
+
+
+#### Barclay and Hendershott (2008) 
+* In the late 1990s, investors began trading during NASDAQ preopening period using electronic communication
+networks. find that this has improved the informational efficiency of opening
+prices. 
 
 
 ---
