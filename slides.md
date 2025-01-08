@@ -523,7 +523,7 @@ $$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\l
 
 $$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
 
-### The equilibrium depth of liquidity
+### The equilibrium liquidity depth
 
 $$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
 
