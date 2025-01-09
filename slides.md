@@ -690,8 +690,9 @@ $$\overline{\tau}=\max_{v_i}\frac{1}{1+\frac{U_{i}^{\text{nc}}(v_i)}{U^{\text{de
 
 # Literature on random opening and ending of auctions
 
-#### Biais, Hillion and Spatt (1999) 
 <!-- and Medrano and Vives (2001).-->
+
+-- <cite>[Biais, Hillion and Spatt (1999) ][1]</cite>
 
 * Three hypotheses for the informativeness of preopening prices
     * Full-information hypothesis: preopening prices reflect full-information values
@@ -699,6 +700,8 @@ $$\overline{\tau}=\max_{v_i}\frac{1}{1+\frac{U_{i}^{\text{nc}}(v_i)}{U^{\text{de
     * Pure-noise hypothesis: preopening prices do not contain any new information. There is no trading during the  period and orders can be canceled. Strategies may obstruct price discovery
 
     * Learning hypothesis: preopening price discovery is a learning process; information content of prices increases steadily as opening time approaches
+
+[1]: http://www.ssrn.com
 
 ---
 
