@@ -1,541 +1,634 @@
 ---
 layout: cover
-# background: ./images/bone-wall.png
 class: text-center
 title: MEMPOOLS
+theme: academic
+titleTemplate: '%s'
+favicon: ./images/defiicon.png
+author: Fayçal Drissi
+themeConfig:
+  paginationX: disabled
+  paginationY: disabled
+  paginationPagesDisabled: [1]
+fonts:
+  local: Montserrat, Roboto Mono, Roboto Slab # local fonts are used for legal reasons for deployment to https://slidev-theme-academic.alexeble.de and only set up for the example project, remove this line for your project to automatically have fonts imported from Google
+
 mdc: true
 ---
 
-# Price Formation in Memory Pools
+## Price Formation in Memory Pools
 
-Alvaro Cartea, Agostino Capponi, **Fayçal Drissi**
+Álvaro Cartea, Agostino Capponi, Fayçal Drissi
 
 *University of Oxford*
 
-**6 January 2025**
+[scholar](https://scholar.google.com/citations?user=njvyriQAAAAJ&hl=fr), 
+[website](https://www.faycaldrissi.com/), [github](https://github.com/FDR0903)
 
----
+--- 
 
-# Table of Contents
+# Decentralised exchanges: two components
 <br />
 
-1. [Price formation in DeFi](#defi)
+### Automated market makers
+
+* Define the rules of interactions
+* Price of liquidity
+
+<br />
 <br />
 
-2. [Priority Gas Auctions](#PGA) <br />
-<!---    1. [Sub paragraph](#subparagraph1)--->
-3. [Proof-Of-Stake blockchains](#paragraph2)<br />
+### Blockchains
 
-4. [Proof-Of-Work blockchains](#paragraph2)
+* Lifecycle of transactions
+* Infrastructure costs
 
 ---
 
 <br /><br /><br /><br /><br /><br />
 <p style="text-align: center;"><h1>
-Price formation in DeFi <a name="defi"></a></h1>
+Market frictions in <br>
+automated market makers <a name="defi"></a></h1>
 </p>
 
 ---
 
-# Price formation in blockchains: two levels
-<br />
+# Automated Market Makers
+### Liquidity pool
+* A liquidity pool for securities $X$ and $Y$
+* Available *reserves* $x$ and $y$
 
-### Decentralised exchanges
-
-* Liquidity depth and price of liquidity
-
-<br />
-<br />
-
-### Blockchains and memory pools
-
-* Information dissemination and infrastructure costs
+![pool1](./images/pool1.png){style="transform: translate(165%, 20%); width: 200px"}
 
 ---
 
-# Decentralised Exchanges
-<br />
+# Automated Market Makers
 
-### Trading venues *running* on blockchains
+### Two types of participants
 
-* Extremely expensive to run LOBs.
-* Solution: Automated Market Makers (AMMs).
-<br />
-<br />
+* **Liquidity takers (LTs)** trade with the pool
+
+![pool2](./images/pool2.png){style="transform: translate(30%, 50%); width: 500px"}
 
 ---
 
-# Decentralised Exchanges
-<br />
+# Automated Market Makers
+### Two types of participants
+* **Liquidity providers (LPs)** *deposit* assets in the pool or *withdraw* assets from the pool
 
-### Trading venues *running* on blockchains
-
-* Extremely expensive to run LOBs.
-* Solution: Automated Market Makers (AMMs).
-<br />
-<br />
-
-### Automated Market Makers
-
-<img style="float: right;" src="./images/pool1.png" width="150" />
-
-* A liquidity pool for Security $X$ and $Y$.
-* Available liquidity of *reserves*: $x$ and $y$.
-* Two types of participants: liquidity takers (LTs) and liquidity providers (LPs).
+![pool3](./images/pool3.png){style="transform: translate(31.5%, 51%); width: 500px"}
 
 ---
 
-# Decentralised Exchanges
-<br />
+# Automated Market Makers
+### Economic principle: bonding curves
 
-### Liquidity takers trade with the pool
+*  Indifference curve; points of same level of liquidity
 
-<img style="float: right;" src="./images/pool2.png" width="450" />
-
-
----
-
-
-# Decentralised Exchanges
-<br />
-
-### Liquidity providers *deposit* assets in the pool or *withdraw* assets from the pool
-
-<img style="float: right;" src="./images/pool3.png" width="450" />
+![BC1](./images/BondingCurves1.png){style="transform: translate(18%, 10%); width: 630px"}
 
 ---
 
-## Blockchains
-<br />
+# Automated Market Makers
+### Transaction costs
 
-### Memory pools
-* Memory pool: a repository for unconfirmed transactions
-* After an agent initiates a new transaction, it is broadcast to the network and stored in the mempools of various nodes
-* Transactions wait to be selected by a miner and included in a block
+* To buy a quantity $\Delta y$, one pays
+$$
+\frac{\Delta x}{\Delta y} = \frac{\Phi(y-\Delta y) - \Phi(y)}{\Delta y}
+$$
+
+![bc2](./images/bc2.png){style="transform: translate(18%, 10%); width: 630px"}
 
 ---
 
-## Blockchains
-<br />
+# Automated Market Makers
+### Transaction costs
 
-### Memory pools
-* Memory pool: a repository for unconfirmed transactions
-* After an agent initiates a new transaction, it is broadcast to the network and stored in the mempools of various nodes
-* Transactions wait to be selected by a miner and included in a block
-<br />
-<br />
+* To sell a quantity $\Delta y$, one receives
+$$
+\frac{\Delta x}{\Delta y} = \frac{\Phi(y) - \Phi(y+\Delta y)}{\Delta y}
+$$
 
-### Trading frictions and gas fees (EIP-1559, Ethereum London fork)
+![bc3](./images/bc3.png){style="transform: translate(18%, 10%); width: 630px"}
+
+---
+
+# Automated Market Makers
+### Transaction costs
+
+* Marginal price
+$$
+\underbrace{\frac{\Phi(y)-\Phi(y+\Delta y)}{\Delta y}}_{\text{price to sell }\Delta y}
+    \xrightarrow{\Delta y \longrightarrow 0}  \underbrace{Z=-\Phi'(y) }_{\text{marginal price}}\xleftarrow{0\longleftarrow \Delta y} \underbrace{\frac{\Phi(y-\Delta y)-\Phi(y)}{\Delta y}}_{\text{price to buy }\Delta y}
+$$
+
+---
+layout: two-cols-header
+---
+
+# Automated Market Makers
+### Transaction costs
+
+* Slippage (spread)
+$$
+\underbrace{Z - \frac12 \Phi''(y) \,\Delta y}_{\text{price to sell }\Delta y}
+     \ \ \le \ \   \underbrace{Z=-\Phi'(y) }_{\text{marginal price}}\ \ \le \ \  
+\underbrace{Z + \frac12 \Phi''(y) \,\Delta y}_{\text{price to buy }\Delta y} 
+$$
+
+::left::
+
+::right::
+
+---
+layout: two-cols-header
+---
+
+# Automated Market Makers
+### Transaction costs
+
+* Slippage (spread)
+$$
+\underbrace{Z - \frac12 \Phi''(y) \,\Delta y}_{\text{price to sell }\Delta y}
+     \ \ \le \ \   \underbrace{Z=-\Phi'(y) }_{\text{marginal price}}\ \ \le \ \  
+\underbrace{Z + \frac12 \Phi''(y) \,\Delta y}_{\text{price to buy }\Delta y}
+$$
+
+::left::
+
+<br>
+
+Scatter plot of transaction costs  and the approximation for all transactions in the<br> ETH/USDC pool:   $6.76 \times 10^6$ transactions between *5 May 21* and *31 December 23* <sup>1</sup>
+
+<br>
+
+<Footnotes separator>
+<Footnote :number=1>
+<a href="https://arxiv.org/abs/2307.03499">Cartea, Á., Drissi, F., & Monga, M. (2023). Decentralised finance and automated market making: Execution and speculation<br></a>
+</Footnote>
+</Footnotes>
+
+::right::
+
+![cvxty](./images/convexity1.png){style="transform: translate(0%, -10%); width: 350px"}
+
+---
+
+# Automated Market Makers
+### Transaction costs
+
+* Price impact
+
+$$
+-\Phi'(y+\Delta y)
+    \xleftarrow{\text{following a sell }\Delta y}  \underbrace{Z=-\Phi'(y) }_{\text{marginal price}}\xrightarrow{\text{following a buy }\Delta y} -\Phi'(y-\Delta y)
+$$
+
+---
+layout: two-cols-header
+---
+
+# Automated Market Makers
+### Transaction costs
+
+* Price impact
+
+$$
+Z - \Phi''(y) \, \Delta y
+    \xleftarrow{\text{following a sell }\Delta y}  \underbrace{Z=-\Phi'(y) }_{\text{marginal price}}\xrightarrow{\text{following a buy }\Delta y} Z + \Phi''(y) \, \Delta y
+$$
+
+::left::
+
+<br>
+
+Scatter plot of price impact and the approximation for all transactions in the<br> ETH/USDC pool:   $6.76 \times 10^6$ transactions between *5 May 21* and *31 December 23* <sup>1</sup>
+
+<br>
+
+::right::
+
+![cvxty](./images/permanentimpact.png){style="transform: translate(0%, -10%); width: 350px"}
+
+---
+
+# Automated Market Makers
+### Transaction costs
+
+* Change in wealth of LPs
+$$
+-\left(\Phi(y) - \Phi(y-\Delta y) - \Phi'(y)\,\Delta y\right) \approx - \frac12\, \Phi''(y)\, \Delta y^2
+$$
+
+* LPs earn proportional fees $\pi$
+
+---
+
+# Automated Market Makers
+### Transaction costs
+
+* Convexity determines transaction costs
+
+* Convexity is inversely proportional to the size of the pool
+
+$$ \kappa = 2 / \Phi''(y) $$
+
+* Liquidity providers set the size of the pool
+
+$$ \text{Slippage } = \delta /\kappa  $$
+
+$$  \ \ \ \, \  \text{Impact }= 2 \, \delta /\kappa  $$
+
+$$ \quad \ \ \, \text{LP loss } = - \delta^2 / \kappa  $$
+
+---
+
+<br /><br /><br /><br /><br /><br />
+<p style="text-align: center;"><h1>
+Market frictions in <br>
+blockchains <a name="blokchains"></a></h1>
+</p>
+
+---
+
+# Blockchain protocol
+
+* Transactions are sent to the network continuously, and stored in a memory pool
+<br><br><br>
+
+![blockchain1](./images/blockchaincreation1.png){style="transform: translate(20%, 0%); width: 680px"}
+
+---
+
+# Blockchain protocol
+
+* Transactions are sent to the network continuously, and stored in a memory pool
+* At each Epoch, with length block time, a validator is chosen
+<br><br>
+
+![blockchain1](./images/blockchaincreation2.png){style="transform: translate(20%, 3%); width: 680px"}
+
+<!---
+
+#  Decentralised Exchanges
+
+* Liquidity supply and price of liquidity
+* Price dynamics-->
+
+---
+
+# Blockchain protocol
+
+* Transactions are sent to the network continuously, and stored in a memory pool
+* At each Epoch, with length block time, a validator is chosen
+* The validator creates a new block with transactions from the memory pool
+
+![blockchain1](./images/blockchaincreation3.png){style="transform: translate(20%, 0%); width: 680px"}
+
+---
+
+# Blockchain protocol
+
+### Gas fees (EIP-1559, Ethereum London fork)
+* **Base fee**: based on congestion, prerequisite for inclusion
+* **Priority fee**: incentivise validators to prioritise a transaction in the block
+
+---
+
+# Blockchain protocol
+
+### Gas fees (EIP-1559, Ethereum London fork)
 * **Base fee**: based on congestion. prerequisite for inclusion
-    * burned
-* **Tip (priority fee)**: to incentivise a miner / encourage special treatment
-    * transferred to miner
+* **Priority fee**: incentivise validators to prioritise a transaction in the block
+
+![mempools](./images/mempools.jpeg){style="transform: translate(25%, 0%); width: 580px"}
 
 ---
 
-## Memory pools
-
-<img style="float: right;" src="./images/mempools.jpeg" width="600" />
-
-* **Block time**: window during which users submit to transactions before a miner is chosen to create the block
-
----
+# Blockchain protocol
 
 ## Consequences
+<br/>
+
+#### Pre-trade transparency
+
+* Agents observe pending and unconfirmed transactions
+
 <br />
 
-### Pre-trade transparency
-* Agents observe pending but unconfirmed transactions
-* Competitive agents enter “priority gas auctions” (PGAs)
-    * Traders submit/revise priority gas fees to obtain better prices.
+#### Priority gas auctions
+* Competitive agents submit/revise priority gas fees to obtain better prices
 
----
-
-## Consequences
 <br />
 
-### Pre-trade transparency
-* Agents observe pending but unconfirmed transactions
-* Competitive agents enter “priority gas auctions” (PGAs)
-    * Traders submit/revise priority gas fees to obtain better prices.
-<br />
-<br />
 
-### Price discovery
+#### Price discovery
 * Additional vehicle for price discovery in blockchains:  priority fees
 
----
-
-# Illustration of trading mechanisms
-
-<img style="float: right;" src="./images/formation1.png" width="930" />
-
----
-
-# Illustration of trading mechanisms
-
-<img style="float: right;" src="./images/formation2.png" width="930" />
-
----
-
-# Illustration of trading mechanisms
-
-<img style="float: right;" src="./images/formation3.png" width="930" />
+<!--
+# Blockchain protocol
+### Illustration of trading mechanisms
+<br />
+![formation1](./images/formation1.png){style="transform: translate(5%, 5%); width: 780px"}
+# Blockchain protocol
+### Illustration of trading mechanisms
+<br />
+![formation2](./images/formation2.png){style="transform: translate(5%, 5%); width: 780px"}
+# Blockchain protocol
+### Illustration of trading mechanisms
+<br />
+![formation3](./images/formation3.png){style="transform: translate(5%, 5%); width: 780px"}
+-->
 
 ---
 
-# Research questions
+<br /><br /><br /><br /><br /><br />
+<p style="text-align: center;"><h1>
+The microstructure of decentralised exchanges <a name="defi"></a></h1>
+</p>
+
+---
+
+# Research questions and contributions
 <br /><br /><br />
 
-1. What is the impact of pre-trade transparency on price discovery ?<br /><br />
-2. What are the effects on infrastructure costs ?<br /><br />
-3. Are current memory pools a good design for markets ? Can we improve price efficiency and reduce infrastructure costs ?
+* Describe the **microstructure** of decentralised exchanges under **pre-trade transparency** and **priority gas auctions**
+    1. Infrastructure costs
+    2. Price of liquidity
+    3. Price efficiency
+
+* Are current memory pools a good design for markets ?
+    1. **Design features** to improve price efficiency and reduce infrastructure costs
 
 ---
 
-<br /><br /><br /><br /><br /><br />
-<p style="text-align: center;"><h1>
-Priority Gas Auctions: a first model <a name="defi"></a></h1>
-</p>
+# The model
+### The market
+
+* Trading is in an AMM with trading function $\Phi$
+* Two *risk-neutral* informed traders $i$ and $j$ compete to *buy* $Y$
+* They submit transactions **simultaneously** 
+* They pay priority fees $\varphi_i$ and $\varphi_j$ only if given priority
+* They pay a proportional transaction fee $\pi$
 
 ---
 
-## Assumptions and market
-* Trading is conducted in an AMM for a pair of securities $X$ and $Y$ 
-    * Trading function $\Phi$
-    * Initial liquidity supply $y_0$
-
----
-
-## Assumptions and market
-* Trading is conducted in an AMM for a pair of securities $X$ and $Y$ 
-    * Trading function $\Phi$
-    * Initial liquidity supply $y_0$
-
-## Execution prices
-* For a volume $\delta$, the execution price is
+# The model
+### The information
+* Traders have private information $v_i>0$ and $v_j>0$ about the liquidation value $V$
 $$
-\tilde V(\delta) = \frac{\Phi(y_0-\delta)-\Phi(y_0)}{\delta}
+V_i = \mathbb E[V - \pi | v_i]
 $$
-* Marginal price
+* The signals are independently drawn from an interval $[0, \overline{v}]$ according to a density $f$
+
+---
+
+# The model
+### The trading volumes
+* Traders wish to buy volumes 
+$$\delta_i = \delta(v_i)  \qquad \textrm{and} \qquad \delta_j = \delta(v_j)$$
+* The volume function $\delta$ is continuously differentiable and increasing
+* The volumes $\delta_i$ are drawn from $[\delta(0),\delta(\overline v)]=[\underline \delta,\overline \delta]$ according to
+$$g(x) = f\left(\delta^{-1}\left(x\right)\right)\Big/\delta^{'}\left(\delta^{-1}\left(x\right)\right)$$
+
+---
+
+# The model
+
+### Competition for queue priority
+* With queue priority, the **slippage** for a volume $\delta$ is
+$$
+\delta / \kappa
+$$
+* The price impact is
+$$
+2\,\delta / \kappa 
+$$
+* Without queue priority, the **slippage** for a volume $\delta$ is
+$$
+\underbrace{2\,\delta / \kappa}_{\text{impact}} + \underbrace{\delta/\kappa}_{\text{slippage}}
+$$
+
+
+
+---
+
+# The model
+
+### The liquidity supply
+
+* A risk-neutral LP sets the **pool size** $\kappa$ before the priority gas auction
+![gamels2](./images/gamels3.png){style="transform: translate(40%, -2%); width: 500px"}
+<!-- A risk-neutral liquidity supplier sets a pool with size $\kappa$ A risk-neutral LP balances losses to informed traders from adverse selection with fee revenue from liquidity demand The fee rate in the pool is $\pi$ Price-sensitive liquidity demanders submit transactions with an absolute total volume $N$ which nets to zero The LP balances losses to informed traders from adverse selection with fee revenue from liquidity demand -->
+* The LP balances **losses to informed traders**
 $
-\qquad \qquad \qquad \qquad V_0 = \lim_{\delta\rightarrow 0}\tilde V(\delta) = -\Phi'(y_0)
+\qquad\quad\ \ \ \text{L} = -  \mathbb E_\text{LP}[( \delta_i +  \delta_j)^2] \Big / \kappa
 $
-* Slippage
+* with **revenue from liquidity demand**<sup>1, 2, 3</sup>
+$
+\qquad\qquad\quad\text{E}=\pi\,N\,(1-\theta/\kappa)
+$
+
+<Footnotes separator>
+<Footnote :number=1>
+Ho, T., & Stoll, H. R. (1981). Optimal dealer pricing under transactions and return uncertainty.  Journal of  Financial economics, 9(1), 47-73.
+</Footnote>
+<Footnote :number=2>
+Hendershott, T., & Menkveld, A. J. (2014). Price pressures.  Journal of Financial economics
+</Footnote>
+<Footnote :number=3>
+Capponi, A., J. Menkveld, A., & Zhang, H. (2025). Large orders in small markets: execution with endogenous   liquidity supply. Review of Finance
+</Footnote>
+</Footnotes>
+
+---
+
+# The model
+
+### The equilibrium
+Solved by backward induction
+* Informed traders determine their strategies for fixed pool size $\kappa$
+    1. Priority fees
+    2. Trading volumes
+* The liquidity supplier determines $\kappa$ with rational expectations over priority fees and trading volumes
+
+---
+
+# The model
+
+### The equilibrium: stage 2
+* If trader $i$ **wins** the auction, i.e., if $\varphi_{i}>\varphi_j$, their wealth is
 $$
-\tilde V(\delta)-V_0 =  \frac{\Phi(y_0-\delta)-\Phi(y_0)}{\delta} + \Phi'(y_0) \approx \frac12 \,\delta\, \Phi''(y_0) = k\,\delta
+W_{i}\left(\text{win}\right)=-\underbrace{\varphi_{i}}_{\text{priority fee}}\,-\underbrace{\delta_{i}\,\left(V_{0}+\delta_{i}/\kappa - \pi\right)}_{\text{price and slippage}}+\underbrace{\delta_{i}\,V}_{\text{liquidation value}}
+=\,-\varphi_{i}\,-\delta_{i}^{2}/\kappa+\delta_{i}\,(V-\pi)
+$$
+<br />
+
+* If trader $i$ **loses** the auction, i.e., if $\varphi_{i}<\varphi_j$, their wealth is
+$$
+W_{i}\left(\text{lose}\right)=-\delta_{i}\,\left(V_{0}+3\,\delta_{i}/\kappa- \pi\right) +\delta_{i}\,V
+ =-3\,\delta_{i}^{2}/\kappa+\delta_{i}\,(V-\pi)
+$$
+<br />
+
+* The expected wealth of informed traders 
+$$
+\mathbb{E}\left[W_{i}\right] = \mathbb P_i\left[\varphi_i>\varphi_j\right]\,\left(-\varphi_{i}+2\,\delta_{i}^2/\kappa\right)-3\,\delta_{i}^{2}/\kappa+\delta_{i}\,V_{i}
 $$
 
 ---
 
-## Execution prices
-<br /><br />
 
-* Following a trade with volume $\delta$, the price impact on the marginal price is
+# The model
+
+### The equilibrium: stage 2
+
+* The optimisation problem for priority fees
 $$
--\Phi'(y_0-\delta) + \Phi'(y_0)  \approx 2\,\delta\, k.
+\sup_{\varphi_{i}}\left\{\mathbb P_i\left[\varphi_i>\varphi_j\right]\,\left(-\varphi_{i}+2\,k\,\delta_{i}\right)\right\} 
 $$
-* Execution price for a subsequent trade with volume $\delta$
+<br />
+
+* The optimisation problem for trading volumes
 $$
-V_0 + 2\,k + k = V_0 +3\, k
+\sup_{\delta_{i}}\mathbb P_i\left[\varphi^\star_i>\varphi^\star_j\right]\,\left(-\varphi^\star_{i}+2\,\delta_{i}^2/\kappa\right)-3\,\delta_{i}^{2}/\kappa+\delta_{i}\,V_{i}
+$$
+<br>
+
+---
+
+
+# The model
+### The equilibrium: stage 1
+
+* The optimisation problem for liquidity supply
+$$
+\sup_{\kappa}\left\{ \pi\,N\,\left(1-\theta/\kappa\right)-\mathbb{E}_\text{LP}\left[\left(\delta^\star\left(v_{i}\right)+\delta^\star\left(v_{j}\right)\right)^{2}\right] \Big / \kappa\right\}
 $$
 <br />
 
 ---
 
-## Competition for execution priority
-<br />
+# Equilibrium properties
 
-#### Assumptions on the market
+### Stage 2: the priority fees
 
-* Two informed traders $i$ and $j$ compete to buy $Y$
-* They receive private information $v_i>0$ and $v_j>0$ about the liquidation value
-* They wish to buy volumes $\delta_i = \delta(v_i)$ and $\delta_j = \delta(v_j)$
-* The demand function $\delta$ is continuously differentiable and increasing.
-* They submit priority fees $\varphi_i$ and $\varphi_j$ **per unit of security traded** at the end of block time
-* They employ price limits: if denied priority, priority fee is zero
-<br /><br />
-
----
-
-## Competition for execution priority
-<br />
-
-#### Assumptions on information
-* The signals are independently drawn from an interval $[0, \overline{v}]$ according to a density $f$.
-* The volumes $\delta_i$ are drawn from $[\delta(0),\delta(\overline v)]=[\underline \delta,\overline \delta]$ according to  $g(x) = f\left(\delta^{-1}\left(x\right)\right)\Big/\delta^{'}\left(\delta^{-1}\left(x\right)\right).$
-<br /><br />
-
-#### Competition
-* The order of the trader with priority in the block is executed at a price $V_0 + k\,\delta$
-* The order of the other trader will be executed at a price $V_0 + 3\,k\,\delta$
-
----
-
-## Competition for execution priority
-<br /><br />
-
-* If trader $i$ wins the auction, i.e., if $\varphi_{i}>\varphi_j$, their wealth is
+* Priority fees for *fixed volumes and liquidity depth*
+    * Increasing in the reward and decreasing in liquidity supply
 $$
-W_{i}\left(\text{win}\right)=-\delta_{i}\,\varphi_{i}\,\underbrace{-\delta_{i}\,\left(V_{0}+k\,\delta_{i}\right)}_{\text{initial trade}}\underbrace{+\delta_{i}\,V}_{\text{liquidation value}}
-=-\delta_{i}\,\varphi_{i}\,-k\,\delta_{i}^{2}+\delta_{i}\,V
-$$
-<br /><br />
-
-* If trader $i$ loses the auction, i.e., if $\varphi_{i}<\varphi_j$, their wealth is
-$$
-W_{i}\left(\text{lose}\right)=\underbrace{-\delta_{i}\,\left(v_{0}+3\,k\,\delta_{i}\right)}_{\text{initial trade}}\ \underbrace{+\delta_{i}\,V}_{\text{inventory value}}
- =-3\,k\,\delta_{i}^{2}+\delta_{i}\,V
-$$
-
----
-
-## Competition for execution priority
-<br /><br />
-
-* Let $V_i = \mathbb E[V\mid v=v_i ]= V(v_i)$ denote the expected value of $V$ from the perspective of trader $i$.
-* The expected wealth is 
-$$
-\mathbb{E}\left[W_{i}\right]= P_{i}\,\mathbb E[W_{i}\left(\text{win}\right)] + (1-P_{i})\,\mathbb E[W_{i}\left(\text{win}\right)] = P_{i}\,\delta_i\,\left(-\varphi_{i}+2\,k\,\delta_{i}\right)-3\,k\,\delta_{i}^{2}+\delta_{i}\,V_{i}
-$$
- $\qquad\qquad\qquad\qquad\qquad\qquad\qquad\text{where } P_i=\mathbb E_i\left[\varphi_i>\varphi_j\right]$
-<br /><br />
-
-* The optimisation problem of trader $i$
-$$
-U_{i}=\sup_{\varphi_{i}}\left\{ P_{i}\,\left(-\varphi_{i}+2\,k\,\delta_{i}\right)\right\} \,,
-$$
-<br /><br />
-
----
-
-## Competition for execution priority
-<br /><br />
-* The equilibrium priority fee 
-$$
-\varphi^\star_i=2\,k\,\left(\delta_{i}-\frac{\int_{\underline{\delta}}^{\delta_{i}}G\left(x\right)\,dx}{G\left(\delta_{i}\right)}\right)=2\,k\,\left(\delta\left(v_{i}\right)-\frac{\int_{0}^{v_{i}}\delta^{'}\left(x\right)\,F\left(x\right)\,dx}{F\left(v_{i}\right)}\right)\,
+\varphi^\star_i=\frac{2}{\kappa}\left[\delta_{i}^{2}-2\,\frac{\int_{\underline{\delta}}^{\delta_{i}}x\,G\left(x\right)dx}{G\left(\delta_{i}\right)}\right]
 $$
 <br />
 
+![PF1](./images/PF1.png){style="transform: translate(0%, -10%); width: 500px"}
+![PF2](./images/PF2.png){style="transform: translate(90%, -110%); width: 500px"}
+
 ---
 
-## Competition for execution priority
-<br /><br />
-* The equilibrium priority fee 
+# Equilibrium properties
+### Stage 2: the trading volumes
+
+* Trading volumes for *fixed liquidity depth*
+    * Increasing in the signal and in liquidity supply
 $$
-\varphi^\star_i=2\,k\,\left(\delta_{i}-\frac{\int_{\underline{\delta}}^{\delta_{i}}G\left(x\right)\,dx}{G\left(\delta_{i}\right)}\right)=2\,k\,\left(\delta\left(v_{i}\right)-\frac{\int_{0}^{v_{i}}\delta^{'}\left(x\right)\,F\left(x\right)\,dx}{F\left(v_{i}\right)}\right)\,
+\delta_{i}^{\star}=\kappa\,\tilde{\delta}_{i}^{\star}=\kappa\,\frac{V_{i}}{2\,\left(3-F\left(v_{i}\right)\right)}
 $$
 <br />
 
-* Priority fees are increasing in <br />
-the signal value and the trading volume
-![PF1](./images/PF1.png){style="transform: translate(-10%, 10%); width: 600px"}
-
-* For fixed demand functions, <br /> priority fees are decreasing in the depth <br />of liquidity
-<br /><br />
 
 ---
 
-## Trading volume of informed traders
-
-* Trader $i$ solves the following problem
+# Equilibrium properties
+### Stage 1: the liquidity supply
+* Decreasing in the variance of trading volumes, and increasing in liquidity demand
 $$
-J_{i}=\sup_{\delta_{i}}\Bigg\{P_{i}\,\left(-\delta_{i}\,\varphi_{i}^\star+2\,k\,\delta_{i}^{2}\right)-3\,k\,\delta_{i}^{2}+\delta_{i}\,V_{i}\Bigg\}\,.
+\kappa^{\star}=\sqrt{\frac{\pi\,N\,\theta}{\mathbb{E}_{\text{LP}}\left[\left(\tilde{\delta}^{\star}\left(v_{i}\right)+\tilde{\delta}^{\star}\left(v_{j}\right)\right)^{2}\right]}}
+$$
+* Other things being equal, the liquidity supply is larger in DEXs because of infrastructure costs (without MEV)
+
+---
+
+# Equilibrium properties
+### Overall (Uniform case and $V = v_i + v_j + \epsilon$)
+* Liquidity supply
+$$
+\kappa^\star = 4 \, \frac{\sqrt{\pi\,N\,\theta}}{\overline v}
+$$
+
+* Priority fees (rent extracted by validators)
+$$
+\mathbb E[\varphi^\star_i+\varphi^\star_j] = \frac{4}{\kappa^\star}\mathbb E\left[\delta_{i}^{2}-2\,\frac{\int_{\underline{\delta}}^{\delta_{i}}x\,G\left(x\right)dx}{G\left(\delta_{i}\right)}\right] = \frac15 \,\sqrt{\pi\,N\,\theta}\,\overline v^2
 $$
 
 ---
 
-## Trading volume of informed traders
+# Equilibrium properties
+### Overall (Uniform case and $V = v_i + v_j + \epsilon$)
+* Liquidity supply
+$$
+\kappa^\star = 4 \, \frac{\sqrt{\pi\,N\,\theta}}{\overline v}
+$$
 
-* Trader $i$ solves the following problem
+* Priority fees (rent extracted by validators)
 $$
-J_{i}=\sup_{\delta_{i}}\Bigg\{P_{i}\,\left(-\delta_{i}\,\varphi_{i}^\star+2\,k\,\delta_{i}^{2}\right)-3\,k\,\delta_{i}^{2}+\delta_{i}\,V_{i}\Bigg\}\,.
+\mathbb E[\varphi^\star_i+\varphi^\star_j] = \frac{4}{\kappa^\star}\mathbb E\left[\delta_{i}^{2}-2\,\frac{\int_{\underline{\delta}}^{\delta_{i}}x\,G\left(x\right)dx}{G\left(\delta_{i}\right)}\right] = \frac15 \,\sqrt{\pi\,N\,\theta}\,\overline v^2
 $$
-* In equilibrium, the volume is
+
+* **In practice:** Block time $T$ is long 
+    1. Large price fluctuations $\implies$ large priotiy fees
+    2. Large liquidity demand $\implies$ large priotiy fees
+
+
+<!--* Trading volumes
 $$
-\delta^\star\left(v_{i}\right)=\frac{V\left(0\right)\sqrt{3}+6\,\int_{0}^{v_{i}}\frac{V(x)}{\sqrt{3-2\,F(x)}}dx}{6\,k\,\sqrt{3-2\,F(v_{i})}}\,
-$$
-![TV1](./images/qtty.png){style="transform: translate(-10%, 25%); width: 500px"}
-<br />
-* The trading volume is **increasing** in <br /> the **signal** and  in **the liquidity depth** <br />(similar to traditional markets)
+\mathbb E[\delta^\star_i+\delta^\star_j] = 2\kappa^\star \mathbb E\left[\frac{V_{i}}{2\,\left(3-F\left(v_{i}\right)\right)}\right]=\frac{9}{10}\,\sqrt{\pi\,N\,\theta}\,\overline v
+$$-->
+
 
 ---
 
-## Total priority fees of informed traders
-<br /><br />
+# The model
+### When there is a first round to bid early
 
-* The total priority fee is 
-$$
-\delta_{i}^{\star}\times\varphi_{i}^{\star}=2\,k\,\left(\delta^{\star}\left(v_{i}\right)^{2}-\delta^{\star}\left(v_{i}\right)\frac{\int_{0}^{v_{i}}\delta^{'}\left(x\right)\,F\left(x\right)\,dx}{F\left(v_{i}\right)}\right)
-$$
+![thePGA](./images/thePGA.png){style="transform: translate(40%, 0%); width: 500px"}
 
-* The depth of liquidity drives market frictions of informed traders up
 
-$$
-\partial_{k} \{\delta_{i}^{\star}\times\varphi_{i}^{\star}\}<0.
-$$
-<br />
+---
+layout: two-cols-header
+---
+# Equilibrium properties
+
+::left::
+<br >
+<br >
+
+* In equilibrium, traders submit transactions at the end of block time
+
+<br ><br ><br ><br ><br ><br ><br ><br ><br ><br ><br >
+
+::right::
+
+![PF1](./images/number_transactions.jpg){style="transform: translate(40%, -10%); width: 280px"}
+$\qquad\quad$ Ethereum memory pool transaction data <br>
+$\qquad\qquad\qquad$ $10-16$ December $2022$
+
+<br>
+
+![PF1](./images/gas_fees_mempool.jpg){style="transform: translate(40%, -10%); width: 280px"}
 
 ---
 
-## When signals are uniform and $V=v_i + v_j$
-<br /><br />
+# Equilibrium properties
 
-* The trading volume
+* Price efficiency is hindered
+![pe0](./images/pe0.png){style="transform: translate(10%, 0%); width: 650px"}
 
-$$
-\delta^{\star}\left(v_{i}\right)=\frac{\overline{v}}{2\,k}\left(\frac{7\sqrt{3\,\overline{v}}}{6\sqrt{3\,\overline{v}-2\,v_{i}}}-1\right)\in\left[\frac{\overline{v}}{12},\frac{\overline{v}}{2}+0.01\,\overline{v}\right]
-$$
-
-* The total priority fee
-
-$$
-\varphi^{\star}\left(v_{i}\right)=\frac{\overline{v}^{2}}{2\,k}+\frac{7\,\overline{v}^{2}}{24\,k\,v_{i}}\left(\frac{\sqrt{3\,\overline{v}}}{\sqrt{3\overline{v}-2\,v_{i}}}\left(13\overline{v}-6v_{i}\right)-13\,\overline{v}\right)
-$$
-
-* The total priority fee is **increasing in the signal variance**
-
-* **In practice:** cryptocurrencies are volatile, large price fluctuations observed in Binance provide large signals, and liquidity supply is significant (noise LPs).
----
-
-<br /><br /><br /><br /><br /><br />
-<p style="text-align: center;"><h1>
-Liquidity depth <a name="defi"></a></h1>
-</p>
-
----
-
-# Liquidity depth
-<br /><br />
-
-### Assumptions
-
-*  A risk-neutral liquidity supplier provides liquidity with a transaction sent in the preceding block
-
-* The fee rate in the pool is $\pi$
-
-*  The LP does not have information about $V$ and assumes $v_i$ and $v_j$ are drawn from $[-\overline v, \overline v]$
-
-* The LP balances losses to informed traders from adverse selection with fee revenue from noise traders
-
-* Noise traders submit transactions with an absolute total volume $N$ which nets to zero
-
-* Let $\kappa = 1/k$ denote the depth of liquidity
-
----
-
-### Losses to informed traders
-
-$$
-\text{IL} \approx - \frac{1}{\kappa}\, \mathbb E[(\delta^\star(v_i) + \delta^\star(v_j))^2]
-= \kappa \, I(\overline v)
-$$
-
-* IL is increasing the liquidity depth
-
-<br />
-
----
-
-### Losses to informed traders
-
-$$
-\text{IL} \approx - \frac{1}{\kappa}\, \mathbb E[(\delta^\star(v_i) + \delta^\star(v_j))^2]
-= \kappa \, I(\overline v)
-$$
-
-* IL is increasing the liquidity depth
-
-<br />
-
-### Price-sensitive noise trading 
-
-*  We assume that not all of this flow necessarily reaches the DEX (Uniswap router)
-
-* The fee revenue from noise trading is
-$$
-\pi\,N\,\frac{1}{1+k\,s}\,,
-$$
-
-* ${1}/{1+k\,s}$ is a sensitivity function. $s$ measures the sensitivity  to the price of liquidity.
-    * For a fixed noise volume, higher values of $s$ indicate that attracting the volume requires more depth
-    * For example, capturing half of the noise volume in the AMM requires a liquidity depth  $1/k = s$.
-
----
-
-### The optimisation problem
-
-$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
-
-### The equilibrium liquidity depth
-
-
-$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
-
----
-
-
-### The optimisation problem
-
-$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
-
-
-### The equilibrium liquidity depth
-
-$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
-
-* The liquidity depth is increasing in the fee rate $\pi$ and the noise volume $N$, and decreasing in informed trading flow and the sensitivity $s$ 
-
-* Conditions for the viability of liquidity provision: the fee revenue must exceed the losses to informed traders.
-
-    * All else being equal, as the sensitivity parameter $s$ increases, the viability of liquidity provision necessitates either more noise trading flow or higher fee rates.
-
----
-
-### The optimisation problem
-
-$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
-
-### The equilibrium liquidity depth
-
-$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
-
-* Competition in memory pools reduces informed volume $\implies$  cheaper liquidity for noise traders.
-
-* As we will see: this is at the cost of decreased price efficiency and increased infrastructure costs. 
-
---- 
-
-### The optimisation problem
-
-$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
-
-### The equilibrium liquidity depth
-
-$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
-
-* **In practice:** validators have priority in the block without competition and extract MEV
-    * Depth of liquidity should decrease
-
---- 
-
-### The optimisation problem
-
-$$\sup_{\kappa}\left\{ \pi\,N\,\frac{\kappa}{\kappa+s}-\frac{1}{2\,k}\,\mathbb{E}\left[\left({\delta}_{i}\left(v_{i}\right)+{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]\right\} $$
-
-### The equilibrium liquidity depth
-
-$$\kappa^\star=\sqrt{\frac{2\,\pi\,N}{\mathbb{E}\left[\left(\tilde{\delta}_{i}\left(v_{i}\right)+\tilde{\delta}_{i}\left(v_{j}\right)\right)^{2}\right]}}-s\,, \quad \text{If signals are unif. }\& \ V=v_i+v_j: \ \ \kappa^\star=\frac{1}{\overline{v}}\sqrt{\frac{3\,\pi\,N}{4}}-s$$
-
-* **In practice:** the permissionless nature of blockchains facilitates easier entry into the liquidity provision business, particularly by less sophisticated liquidity suppliers. 
-    * Strategic LPs do not set the price for liquidity
-    * Let the liquidity provided by noise LPs be $\kappa'$. The strategic LP either reaches the target depth when $\kappa^\star > \kappa'$, or refrains from LP'ing if $\kappa^\star < \kappa'$.
 
 --- 
 
 <br /><br /><br /><br /><br /><br />
 <p style="text-align: center;"><h1>
-Priority fees in Proof-of-Stake blockchains <a name="defi"></a></h1>
+Can we do better ? <a name="defi"></a></h1>
 </p>
 
 <!--- # A general model
@@ -554,228 +647,265 @@ Priority fees in Proof-of-Stake blockchains <a name="defi"></a></h1>
 
 ---
 
-# $\qquad\qquad\qquad\qquad\qquad\qquad$ The game
+# When traders know each other's information
 
-![thePGA](./images/thePGA.png){style="transform: translate(10%, 25%); width: 400px"}
+* If trader $i$ has a higher valuation
+$$\varphi_i^p = 2\,\delta_{j}^{2}\Big/\kappa \quad \text{and} \quad \varphi_j^p = 0$$
 
-![PoSGame](./images/PoS_Game.png){style="transform: translate(-90%, -45%); width: 600px"}
+* Trading volumes are
+$$\delta_i^p =\kappa\frac{V_{i}}{2}  \quad \text{and} \quad \delta_j^p =\kappa\frac{V_{j}}{6} \qquad \left(\delta^{\star}=\kappa\,\frac{V_{i}}{2\,\left(3-F\left(v_{i}\right)\right)}\right) $$
 
-**$\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad\qquad \qquad \qquad$ The equilibrium is solved <br /> 
-$\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad\qquad \qquad \qquad$ using backward induction**
+* Expected wealth increases
+$$
+\mathbb E[U_i^p]  > \mathbb E[U_i^\star]
+$$
+
+<!--
+# When traders know each other's information
+### Equilibrium properties (Uniform case and $V = v_i + v_j + \epsilon$)
+* Priority fees decrease
+$$
+\mathbb E[\varphi^p_i+\varphi^p_j] < \mathbb E[\varphi^\star_i+\varphi^\star_j]
+$$
+* *Proportional trading volumes* increase
+$$
+\mathbb E[\tilde \delta^p_i+\tilde \delta^p_j] > \mathbb E[\tilde \delta^\star_i+\tilde \delta^\star_j]
+$$
+# When traders know each other's information
+### Equilibrium properties 
+* Priority fees decrease
+$$
+\mathbb E[\varphi^p_i+\varphi^p_j] < \mathbb E[\varphi^\star_i+\varphi^\star_j]
+$$
+* *Proportional trading volumes* increase
+$$
+\mathbb E[\tilde \delta^p_i+\tilde \delta^p_j] > \mathbb E[\tilde \delta^\star_i+\tilde \delta^\star_j]
+$$
+* Expected wealth increases
+$$
+\mathbb E[U_i^p]  < \mathbb E[U_i^\star]
+$$
+* However, liquidity supply decreases
+$$
+\mathbb E[\kappa^p]  < \mathbb E[\kappa^\star]
+$$
+-->
 
 ---
 
-# Two possible equilibria
+# Random block time
+
+![thePGA2](./images/thePGA2.png){style="transform: translate(60%, 0%); width: 400px"}
+
+* There exists $\overline \tau < 1$, such that whenever $\tau > \overline\tau$, bidding in both rounds holds in equilibrium
+
+
+---
+
+# Random block time
+### Two outcomes
+
+* Traders do not bid in round one, the payoff is
+$$J_{i}^\text{nb}=\left(1-\tau\right)\,U_{i}^\star\,.$$
+
+
+* Traders bid in round one, the payoff is
+$$J_{i}^\text{b}=\tau \, U_i^\star + \left(1-\tau\right)\,U_{i}^p\,.$$
+
+* For any value $\tau$, it's more profitable to bid in round one
+
+---
+
+# Random block time
 ### When traders do not bid in round one
 
-* The payoff of both traders is 
-$$
-U_{i}^{\text{nc}}=2\,k\,\int_{0}^{v_{i}}\delta^{'}\left(x\right)\,F\left(x\right)\,dx
-$$
+* When traders do not bid in round one, the payoff is
+$$J_{i}^\text{nb}=\left(1-\tau\right)\,U_{i}^\star\,.$$
+
+* Deviation: bid in round one
+$$\tau\left(-\delta_{i}^{2}/\kappa+\delta_{i}\,V_i\right)+\underbrace{\left(1-\tau\right)\,U_{i}^-}_\text{informational disadvantage}$$
+
+* For all values
+$$\tau  > \max_{v_{i}}\frac{1}{1+\frac{U_{i}^{\text{win}}}{U_{i}-U_{i}^{-}}}$$
+it is profitable to deviate on average
 
 
 ---
 
-# Two possible equilibria
+
+# Random block time
 ### When traders bid in round one
 
-* Both traders know each other's information in round two
-* The bidder with the highest signal bids the second highest signal
-* Assume $v_i>v_j$. The priority fees are
-$$\varphi_i^\star=2\,k\,\delta_{j}\,, \quad \text{and} \quad \varphi_j^\star=0\,.$$
-* In this case, the average priority fees are lower and traded volume is higher
-$$ \mathbb E[\varphi^\text{c}] < \mathbb E[\varphi^\text{nc}]$$
-$$ \delta^\text{c} > \delta^\text{nc}$$
+* When traders bid in round one, the payoff is
+$$J_{i}^\text{b}=\tau \, U_i^\star + \left(1-\tau\right)\,U_{i}^p\,.$$
 
-* From round one, the payoff of both traders is
-$$ U_{i}^{\text{c}}=2\,k\,\left(\delta(v_{i})\,F\left(v_{i}\right)-\int_{0}^{v_{i}}\delta\left(x\right)\,f\left(x\right)\,dx\right) > U_{i}^{\text{nc}}$$
+* Deviation: conceal in round one
+$$\underbrace{\left(1-\tau\right)\,U_{i}^+}_\text{informational advantage}$$
 
----
-
-# Deviations from equilibrium
-### When only one trade bids in round one
-
-* Let trader $i$ be the more informed trader: she knows $\delta_j$
-* The game is asymmetric
-* Trader $j$ randomises her bid according to the CDF $R$ across an interval $[\underline \varphi, 2\,k\,\delta_j]$
-$$
-r(x)=\left[\frac{1}{G^{-1}\left[G(\underline{\varphi})\sqrt{\frac{2\,k\,\delta_{j}-\underline{\varphi}}{2\,k\,\delta_{j}-x}}\right]-x}\right]R(x)
-$$
-
-* Trader $i$ employs the pure strategy 
-
-$$
-\varphi_i^\star = 2 \, k \, \delta_j - \frac{\left(2 \, k \, \delta_j-\underline \varphi\right)\,G\left(\underline \varphi\right)}{G(\delta_i)}
-$$
+* For all values 
+$$\tau  > \max_{v_{i}}\frac{1}{1+\frac{U_{i}}{U_{i}^{+}-U_{i}^{p}}}$$
+it is **not** profitable to deviate on average
 
 ---
 
-# Deviations from equilibrium
-### When only one trade bids in round one
+# Random block time
+### New equilibrium properties
 
-* Trader $i$ benefits from an informational advantage over trader $j$, which should improve her performance. On the other hand, trader $j$ may compensate for her disadvantage by bidding more aggressively.
-
-* It is never profitable to deviate from the equilibrium where both traders do not bid in round one
+* Priority fees **decrease**
 $$
-U_{j}^{\text{dev}} < U_{i}^{\text{nc}}
+E[\varphi_i^{\tau,\star}]  < \mathbb E[\varphi_i^{\star}] 
 $$
 
-* It is profitable to deviate from the equilibrium where both traders bid in round one
-$$
-U_{i}^{\text{dev}} > U_{i}^{\text{c}}
-$$
+<br><br>
 
-* The profitability of deviating decreases with $\overline v$, and increases with liquidity depth.
+<!-- \kappa^\star \, \mathbb{E}\left[\int_{0}^{v_{i}}\delta\left(x\right)^{2}\,f\left(x\right)\,dx\right] -->
+
+![rbt2](./images/epf.png){style="transform: translate(40%, 0%); width: 500px"}
 
 ---
 
-# Price efficiency
+# Random block time
+### New equilibrium properties
 
-![PE1](./images/PE1.png){style="transform: translate(-50%, -55%); width: 800px"}
+* Price efficiency **improves**
+
+![rbt2](./images/rbt2.png){style="transform: translate(0%, 0%); width: 800px"}
+
+---
+
+# Random block time
+### When traders bid in round one
+
+* Proportional volumes **increase**
+$$
+\mathbb E[\tilde \delta_i^{\tau,\star}] = \frac{V_{i}}{2\left(3- (2-\tau) F\left(v_{i}\right)\right)} \ge \mathbb E[\tilde \delta_i^{\star}]
+$$
+
+---
+
+# Random block time
+### New equilibrium properties
+
+* Liquidity supply **decreases**
+$$
+\kappa^{\tau,\star}=\sqrt{\pi\,N\,\theta\Big / \mathbb{E}\left[\left(\tilde\delta_i^{\tau,\star}+\tilde\delta_j^{\tau,\star}\right)^{2}\right]} < \kappa^{\star}
+$$
+
+![rbt2](./images/els.png){style="transform: translate(40%, 0%); width: 500px"}
+
+---
+
+# Random block time
+### New equilibrium properties
+
+* Total trading volumes   
+$$
+\kappa^{\tau,\star} \times \mathbb E[\tilde \delta_i^{\tau,\star}]
+$$
+
+* When signals are uniform, and $V = v_i + v_j + \epsilon$, trading volumes **decrease**
+
+<!--* In practice, signal variance at round one is lower than that of round two $\implies$ -->
+
+---
+
+# Random block time
+
+* **In practice**, $\overline v^\tau < \overline v$ 
+
+* Variance of signals decreases 
+
+* Profitability of trading decreases
+$$
+V_i = \mathbb E[V \mid v_i] = \int \mathbb E[V,v_i,v_j=x] \, f(x) \,dx
+$$
+
+* Variance of volumes decrease
+
+* Liquidity supply increases
 
 ---
 
 <br /><br /><br /><br /><br /><br />
 <p style="text-align: center;"><h1>
-Priority fees in Proof-of-Work blockchains <a name="defi"></a></h1>
+Literature on random ending of trading auctions <a name="defi"></a></h1>
 </p>
 
 ---
 
-# $\qquad\qquad\qquad\qquad\qquad\qquad$ The game
-
-![thePGA](./images/thePGA2.png){style="transform: translate(10%, 25%); width: 400px"}
-
-![PoSGame](./images/PoW_Game.png){style="transform: translate(-90%, -45%); width: 600px"}
-
----
-
-# Two possible equilibria
-### When traders do not bid in round one
-
-* The payoff of trader $i$ in PoW blockchains, when both traders bid a priority fee in round one, is
-$$J_{i}^\text{nc}=\left(1-\tau\right)\,U_{i}^{\text{nc}}\,.$$
-
-### When traders bid in round one
-$$
-J_{i}^\text{c}=\tau \,U_{i}^{\text{nc}}+\left(1-\tau\right)\,U_{i}^{\text{c}}
-$$
-
-### Profitability of round-one bidding
-* For all value of $\tau$, it is more profitable to bid in round one 
-$$J_{i}^\text{d}>J_{i}^\text{c}.$$
-
----
-
-# Deviations from equilibrium
-
-* The only possible deviation for trader $i$ is to conceal information in round one. The payoff is
-$$J_i^{\text{dev}}=\left(1-\tau\right)\,U^{\text{dev}}_i\,,$$
-
-where $U^{\text{dev}}$ is the expected payoff when trader $i$ is the informationally advantaged trader
-
-* Bidding in both rounds holds in equilibrium whenever $\tau>\overline \tau,$ where
-
-$$\overline{\tau}=\max_{v_i}\frac{1}{1+\frac{U_{i}^{\text{nc}}(v_i)}{U^{\text{dev}}(v_i)-U_{i}^{\text{c}}(v_i)}}\,.$$
-
-* $\overline \tau$ decreases in $\overline v$ and increases with liquidity depth
-
-* When $\tau > \overline \tau$
-    * Priority fees are (significantly) lower
-    * Information is disseminated faster
-    * Informed trading volumes are higher: prices are more efficient
-    * Liquidity is more expensive for noise traders
-
---- 
-
-# Literature on random opening and ending of auctions
+# Literature on random ending of trading auctions
 
 <!-- and Medrano and Vives (2001).-->
 
--- <cite>[Biais, Hillion and Spatt (1999) ][1]</cite>
-
+### <cite>Biais, Hillion and Spatt (1999). Journal of Political Economy</cite>
 * Three hypotheses for the informativeness of preopening prices
-    * Full-information hypothesis: preopening prices reflect full-information values
-
-    * Pure-noise hypothesis: preopening prices do not contain any new information. There is no trading during the  period and orders can be canceled. Strategies may obstruct price discovery
-
-    * Learning hypothesis: preopening price discovery is a learning process; information content of prices increases steadily as opening time approaches
-
-[1]: http://www.ssrn.com
+    * *Full-information hypothesis*: preopening prices reflect full information
+    * *Pure-noise hypothesis*: preopening prices do not contain any new information. Strategies may obstruct price discovery
+    * *Learning hypothesis*: preopening price discovery is a learning process; information content of prices increases steadily
 
 ---
 
-# Literature on random opening and ending of auctions
-
-#### Medrano and Vives (2001)
-
-* model price discovery for opening call auctions with preopening periods that end at
-random times, in markets with and without manipulation. 
+# Literature on random ending of trading auctions
+### <cite>Medrano and Vives (2001). RAND Journal of Economics</cite>
+* Study price discovery in opening call auctions with random preopening period ending
+<!--
+, in markets with and without manipulation
 *  they show that strategic informed traders have an incentive to manipulate the market from the beginning
 of the preopening period
-* The reason is that keeping the price uninformative from the
-beginning of the period allows them to trade more aggressively later, when the market is
-likely to open. They predict that bj,t is always bounded below one, because manipulators
-prevent the full revelation of information no matter how long the preopening period is. In
-contrast, in a competitive market with no manipulation, the preopening price converges to
-the full-information price.
-* Prediction: in a market with no manipulation, preopening prices converge to their full information values.
+* The reason is that keeping the price uninformative from the beginning of the period allows them to trade more aggressively later, when the market is
+likely to open. They predict that bj,t is always bounded below one, because 
+manipulators
+prevent the full revelation of information no matter how long the preopening period is.
+-->
+* Evidence of manipulation at the start of the call auction
+* Most volume concentrates close to the first time at which the market can close
+* Information revelation accelerates close to the end, and market price approaches the fundamental value
+
+<!--* Prediction: in a market with no manipulation, preopening prices converge to their full information values.-->
+
 
 --- 
 
-# Literature on random opening and ending of auctions
+# Literature on random ending of trading auctions
 
-#### Bommel, Hoffmann (2011). Transparency and Ending Times of Call Auctions: A Comparison of Euronext and Xetra
+### <cite>Bommel, Hoffmann (2011).</cite> 
 
-* Compare the call auction mechanisms of
-    * The French Euronext auctions disclose five levels of limit orders and have fixed ending times. 
-    * The German Xetra auctions only disclose the virtual clearing price and volume, and have random ending times. 
-
+* Study transparency and ending times of call auctions in Euronext and Xetra
+    * The French Euronext
+        1. disclose five levels of limit orders 
+        2. have fixed ending times
+    * The German Xetra
+        1. only disclose the virtual clearing price and volume
+        2. have random ending times
 * Euronext auctions are more liquid
-* Euronext auctions contribute more to price discovery, and are followed by lower bid-ask spreads. 
+* Euronext auctions contribute more to price discovery
+
 <!--* Both exchanges see significant reversals after their auctions, implying positive expected profits for liquidity suppliers. -->
 
 ---
 
-# Literature on random opening and ending of auctions
-#### Hauser, Kamara, Shurki (2012). 
+# Literature on random ending of trading auctions
+### <cite> Hauser, Kamara, Shurki (2012).  Journal of Financial Markets</cite> 
 
-* Study the effects of randomizing the opening time on the     performance of a stock market under stress
-
-* Derivatives settle in cash at opening prices
-* Euronext, Xetra, TASE exchanges switched
-from opening trade with a call auction that ends at a fixed time to one that ends at a random time  to
-    * reduce manipulation from derivatives trading and illiquidity
-    * improve price discovery
-* How trading rules influence behavior and help to resolve these problems
-* the way prices incorporate information
-* They find that randomization has significantly reduced manipulation effects on opening stock prices.
-
----
-
-# Literature on random opening and ending of auctions
-
-#### Stoll and Whaley (1990) 
-* find that lack of disclosure and inability to revise orders before NYSE opens resulted in structurally-induced volatility in opening prices and price reversals afterward. 
-
-#### Cao, Ghysels, and Hatheway (2000)
-
-* study preopening on NASDAQ in 1995–1996, when market makers submitted nonbinding bid and ask quotes,
-which were disseminated along with their identities. They find that the quotes contained significant information.
-
-#### Davies (2003) 
-* studies the preopening process on the Toronto Stock Exchange
+* Study the effects of randomising opening time on the performance of a stock market
+* Derivatives settle in cash at opening prices $\implies$ incentives to manipulate
+* Euronext, Xetra, TASE exchanges randomise opening time. They find randomisation has significantly
+    * reduced manipulation from derivatives trading
+    * improved price discovery
 
 
-#### Barclay and Hendershott (2008) 
-* In the late 1990s, investors began trading during NASDAQ preopening period using electronic communication
-networks. find that this has improved the informational efficiency of opening
-prices. 
+<Footnotes separator>
+<Footnote :number=1>
+Other papers: Stoll and Whaley (1990), Cao, Ghysels, and Hatheway (2000), Davies (2003), and Barclay and Hendershott (2008).
+</Footnote>
+</Footnotes>
 
 
 ---
 layout: end
 ---
+Thank you !
 
-[faycaldrissi.com/mempools-talk](https://www.faycaldrissi.com/mempools-talk/41)  
-[faycaldrissi.com](https://www.faycaldrissi.com)
+[faycaldrissi.com](https://www.faycaldrissi.com/)
+
+
