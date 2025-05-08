@@ -24,7 +24,7 @@ Agostino Capponi, Álvaro Cartea, Fayçal Drissi
 
 <br>
 
-These slides: [https://www.faycaldrissi.com/mempools-talk/3](https://www.faycaldrissi.com/mempools-talk)
+These slides: [https://www.faycaldrissi.com/mempools-talk](https://www.faycaldrissi.com/mempools-talk)
 
 <!--[my scholar](https://scholar.google.com/citations?user=njvyriQAAAAJ&hl=fr), 
 [my website](https://www.faycaldrissi.com/), [my github](https://github.com/FDR0903)-->
