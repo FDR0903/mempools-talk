@@ -34,9 +34,7 @@ These slides: [https://www.faycaldrissi.com/mempools-talk/3](https://www.faycald
 
 # Motivation
 
-- Significant volumes on Decentralized Exchanges (DEXs): $40 billion as of August 2023
-
-- Blockchain infrastrcuture heavily influences the microstructure of DEXs
+- Significant volumes on Decentralized Exchanges (DEXs): ($7.383 billion in 24 hours) as of 7 May 2025
 
 - DEX efficiency actively influences discussions on blockchain design
 
@@ -112,12 +110,7 @@ The blockchain protocol determines the lifecycle of transactions and adds new co
 <br />
 
 #### Priority gas auctions
-* Agents submit/revise priority gas fees to compete for queue priority
-
-<br />
-
-#### Price discovery
-* Additional vehicle for price discovery in blockchains:  priority fees
+* Agents submit/revise priority fees to compete for queue priority
 
 
 ---
@@ -163,32 +156,34 @@ Results <a name="defi"></a></h1>
 - In contrast to the continuous information flow in traditional exchanges  
   _(Kyle, 1985; Huddart, Hughes, and Levine, 2001)_
 
----
 
-# Priority fees
-
-Priority fees improve liquidity
-
-* Competition for queue priority stabilises speculative volumes and mitigates adverse selection costs
 
 ---
 
-# Priority fees
+# Priority fees and number of informed traders
 
-Priority fees improve liquidity
+### Liquidity Effects  
+- Increased number of informed traders $\implies$ increased competition $\implies$ mitigates adverse selection and improves liquidity<br>
+_(Glosten, Milgrom 1984)_ _(Holden and Subrahmanyam, 1992)_
 
-* Competition for queue priority stabilises speculative volumes and mitigates adverse selection costs
+---
 
-Priority fees harm price efficiency
+# Priority fees and number of informed traders
 
-* Less incentive to pay the cost of information 
+### Liquidity Effects  
+- Increased number of informed traders $\implies$ increased competition $\implies$ mitigates adverse selection and improves liquidity<br>
+_(Glosten, Milgrom 1984)_ _(Holden and Subrahmanyam, 1992)_
+<br><br>
+
+### Price Efficiency Effects
+- Reduces incentives to acquire private information  
+_(Grossman and Stiglitz, 1980)_
 
 ---
 
 # Block time
 
-Block time improves price efficiency
-
+### Price Efficiency Effects
 * block time increases speculative rewards
     $\implies$ equilibrium number of informed traders grows $\implies$ prices are more efficient
 
@@ -196,38 +191,19 @@ Block time improves price efficiency
 
 # Block time
 
-Block time improves price efficiency
-
+### Price Efficiency Effects
 * block time increases speculative rewards
     $\implies$ equilibrium number of informed traders grows $\implies$ prices are more efficient
 
-Block time may harm or improve liquidity
+<br><br>
+
+### Liquidity Effects: tradeoff
 
 * block time increases risk for liquidity suppliers $\implies$ equilibrium supply decreases
 
 * block time allows for uninformed demand to accumulate  $\implies$ equilibrium supply grows
 
 * block time increases competition  $\implies$ less trading volumes $\implies$ equilibrium supply grows
-
---- 
-
-# General market properties
-When **entry costs are high** (high technological barriers or limited adoption) or **markets are illiquid**
-* liquidity supply deteriorates with block time
-* price efficiency improves with block time
-
-There is a threshold for block time, where liquidity is minimal and price efficiency is maximal, beyond which markets shut down
-
-$$\text{priority fees} + \text{uninformed demand} < \text{adverse selection losses}$$
-
---- 
-
-# General market properties
-
-When **entry costs are low** and **markets are liquid**
-* Both liquidity supply and price efficiency improve with block time
-
-$$\text{priority fees} + \text{uninformed demand} > \text{adverse selection losses}$$
 
 
 ---
@@ -266,7 +242,7 @@ The model <a name="defi"></a></h1>
 # General features
 
 - Liquidity supply in the AMM: $\kappa$
-    - Cost to trade a quantity $\delta$: $\quad \delta^2 / \kappa + \delta\,\pi$
+    - Cost to trade a quantity $\delta$: $\quad \delta / \kappa + \pi$
     - Impact on DEX price for a trade with quantity $\delta$: $\quad 2\,\delta / \kappa$ 
 
 ---
@@ -275,7 +251,7 @@ The model <a name="defi"></a></h1>
 
 
 - Liquidity supply in the AMM: $\kappa$
-    - Cost to trade a quantity $\delta$: $\quad \delta^2 / \kappa + \delta\,\pi$
+    - Cost to trade a quantity $\delta$: $\quad \delta / \kappa + \pi$
     - Impact on DEX price for a trade with quantity $\delta$: $\quad 2\,\delta / \kappa$ 
 ![cvxty](./images/convexity1(1).png){style="transform: translate(10%, 0%); width: 700px"}
 
@@ -365,7 +341,7 @@ priority fees and trading volumes <a name="defi"></a></h1>
 
 # Stage two: assumptions
 
-* Informed traders observe dynamic private information sources through the Epoch
+* Informed traders observe dynamic private information sources throughout the Epoch
 * **Assumption**
 
 Block time provides traders with  opportunities to observe signals and gather information $\implies$ variance of competitors' signals increases with block time
@@ -382,12 +358,18 @@ Block time provides traders with  opportunities to observe signals and gather in
 
 ---
 
-# Stage two: assumptions
+# Stage two: competition
 
 * Throughout block time, informed can submit instructions to the memory pool with priority fees
-
 * Let $T$ be block time
 
+
+---
+
+# Stage two: competition
+
+* Throughout block time, informed can submit instructions to the memory pool with priority fees
+* Let $T$ be block time
 * Competition throughout $[0, T]$
     * online auction with a hard close (traders only revise  bids upward)
 * At $T$
@@ -450,7 +432,7 @@ $$
 * Let $\delta_{i}$ be the trading volume of trader $i$
 
 
-In equilibrium: traders set the priority fee $\varphi_i$ and the trading volume $\delta_i$ strategically
+In equilibrium: traders set the priority fee $\varphi_i$ and the trading volume $\delta_i$ 
 
 ---
 
@@ -705,9 +687,32 @@ $$
 \delta(v_i)=\kappa\,\tilde{\delta}(v_i)=\kappa\,\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}\,
 $$
 * Trader $i$'s  volume $\delta_i$ is a fraction $\tilde\delta(v)$ of the liquidity supply $\kappa$
+
+---
+
+# Stage two: trading volumes
+
+In equilibrium, trader $i$ transacts a volume
+$$
+\delta(v_i)=\kappa\,\tilde{\delta}(v_i)=\kappa\,\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}\,
+$$
+* Trader $i$'s  volume $\delta_i$ is a fraction $\tilde\delta(v)$ of the liquidity supply $\kappa$
 * The fraction $\tilde\delta_i$ increases in the  signal
     1. the signal $v_i$ is the expected liquidation value
-    2. likelihood of securing priority in the block at a lower lower increases
+    2. likelihood of winning the auction at lower cost increases
+
+---
+
+# Stage two: trading volumes
+
+In equilibrium, trader $i$ transacts a volume
+$$
+\delta(v_i)=\kappa\,\tilde{\delta}(v_i)=\kappa\,\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}\,
+$$
+* Trader $i$'s  volume $\delta_i$ is a fraction $\tilde\delta(v)$ of the liquidity supply $\kappa$
+* The fraction $\tilde\delta_i$ increases in the  signal
+    1. the signal $v_i$ is the expected liquidation value
+    2. likelihood of winning the auction at lower cost increases
 * For fixed $v_i$, $\tilde\delta_i$ decrease in competitors' signal dispersion
     * signal dispersion increases the probability $1-F(v_i)^{M-1}$ to lose the auction
 
@@ -795,7 +800,7 @@ $$
 
 The equilibrium supply of liquidity is 
 $$
-\kappa=\max\left\{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}, \overline\kappa\right\}\,,
+\kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}
 $$
 Recall
 $$
@@ -829,7 +834,7 @@ $$
 \lim_{M\rightarrow \infty} M\,\mathbb{V}[\tilde{\delta}_i] = 0
 $$
 * The equilibrium payoff of liquidity provision
-$$\pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]} \longrightarrow_{M\rightarrow\infty} \pi\,N$$
+$$\pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]} \underset{M\rightarrow\infty}{\longrightarrow} \pi\,N$$
 * For fixed signal variance, there exists $\overline M$ such that for all $M>\overline M$, markets do not shut down
 
 ---
@@ -837,14 +842,12 @@ $$\pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]} \longrighta
 # Stage one: liquidity supply
 The equilibrium supply of liquidity is 
 $$
-\kappa=\max\left\{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}, \overline\kappa\right\}\,,
+\kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}
 $$
 
-### Block time has two opposing effects
-1. volatile trading signals (recall $\mathbb{V}[v_i]$ increases with block time)
-    * drive liquidity levels down 
-2. liquidity demand accumulates
-    * drive liquidity levels up
+Block time has two opposing effects
+1. volatile trading signals drive liquidity levels down 
+2. liquidity demand accumulates $\rightarrow$ drive liquidity levels up
 
 ---
 
@@ -885,15 +888,7 @@ $$
 ---
 
 # Stage zero: information acquisition
-
-* The number of traders who become informed is constrained by the relative profitability of informed trading and the cost $C$
-
-* $M$ is determined such that the marginal utility gain from switching between informed and uninformed trading is negative
-
----
-
-# Stage zero: information acquisition
-
+* The number of traders is constrained by the profitability of informed trading and the cost $C$
 * The equilbrium $M$ is the integer part of the solution to
 $$
 C=H(M)=\underbrace{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}\left(v_{i}\right)]}}\,\left(\frac1M \left(\mathbb{E}_{0}\left[M\, \tilde{\delta}\left(v_{(M)}\right)^{2}\right]-\mathbb{E}_{0}\left[M\,\tilde{\delta}\left(v_{(M-1)}\right)^{2}\right]\right)\right)}_\text{trading profits net of execution costs and priority fees}+\underbrace{\frac{\beta}{M}\,R}_{\text{validation rewards}}\,.  
@@ -923,7 +918,7 @@ $$
     1. (weak-form) price efficiency improves
     2. uninformed traders trade at prices closer to the fundamental price
 $$
-\text{price impact = } 2\,\mathbb{E}\left[\Delta\right]/\kappa =M\,\mathbb{E}\left[\frac{v_{i}-\pi}{1+M\left(1-F\left(v_{i}\right)^{M-1}\right)}\right] \longrightarrow_{M\rightarrow \infty} \mathbb E[v_i] - \pi   \,,
+\text{price impact = } 2\,\mathbb{E}\left[\Delta\right]/\kappa =M\,\mathbb{E}\left[\frac{v_{i}-\pi}{1+M\left(1-F\left(v_{i}\right)^{M-1}\right)}\right] \underset{M\rightarrow\infty}{\longrightarrow} \mathbb E[v_i] - \pi   \,,
 $$
 
 ---
@@ -974,10 +969,6 @@ $$
 * The equilibrium number of informed traders is such that
 $$
 C = \frac{\sqrt{24\,\pi\,\theta\,N\,M}}{M\left(2 + 3\,M + M^{2}\right)}\, D + \frac{\beta}{M}\,R \implies M(D) \sim D^{0.66}
-$$
-* The condition for markets to remain open is
-$$
-D^2 \leq \underbrace{\frac{3\,\pi\,N\,M}{\theta}}_{\sim D^{1.66}}\,
 $$
 * The equilibrium liquidity supply is
 $$
