@@ -1,7 +1,7 @@
 ---
 layout: cover
 class: text-center
-title: Price Formation in Blockchains
+title: Do Longer Block Times Impair Market Efficiency in Decentralized Markets?
 theme: academic
 titleTemplate: '%s'
 favicon: ./images/defiicon.png
@@ -16,7 +16,7 @@ fonts:
 mdc: true
 ---
 
-## Price Formation and Equilibrium Liquidity in Blockchains
+## Do Longer Block Times Impair Market Efficiency in Decentralized Markets?
 
 Agostino Capponi, Álvaro Cartea, Fayçal Drissi
 
@@ -131,12 +131,16 @@ studies specific aspects of blockchain infrastrcture
 
 # Contribution
 
-We present a model to describe the microstructure of DEXs within the blockchain infrastructure
+A model to describe the microstructure of DEXs within **blockchains**
+1. price efficiency
+2. informativeness of prices
+3. cost of liquidity  
+4. trading volumes
 
-We charaterise the economic consequences of **priority fees** and **block time** on 
-1. liquidity
-2. price discovery
-3. market frictions
+<br>
+
+We charaterise the economic effects of **block time** and **priority fees** 
+
 
 ---
 
@@ -148,63 +152,49 @@ Results <a name="defi"></a></h1>
 
 ---
 
-# Price Formation
+# Results: price discovery
 
 ### Slow Information Dissemination in Blockchains
 
-- Informed traders reveal private signals only at block creation, just before markets clear  
-- In contrast to the continuous information flow in traditional exchanges  
+- Information is disseminated at the end of block time, when markets clear  
+- In contrast to continuous information flow in traditional exchanges  
   _(Kyle, 1985; Huddart, Hughes, and Levine, 2001)_
 
 
+---
+
+# Results: block time and market efficiency
+
+* Longer block time increases speculative rewards
+   *  incentive to acquire private information $\implies$ prices are more efficient
 
 ---
 
-# Priority fees and number of informed traders
+# Results: block time and market efficiency
 
-### Liquidity Effects  
-- Increased number of informed traders $\implies$ increased competition $\implies$ mitigates adverse selection and improves liquidity<br>
-_(Glosten, Milgrom 1984)_ _(Holden and Subrahmanyam, 1992)_
-
----
-
-# Priority fees and number of informed traders
-
-### Liquidity Effects  
-- Increased number of informed traders $\implies$ increased competition $\implies$ mitigates adverse selection and improves liquidity<br>
-_(Glosten, Milgrom 1984)_ _(Holden and Subrahmanyam, 1992)_
-<br><br>
-
-### Price Efficiency Effects
-- Reduces incentives to acquire private information  
-_(Grossman and Stiglitz, 1980)_
+* Longer block time increases speculative rewards
+   *  incentive to acquire private information $\implies$ prices are more efficient
+   * more adverse selection costs for liquidity suppliers $\implies$ defensive liquidity supply
 
 ---
 
-# Block time
+# Results: block time and market efficiency
 
-### Price Efficiency Effects
-* block time increases speculative rewards
-    $\implies$ equilibrium number of informed traders grows $\implies$ prices are more efficient
+* Longer block time increases speculative rewards
+   *  incentive to acquire private information $\implies$ prices are more efficient
+   * more adverse selection costs for liquidity suppliers $\implies$ defensive liquidity supply
+    * increased number of informed traders $\implies$ increased competition in PGAs $\implies$ mitigation of adverse selection costs and liquidity improves
 
 ---
 
-# Block time
+# Results: block time and market efficiency
 
-### Price Efficiency Effects
-* block time increases speculative rewards
-    $\implies$ equilibrium number of informed traders grows $\implies$ prices are more efficient
-
-<br><br>
-
-### Liquidity Effects: tradeoff
-
-* block time increases risk for liquidity suppliers $\implies$ equilibrium supply decreases
-
-* block time allows for uninformed demand to accumulate  $\implies$ equilibrium supply grows
-
-* block time increases competition  $\implies$ less trading volumes $\implies$ equilibrium supply grows
-
+* Longer block time increases speculative rewards
+   *  incentive to acquire private information $\implies$ prices are more efficient
+   * more adverse selection costs for liquidity suppliers $\implies$ defensive liquidity supply
+    * increased number of informed traders $\implies$ increased competition in PGAs $\implies$ mitigation of adverse selection costs and liquidity improves
+* There is a threshod for block time beyond which adverse selection costs outweigh the benefits of priority fees $\implies$ liquidity freeze
+    * Unless uninformed liquidity demand aggregates with block time
 
 ---
 
@@ -340,27 +330,38 @@ priority fees and trading volumes <a name="defi"></a></h1>
 ---
 
 # Stage two: assumptions
+* Number of traders $M$ and liquidity supply $\kappa$ are known
+* Traders are risk-neutral
+* Only informed traders compete for queue priority
 
-* Informed traders observe dynamic private information sources throughout the Epoch
-* **Assumption**
 
-Block time provides traders with  opportunities to observe signals and gather information $\implies$ variance of competitors' signals increases with block time
-![illustrationBlockTime](./images/illustrationBlockTime.png){style="transform: translate(70%, 10%); width: 350px"}
+---
+
+# Stage two: assumptions
+* **Informed traders all are either buyers or sellers**
 
 ---
 
 # Stage two: assumptions
 
-* Paying the cost of information $C$ includes setting up a node
-* Traders also participate in the blockchain protocol by validating blocks
-* Let $\beta$ denote the proportion of stake by traders
-* Let $R$ be the blockchain reward 
+* Informed traders observe dynamic private information sources throughout the Epoch
+
+---
+
+# Stage two: assumptions
+
+* Informed traders observe dynamic private information sources throughout the Epoch
+* Block time provides traders with  opportunities to observe signals and gather information 
+
+$\implies$ variance of competitors' signals increases with block time
+![illustrationBlockTime](./images/illustrationBlockTime.png){style="transform: translate(70%, 10%); width: 350px"}
+
 
 ---
 
 # Stage two: competition
 
-* Throughout block time, informed can submit instructions to the memory pool with priority fees
+* Throughout block time, informed traders can submit instructions to the memory pool with priority fees
 * Let $T$ be block time
 
 
@@ -368,7 +369,16 @@ Block time provides traders with  opportunities to observe signals and gather in
 
 # Stage two: competition
 
-* Throughout block time, informed can submit instructions to the memory pool with priority fees
+* Throughout block time, informed traders can submit instructions to the memory pool with priority fees
+* Let $T$ be block time
+* Competition throughout $[0, T]$
+    * online auction with a hard close (traders only revise  bids upward)
+
+---
+
+# Stage two: competition
+
+* Throughout block time, informed traders can submit instructions to the memory pool with priority fees
 * Let $T$ be block time
 * Competition throughout $[0, T]$
     * online auction with a hard close (traders only revise  bids upward)
@@ -448,7 +458,7 @@ In equilibrium: traders set the priority fee $\varphi_i$ and the trading volume 
 * Trader $i$ competes in the PGA against $M-1$ other informed traders
 * If trader $i$ wins the auction, i.e., if $\varphi_{i}>\varphi_{-i}$, the buy order is executed at $V_0 + \delta_i/\kappa + \pi$
 $$
-\mathbb E_i[W_{i}\left(\text{win}\right)]=-\varphi_{i}-\underbrace{\delta_{i}\,\left(\delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}+\underbrace{\beta\,R/{M}}_{\text{validation reward}},
+\mathbb E_i[W_{i}\left(\text{win}\right)]=-\varphi_{i}-\underbrace{\delta_{i}\,\left(\delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
 $$
 
 ---
@@ -459,11 +469,11 @@ $$
 * Trader $i$ competes in the PGA against $M-1$ other informed traders
 * If trader $i$ wins the auction, i.e., if $\varphi_{i}>\varphi_{-i}$, the buy order is executed at $V_0 + \delta_i/\kappa + \pi$
 $$
-\mathbb E_i[W_{i}\left(\text{win}\right)]=-\varphi_{i}-\underbrace{\delta_{i}\,\left(\delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}+\underbrace{\beta\,R/{M}}_{\text{validation reward}},
+\mathbb E_i[W_{i}\left(\text{win}\right)]=-\varphi_{i}-\underbrace{\delta_{i}\,\left(\delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
 $$
 * If trader $i$ loses, the order is placed randomly among the $M-1$ losing bids
 $$
-\mathbb E_i[W_{i}\left(\text{lose}\right)]=-\underbrace{\delta_{i}\,\left(\frac{M-1+1}{2}\cdot\frac{2\,\delta_{i}}{\kappa} + \delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}+\underbrace{\beta\,R/{M}}_{\text{validation reward}}.
+\mathbb E_i[W_{i}\left(\text{lose}\right)]=-\underbrace{\delta_{i}\,\left(\frac{M-1+1}{2}\cdot\frac{2\,\delta_{i}}{\kappa} + \delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
 $$
 
 ---
@@ -549,18 +559,6 @@ $$
     \sup_{\varphi_{i}}\left\{ p_{i}\,\left(-\varphi_{i}+M\,\delta_{i}^2/\kappa\right)\right\} \,
     $$
     * Tradeoff: decreasing priority fees increases profits but reduces the probability of obtaining queue priority
-* Trader $i$ expects others to employ the increasing priority fee bidding strategy $\varphi(\cdot)$. 
-
----
-
-# Stage two: the final FPSB auction
-
-* Fix $\delta_i$, trader $i$ solves 
-    $$
-    \sup_{\varphi_{i}}\left\{ p_{i}\,\left(-\varphi_{i}+M\,\delta_{i}^2/\kappa\right)\right\} \,
-    $$
-    * Tradeoff: decreasing priority fees increases profits but reduces the probability of obtaining queue priority
-* Trader $i$ expects others to employ the increasing priority fee bidding strategy $\varphi(\cdot)$. 
 * The probability of obtaining queue priority in the block is 
 $$
 p_i = \mathbb{P}_i\left[\varphi_i > \varphi_{-i}\right]= \mathbb{P}_i\left[\varphi_i > \varphi_{(M-1)}\right] = \mathbb{P}_i\left[\varphi^{-1}\left(\varphi_i\right) > \delta_{(M-1)}\right] = G\left(\varphi^{-1}\left(\varphi_i\right)\right)^{M-1}\,,
@@ -571,7 +569,7 @@ $$
 
 # Stage two: the final FPSB auction
 
-* In a Bayesian-Nash equilibrium, trader $i$ finds it optimal to adopt the same strategy $\varphi$
+* The Bayesian-Nash equilibrium priority fees are 
     $$
     \varphi(\delta_i)=\frac{M}{\kappa}\bigg(\delta_{i}^{2}-\underbrace{2\,\frac{\int_{\widetilde{\delta}}^{\delta_{i}}x\,G\left(x\right)^{M-1}dx}{G\left(\delta_{i}\right)^{M-1}}}_{\text{discount}}\bigg)\,\mathbf 1_{\delta_{i} \geq \widetilde{\delta}}\,,
     $$
@@ -583,11 +581,11 @@ $$
 
 # Stage two: the online auction
 
-* The priority fee is increasing in the reserve price $\widetilde \varphi$
+* The priority fee is increasing in the reservation PF $\widetilde \varphi$
 $$
 \partial_{\widetilde{\varphi}}\varphi_i=\frac{4\,\widetilde{\delta}}{\kappa}\,\frac{H\left(\widetilde{\varphi}\right)}{H\left(\delta_{i}\right)} > 0\,
 $$
-* The expected payoff is decreasing in the reserve priority fee $\widetilde\varphi$ 
+* The expected payoff is decreasing in the reservation PF $\widetilde\varphi$ 
 $$
 \partial_{\widetilde{\varphi}}\mathbb E[W_i]=-\frac{4\,\widetilde{\varphi}}{\kappa}\,H\left(\widetilde{\varphi}\right) < 0\,
 $$
@@ -891,7 +889,7 @@ $$
 * The number of traders is constrained by the profitability of informed trading and the cost $C$
 * The equilbrium $M$ is the integer part of the solution to
 $$
-C=H(M)=\underbrace{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}\left(v_{i}\right)]}}\,\left(\frac1M \left(\mathbb{E}_{0}\left[M\, \tilde{\delta}\left(v_{(M)}\right)^{2}\right]-\mathbb{E}_{0}\left[M\,\tilde{\delta}\left(v_{(M-1)}\right)^{2}\right]\right)\right)}_\text{trading profits net of execution costs and priority fees}+\underbrace{\frac{\beta}{M}\,R}_{\text{validation rewards}}\,.  
+C=H(M)=\underbrace{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}\left(v_{i}\right)]}}\,\left(\frac1M \left(\mathbb{E}_{0}\left[M\, \tilde{\delta}\left(v_{(M)}\right)^{2}\right]-\mathbb{E}_{0}\left[M\,\tilde{\delta}\left(v_{(M-1)}\right)^{2}\right]\right)\right)}_\text{trading profits net of execution costs and priority fees}
 $$
 * The function $H$ decreases to zero as $M$ goes to infinity
 
@@ -901,7 +899,7 @@ $$
 
 * The equilbrium $M$ is the integer part of the solution to
 $$
-C=H(M)=\underbrace{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}\left(v_{i}\right)]}}\,\left(\frac1M \left(\mathbb{E}_{0}\left[M\, \tilde{\delta}\left(v_{(M)}\right)^{2}\right]-\mathbb{E}_{0}\left[M\,\tilde{\delta}\left(v_{(M-1)}\right)^{2}\right]\right)\right)}_\text{trading profits net of execution costs and priority fees}+\underbrace{\frac{\beta}{M}\,R}_{\text{validation rewards}}\,.  
+C=H(M)=\underbrace{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}\left(v_{i}\right)]}}\,\left(\frac1M \left(\mathbb{E}_{0}\left[M\, \tilde{\delta}\left(v_{(M)}\right)^{2}\right]-\mathbb{E}_{0}\left[M\,\tilde{\delta}\left(v_{(M-1)}\right)^{2}\right]\right)\right)}_\text{trading profits net of execution costs and priority fees}
 $$
 * The function $H$ decreases to zero as $M$ goes to infinity
 * If $H(2) > C$ 
@@ -916,7 +914,7 @@ $$
 
 * As $M$ grows
     1. (weak-form) price efficiency improves
-    2. uninformed traders trade at prices closer to the fundamental price
+    2. prices are more informative, and uninformed traders trade at prices closer to the fundamental price
 $$
 \text{price impact = } 2\,\mathbb{E}\left[\Delta\right]/\kappa =M\,\mathbb{E}\left[\frac{v_{i}-\pi}{1+M\left(1-F\left(v_{i}\right)^{M-1}\right)}\right] \underset{M\rightarrow\infty}{\longrightarrow} \mathbb E[v_i] - \pi   \,,
 $$
@@ -936,15 +934,15 @@ $$
 
 * The equilibrium number of informed traders is such that
 $$
-C = \frac{\sqrt{24\,\pi\,\theta\,N\,M}}{M\left(2 + 3\,M + M^{2}\right)}\, D + \frac{\beta}{M}\,R \implies M(D) \sim D^{0.4}
+C = \frac{\sqrt{24\,\pi\,\theta\,N\,M}}{M\left(2 + 3\,M + M^{2}\right)}\, D + \frac{\beta}{M}\,R \implies M(D) \sim D^{2/5}
 $$
 * The condition for markets to remain open is
 $$
-D^2 \leq \underbrace{\frac{3\,\pi\,N\,M}{\theta}}_{\sim D^{0.4}}\,
+D^2 \leq \underbrace{\frac{3\,\pi\,N\,M}{\theta}}_{\sim D^{2/5}}\,
 $$
 * The equilibrium liquidity supply is
 $$
-\kappa^{\star}=\frac{12}{D}\,\pi\,M\,N\,\theta \sim D^{-0.6}
+\kappa^{\star}=\frac{12}{D}\,\pi\,M\,N\,\theta \sim D^{-3/5}
 $$
 
 ---
@@ -968,11 +966,15 @@ $$
 * If $N$ grows linearly with block time (i.e. with $D$)
 * The equilibrium number of informed traders is such that
 $$
-C = \frac{\sqrt{24\,\pi\,\theta\,N\,M}}{M\left(2 + 3\,M + M^{2}\right)}\, D + \frac{\beta}{M}\,R \implies M(D) \sim D^{0.66}
+C = \frac{\sqrt{24\,\pi\,\theta\,N\,M}}{M\left(2 + 3\,M + M^{2}\right)}\, D + \frac{\beta}{M}\,R \implies M(D) \sim D^{2/3}
+$$
+* The condition for markets to remain open is
+$$
+D^2 \leq \underbrace{\frac{3\,\pi\,N\,M}{\theta}}_{\sim D^{5/3}}\,
 $$
 * The equilibrium liquidity supply is
 $$
-\kappa^{\star}=\frac{12}{D}\,\pi\,M\,N\,\theta \sim D^{0.4}
+\kappa^{\star}=\frac{12}{D}\,\pi\,M\,N\,\theta \sim D^{2/5}
 $$
 
 ---
