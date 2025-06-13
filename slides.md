@@ -978,6 +978,13 @@ $$
 $$
 
 ---
+
+# Effect of block time and priority fees
+* If $N$ grows linearly with block time (i.e. with $D$)
+![betterMarkets](./images/betterMarkets.png){style="transform: translate(50%, 0%); width: 400px"}
+
+
+---
 layout: end
 ---
 Thank you !
