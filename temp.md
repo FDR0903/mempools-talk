@@ -40,7 +40,7 @@ These slides: [https://www.faycaldrissi.com/mempools-talk](https://www.faycaldri
 section: Motivation
 ---
 
-# DEX Volume
+# Motivation
 
 - Significant volumes on Decentralized Exchanges (DEXs)
 
@@ -51,8 +51,8 @@ section: Motivation
 
 ---
 
-# Blockchain protocol
-### The blockchain protocol determines the lifecycle of transactions
+# Motivation: the blockchain protocol
+The blockchain protocol determines the lifecycle of transactions
 
 * Transactions are sent to the network continuously, and stored in a memory pool
 <br><br><br>
@@ -61,8 +61,8 @@ section: Motivation
 
 ---
 
-# Blockchain protocol
-### The blockchain protocol determines the lifecycle of transactions
+# Motivation: the blockchain protocol
+The blockchain protocol determines the lifecycle of transactions
 
 * Transactions are sent to the network continuously, and stored in a memory pool
 * At each Epoch, with length block time, a validator is chosen
@@ -79,8 +79,8 @@ section: Motivation
 
 ---
 
-# Blockchain protocol
-### The blockchain protocol determines the lifecycle of transactions
+# Motivation: the blockchain protocol
+The blockchain protocol determines the lifecycle of transactions
 
 * Transactions are sent to the network continuously, and stored in a memory pool
 * At each Epoch, with length block time, a validator is chosen
@@ -91,10 +91,40 @@ section: Motivation
 
 ---
 
-# Blockchain protocol
-#### *Pre-trade transparency*: agents observe pending and unconfirmed transactions
-#### *Priority gas auctions*: agents submit/revise priority fees to compete for queue priority
+# Motivation: the blockchain protocol
+
+### Gas fees (EIP-1559)
+* **Base fee**: based on congestion. prerequisite for inclusion
+* **Priority fee**: incentivise validators to prioritise a transaction in the block
+
 ![mempools](./images/mempools.jpeg){style="transform: translate(25%, 0%); width: 580px"}
+
+---
+
+# Blockchain protocol: consequences
+
+#### Pre-trade transparency
+* Agents observe pending and unconfirmed transactions
+
+<br />
+
+#### Priority gas auctions
+* Agents submit/revise priority fees to compete for queue priority
+
+
+---
+
+# Existing research 
+
+studies AMMs in isolation
+* Lehar and Parlour (2021); Capponi and Jia (2021); Barbon and Ranaldo (2021); Cartea, Drissi, and Monga (2022); John, Kogan, and Saleh (2023)
+
+studies empirics of blockchain infrastrcuture
+* Capponi, Jia and Yu (2024)
+
+studies specific aspects of blockchain infrastrcture
+* private and public order flow: Capponi, Jia, and Wang (2024)
+* Just-in-time liquidity attacks: Capponi, Jia, and Zhu (2024)
 
 ---
 
@@ -151,33 +181,41 @@ section: Preview
 section: Microstructure of blockchain
 ---
 
-# The market
+# General features
 
 - A DEX for a risky security $Y$ and a reference security $X$
-- Initial  price in the DEX of security $Y$ in units of $X$
-$$V_0 = 0$$
-- Future liquidation value in the DEX
-$$V$$
-- Liquidity supply in the DEX
-$$\kappa$$
+- Marginal price in the AMM: $V_0 = 0$
+- Future liquidation value in the AMM: $V$
+- Liquidity supply in the AMM: $\kappa$
 
 ---
 
 
-# Execution prices in the DEX
-- Execution price to **buy** a quantity $\delta$:
-$$V_0 + \delta / \kappa + \pi = \delta / \kappa + \pi$$
-- Cost to **buy** a quantity $\delta$: 
-$$\quad \delta\left(\delta / \kappa + \pi\right)$$
-- New DEX price after a buy of quantity $\delta$: 
-$$V_0 + \delta / \kappa = \delta / \kappa$$
-- Equivalent for sells
+# General features
+
+
+- Liquidity supply in the AMM: $\kappa$
+    - Cost to trade a quantity $\delta$: 
+    $$\quad \delta / \kappa + \pi$$
+    - Impact on DEX price for a trade with quantity $\delta$: $\quad\quad\quad\quad\quad 2\,\delta / \kappa$ 
+![cvxty](./images/convexity1(1).png){style="transform: translate(10%, 0%); width: 700px"}
+
+---
+
+# General features
+
+
+- Three types of agent
+    1. A liquidity supplier 
+    2. $L>2$ informed traders
+    3. Uninformed traders with elastic demand
+
 
 ---
 
 # The model
 We model strategic interactions between takers and suppliers of liquidity as a three-stage game
-- <u>**stage 0**</u>: $M<L$ traders acquire information for a fixed cost $C$
+- **stage 0**: $M<L$ traders acquire information for a fixed cost $C$
 <br><br>
 ![model1](./images/model1.png){style="transform: translate(10%, 9%); width: 600px"}
 
@@ -185,8 +223,8 @@ We model strategic interactions between takers and suppliers of liquidity as a t
 
 # The model
 We model strategic interactions between takers and suppliers of liquidity as a three-stage game
-- <u>**stage 0**</u>: $M<L$ traders acquire information for a fixed cost $C$
-- <u>**stage 1**</u>: liquidity suppliers sets the AMM’s reserves ($\equiv$ setting $\kappa$)
+- **stage 0**: $M<L$ traders acquire information for a fixed cost $C$
+- **stage 1**: liquidity suppliers sets the AMM’s reserves ($\equiv$ setting $\kappa$)
 <br>
 ![model1](./images/model2.png){style="transform: translate(10%, 9%); width: 600px"}
 
@@ -194,16 +232,16 @@ We model strategic interactions between takers and suppliers of liquidity as a t
 
 # The model
 We model strategic interactions between takers and suppliers of liquidity as a three-stage game
-- <u>**stage 0**</u>: $M<L$ traders acquire information for a fixed cost $C$
-- <u>**stage 1**</u>: liquidity suppliers sets the AMM’s reserves ($\equiv$ setting $\kappa$)
-- <u>**stage 2**</u>: $M$ informed traders compete with priority fees (only revised upward)
+- **stage 0**: $M<L$ traders acquire information for a fixed cost $C$
+- **stage 1**: liquidity suppliers sets the AMM’s reserves ($\equiv$ setting $\kappa$)
+- **stage 2**: $M$ informed traders compete with priority fees (only revised upward)
 ![model1](./images/model3.png){style="transform: translate(10%,0%); width: 600px"}
 
 ---
 
 # The model
 We model strategic interactions between takers and suppliers of liquidity as a three-stage game
-- **stage 0**: $M<L$ risk-neutral traders acquire information for a fixed cost $C$
+- **stage 0**: $M<L$ traders acquire information for a fixed cost $C$
 - **stage 1**: liquidity suppliers sets the AMM’s reserves ($\equiv$ setting $\kappa$)
 - **stage 2**: $M$ informed traders compete with priority fees (only revised upward)
 ![model1](./images/model4.png){style="transform: translate(10%, 0%); width: 600px"}
@@ -228,19 +266,55 @@ priority fees and trading volumes <a name="defi"></a></h1>
 
 
 
-# Stage two: Assumptions
+# Stage two: assumptions
 * Number of traders $M$ and liquidity supply $\kappa$ are known
-* $T$ is block time
-* <u>**Informed traders all are either buyers or sellers**</u> (buyers in this talk)
-* Competition throughout $[0, T]$: English auction with a hard close
-* At $T$:  final opportunity to update (upward) the priority fee and trading volumes  (**<u>first-price sealed-bid auction</u>**)
+* Traders are risk-neutral
+* Only informed traders compete for queue priority
+
+* **Informed traders all are either buyers or sellers**
+* Informed traders observe dynamic private information sources throughout the Epoch: Block time provides traders with  opportunities to observe signals and gather information 
+
+$\implies$ variance of competitors' signals increases with block time
+![illustrationBlockTime](./images/illustrationBlockTime.png){style="transform: translate(70%, 10%); width: 350px"}
+
+
 
 ---
 
-# Stage two: optimisation problem
-* Let $v_i=\mathbb{E}_{i}\left[V\right]\in[\underline v, \overline v]$ be the <u>private</u> and <u>independent</u> signal of trader $i \in \{1,\dots,M\}$ 
-- In equilibrium: traders set the priority fee $\varphi_i$ and the trading volume $\delta_i$ 
+# Stage two: competition
 
+* Throughout block time, informed traders can submit instructions to the memory pool with priority fees
+* Let $T$ be block time
+* Competition throughout $[0, T]$
+    * online auction with a hard close (traders only revise  bids upward)
+* At $T$
+    * final opportunity to update (upward) the priority fee and trading volumes $\rightarrow$ first-price sealed-bid auction (FPSB)
+
+---
+
+# Stage two: FPSB auction
+
+* Let $\widetilde{\varphi}$ be the largest bid from the online auction
+* Let $v_i$ be the signal of trader $i \in \{1,\dots,M\}$ at the end of blocktime
+* $v_i$ is drawn from the CDF $F$ over the interval $[\underline v, \overline v]$ 
+    * $\overline v =  \overline v(T)$  increasing in $T$
+* Each signal is an independent and noisy realisation of the liquidation value
+$$
+v_i = \mathbb{E}_{i}\left[V\right]= \mathbb{E}\left[V\mid v_{i}\right]
+$$
+* Let $\varphi_i$ be the priority fee of trader $i$
+* Let $\delta_{i}$ be the trading volume of trader $i$
+
+
+In equilibrium: traders set the priority fee $\varphi_i$ and the trading volume $\delta_i$ 
+
+
+---
+
+# Stage two: the final FPSB auction
+
+* All informed traders are either buyers or sellers $\implies$ signals share the same sign (positive in this talk)
+* Trader $i$ competes in the PGA against $M-1$ other informed traders
 * If trader $i$ wins the auction, i.e., if $\varphi_{i}>\varphi_{-i}$, the buy order is executed at $V_0 + \delta_i/\kappa + \pi$
 $$
 \mathbb E_i[W_{i}\left(\text{win}\right)]=-\varphi_{i}-\underbrace{\delta_{i}\,\left(\delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
@@ -249,73 +323,147 @@ $$
 $$
 \mathbb E_i[W_{i}\left(\text{lose}\right)]=-\underbrace{\delta_{i}\,\left(\frac{M-1+1}{2}\cdot\frac{2\,\delta_{i}}{\kappa} + \delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
 $$
-* The expected utility of the risk-neutral trader is
-$$\begin{split}
-\mathbb{E}_i\left[W_{i}\right]= \mathbb E_i\left[ W_{i}\left(\text{lose}\right) \right]  + \,\underbrace{p_{i}}_{\text{win prob}}\times (\underbrace{-\varphi_{i}+M\,\delta_{i}^{2}/\kappa}_{\text{surplus}})
-\,,
-\end{split}$$
 
 ---
 
-# Stage two: optimisation problem
+
+
+# Stage two: the final FPSB auction
+
+* Trader $i$ does not observe the bids of competitors
+* They can estimate the probability to win
+$$
+p_i = \mathbb P_i[\varphi_i > \varphi_{-i}]
+$$
+* The expected utility of the risk-neutral trader is
+$$\begin{split}
+\mathbb{E}_i\left[W_{i}\right]= \mathbb E_i\left[ W_{i}\left(\text{lose}\right) \right]  + \,p_{i}(\underbrace{-\varphi_{i}+M\,\delta_{i}^{2}/\kappa}_{\text{surplus}})
+\,,
+\end{split}$$
 * Trader $i$ solves the problem
 $$
 \sup_{\delta_i}\,\sup_{\varphi_i}\mathbb{E}_i\left[W_{i}\right]
-$$
-*  $\partial_{\delta_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0 \implies$ the optimal trading volume is a function of the signal $v_i$
-* $\partial_{\varphi_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0 \implies$ the priority fee is a function of the signal $v_i$
-* In equilibrium 
-$$
-\delta_i = \delta(v_i) \quad \text{and} \quad \varphi_i = \varphi(v_i)
 $$
 * The objective function is a bounded real-valued function $\implies$ interchange of the order in which one computes the suprema with respect to $\delta_i$ and $\varphi_i$
 
 ---
 
+# Stage two: the final FPSB auction
 
-# Stage two: equilibrium priority fees
-## FPSB auction at $T$
-* Let $\widetilde{\varphi} = \varphi_i(\tilde\delta)$ be the largest bid from the online auction
-* The Bayesian-Nash equilibrium priority fee is
+*  $\partial_{\delta_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0 \implies$ the optimal trading volume is a function of the signal $v_i$
+
+* $\partial_{\varphi_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0 \implies$ the priority fee is a function of the signal $v_i$
+
+* In equilibrium 
+$$
+\delta_i = \delta(v_i) \quad \text{and} \quad \varphi_i = \varphi(v_i)
+$$
+
+* Let $g$ and $G$ denote the PDF/CDF of $\delta_i$ over $[\underline \delta, \overline \delta]$ (pinned down in equilibrium)
+$$
+g(x) = f\left(\delta^{-1}\left(x\right)\right)\Big/\delta^{'}\left(\delta^{-1}\left(x\right)\right).
+$$
+
+
+---
+
+# Stage two: the final FPSB auction
+
+* Fix $\delta_i$, trader $i$ solves 
     $$
-    \varphi(\delta_i)=\bigg(\underbrace{\frac{M}{\kappa}\delta_{i}^{2}}_{\text{reservation priority fee}} - \underbrace{2\,\frac{M}{\kappa}\frac{\int_{\widetilde{\delta}}^{\delta_{i}}x\,G\left(x\right)^{M-1}dx}{G\left(\delta_{i}\right)^{M-1}}}_{\text{discount}}\bigg)\,\mathbf 1_{\delta_{i} \geq \widetilde{\delta}}\,,
+    \sup_{\varphi_{i}}\left\{ p_{i}\,\left(-\varphi_{i}+M\,\delta_{i}^2/\kappa\right)\right\} \,
     $$
-* The priority fee is increasing in the volume $\delta_i$, decreasing in the  depth $\kappa$, increasing in the number of informed traders $M$
-## Online auction $[0, T]$
-* The priority fee is increasing in the online auction's PF $\widetilde \varphi$, The expected payoff is decreasing in the reservation PF $\widetilde\varphi$
+    * Tradeoff: decreasing priority fees increases profits but reduces the probability of obtaining queue priority
+* The probability of obtaining queue priority in the block is 
+$$
+p_i = \mathbb{P}_i\left[\varphi_i > \varphi_{-i}\right]= \mathbb{P}_i\left[\varphi_i > \varphi_{(M-1)}\right] = \mathbb{P}_i\left[\varphi^{-1}\left(\varphi_i\right) > \delta_{(M-1)}\right] = G\left(\varphi^{-1}\left(\varphi_i\right)\right)^{M-1}\,,
+$$
+* Denote $h$ and $H$ as the PDF/CDF of the second largest volume
+
+---
+
+# Stage two: the final FPSB auction
+
+* The Bayesian-Nash equilibrium priority fees are 
+    $$
+    \varphi(\delta_i)=\frac{M}{\kappa}\bigg(\delta_{i}^{2}-\underbrace{2\,\frac{\int_{\widetilde{\delta}}^{\delta_{i}}x\,G\left(x\right)^{M-1}dx}{G\left(\delta_{i}\right)^{M-1}}}_{\text{discount}}\bigg)\,\mathbf 1_{\delta_{i} \geq \widetilde{\delta}}\,,
+    $$
+* The priority fee is increasing in the trading volume $\delta_i$ 
+* The priority fee is decreasing in the liquidity depth $\kappa$
+* For a fixed volume $\delta$, the priority fee is increasing in the number of informed traders $M$
+
+---
+
+# Stage two: the online auction
+
+* The priority fee is increasing in the reservation PF $\widetilde \varphi$
 $$
 \partial_{\widetilde{\varphi}}\varphi_i=\frac{4\,\widetilde{\delta}}{\kappa}\,\frac{H\left(\widetilde{\varphi}\right)}{H\left(\delta_{i}\right)} > 0\,
-\qquad\qquad
+$$
+* The expected payoff is decreasing in the reservation PF $\widetilde\varphi$ 
+$$
 \partial_{\widetilde{\varphi}}\mathbb E[W_i]=-\frac{4\,\widetilde{\varphi}}{\kappa}\,H\left(\widetilde{\varphi}\right) < 0\,
 $$
-* <u>**In equilibrium, traders delay bidding until the last moment**</u>
 
+
+---
+
+# Stage two: the online auction
+
+
+* Non-zero bids decrease expected terminal wealth
+
+$\implies$ no trader has incentive to bid early in the online auction
+* In equilibrium: traders delay bidding until the last moment
 
 ---
 layout: two-cols-header
 ---
 
-# Stage two: equilibrium priority fees
-### Late bidding is observed in practice
-* large priority fees are typically associated with informed trading  (Capponi, Jia, Yu 2023)
+# Price formation
+
+* Information is disseminated to the market with the same periodicity as that of the creation of blocks 
+
+* In contrast to the continuous rate of information dissemination in traditional exchanges: Kyle (1985b); Huddart, Hughes, and Levine (2001)
+---
+layout: two-cols-header
+---
+
+# Stage two: the online auction
+
+* Late bidding is observed in practice: large priority fee instructions are submitted to the memory pool shortly before the end of each blockchain slot
+    * large priority fees are typically associated with informed trading  (Capponi, Jia, Yu 2023)
 ::left::
 
-![PF1](./images/number_transactions.jpg){style="transform: translate(10%, -20%); width: 280px"}
+![PF1](./images/number_transactions.jpg){style="transform: translate(40%, -10%); width: 280px"}
 $\qquad\quad$ Number of transactions. <br>
 $\qquad\quad$ Ethereum memory pool transaction data<br> $\qquad\quad$ $10-16$ December $2022$<br>
 
 ::right::
 
-![PF1](./images/gas_fees_mempool.jpg){style="transform: translate(20%, -20%); width: 280px"}
+![PF1](./images/gas_fees_mempool.jpg){style="transform: translate(40%, -10%); width: 280px"}
 $\qquad\qquad$ Level of priority fees.<br>
 $\qquad\qquad$ Ethereum transaction data<br> $\qquad\qquad$ $10-16$ December $2022$<br>
 
 
+---
+
+
+# Stage two: the online auction
+
+* Our results are related to pre-opening and closing auctions
+    * Preopening sessions are uniform price auctions (clearing prices maximise trading volume) 
+    * Blockchains: discriminatory pricing subject to queue ordering
+* Our findings support the *pure-noise hypothesis* of Biais, Hillion, and Spatt (1999)
+* Empirical support
+    * No information before the FPSB auction: Medrano and Vives (2001), Cao, Ghysels, and Hatheway (2000); Davies (2003)
+    * Late bidding: Roth and Ockenfels (2002); Yang and Kahng (2006)
 
 
 ---
 
-# Stage two: equilibrium volumes
+# Stage two: trading volumes
+
 Substitute the priority fee, trader $i$ solves
 $$
 \sup_{\delta_{i}}\Bigg\{F\left(v_i\right)^{M-1}\,\left(-\varphi_{i}+M\,\delta_{i}^{2}/\kappa\right)-(1+M)\,\delta_{i}^2/\kappa^{2}+\delta_{i}\,\left(v_i-\pi\right)\Bigg\}
@@ -331,21 +479,33 @@ The linear-quadratic programme is interpreted as follows
 
 ---
 
-# Stage two: equilibrium trading volumes
+# Stage two: trading volumes
 
+In equilibrium, trader $i$ transacts a volume
 $$
-\delta(v_i)=\kappa\,\tilde{\delta}(v_i)=\underbrace{\kappa}_\text{available liq}\,\underbrace{\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}}_\text{fraction transacted}\,
+\delta(v_i)=\kappa\,\tilde{\delta}(v_i)=\kappa\,\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}\,
 $$
-* The fraction $\tilde\delta_i$ increases in the  signal (expected liquidation value, likelihood of winning)
-* Signal dispersion increases the probability $1-F(v_i)^{M-1}$ to lose the auction
+* Trader $i$'s  volume $\delta_i$ is a fraction $\tilde\delta(v)$ of the liquidity supply $\kappa$
+* The fraction $\tilde\delta_i$ increases in the  signal
+    1. the signal $v_i$ is the expected liquidation value
+    2. likelihood of winning the auction at lower cost increases
+* For fixed $v_i$, $\tilde\delta_i$ decrease in competitors' signal dispersion
+    * signal dispersion increases the probability $1-F(v_i)^{M-1}$ to lose the auction
+
+---
+
+# Stage two: trading volumes
+
+In equilibrium, trader $i$ transacts a volume
+$$
+\delta(v_i)=\kappa\,\tilde{\delta}(v_i)=\kappa\,\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}\,
+$$
 * $\delta(v_i)$ decreases to zero when $M\rightarrow\infty$
 * The equilibrium priority fee $\varphi(\delta(v))$, **accounting for strategically adjusted trading volumes** is
     $$
     \varphi(\delta_i) = \varphi(\delta(v_i))
     $$
     * $\varphi(\delta(v_i))$ decreases to zero when $M\rightarrow\infty$
-
-
 
 ---
 
@@ -361,57 +521,101 @@ Average absolute trading volume of transactions across multiple Uniswap v3 pools
 
 ---
 
-# Stage one: liquidity supply
+# Stage one: liquidity supply -- assumptions
 
 - A risk-neutral liquidity supplier sets the supply $\kappa$ with rational expectations over behaviour of informed traders. They balance
-    1. expected losses to informed traders 
-    $$
-    -  \mathbb E\left[\Delta^2\right] / \kappa   = - M\, \mathbb{V}\left[{\delta}_{i}\right] \big/\kappa   =  - M\, \mathbb{V}[\tilde{\delta}_{i}]\,
-    $$
-    2. fee revenue from uninformed elastic demand (Standard: Garman (1976); Ho and Stoll (1981); Hendershott and Menkveld (2014))
-$$\pi\,{N}\,\left(1-\theta/\kappa\right)\,$$
+    1. losses to informed traders 
+    2. fee revenue earned from uninformed liquidity traders
 
--  The equilibrium supply of liquidity and equilibrium payoff are 
+---
+
+# Stage one: liquidity supply -- assumptions
+
+Uninformed liquidity traders transact a net volume that sums to zero but an absolute volume $N$ which is elastic.
+- liquidity demanded by buyers $\frac{N}{2}\,\left(1-\theta/\kappa\right)\,,$
+- liquidity demanded by buyers $-\frac{N}{2}\,\left(1-\theta/\kappa\right)\,,$
+
+Elasticity: increasing the ask $1/\kappa$ by $s$ reduces demand by $\theta\,s \,N/2$
+
+Standard framework: Garman (1976); Ho and Stoll (1981); Hendershott and Menkveld (2014)
+
+---
+
+# Stage one: liquidity supply -- assumptions
+
+- The liquidity supplier assumes that with probability $1/2,$ informed traders are buyers, and with probability $1/2,$ they are sellers
+- From the perspective of the supplier, total trading volume of informed traders $\Delta$ is a random variable with mean zero.
+- Expected losses to informed traders
 $$
-\kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}} \qquad \text{and}\qquad \pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]}
+-  \mathbb E\left[\Delta^2\right] / \kappa   = - M\, \mathbb{V}\left[{\delta}_{i}\right] \big/\kappa   =  - M\, \mathbb{V}[\tilde{\delta}_{i}]\,.
 $$
 
-* The liquidity supply increases in the profitability of the uninformed trading flow, decreases in the variance of signals
-* There is a limit to block time above which markets shut down (Glosten and Milgrom (1985))
+- Fee revenue
 $$
-M\,\mathbb{V}[\tilde{\delta}_{i}] \le \frac{\pi\,N}{4\,\theta}\,
+\pi\,{N}\,\left(1-\theta/\kappa\right)\,.
 $$
+
 
 ---
 
 # Stage one: liquidity supply
+
+The equilibrium supply of liquidity is 
 $$
 \kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}
- \qquad\text{and}\qquad \tilde\delta(v_i)=\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}
+$$
+Recall
+$$
+\tilde\delta(v_i)=\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}
 $$
 
+* The liquidity supply increases in the profitability of the uninformed trading flow
+* The liquidity supply decreases in the variance of signals
+
+
+---
+
+# Stage one: liquidity supply
+
 - The liquidity supply **increases in the number of competing informed traders**
+$$
+\lim_{M\rightarrow \infty} \mathbb E[\Delta] = (\mathbb E[v_i]-\pi)/2
+$$
+$$
+\lim_{M\rightarrow \infty} M\,\mathbb{V}[\tilde{\delta}_i] = 0
+$$
 * The equilibrium payoff of liquidity provision
 $$\pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]} \underset{M\rightarrow\infty}{\longrightarrow} \pi\,N$$
 * For fixed signal variance, there exists $\overline M$ such that for all $M>\overline M$, markets do not shut down
 
 ---
 
-<!--
 # Stage one: liquidity supply
+The equilibrium supply of liquidity is 
 $$
 \kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}
- \qquad\text{and}\qquad \tilde\delta(v_i)=\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}
+$$
+
+Block time has two opposing effects
+1. volatile trading signals drive liquidity levels down 
+2. liquidity demand accumulates $\rightarrow$ drive liquidity levels up
+
+---
+
+# Stage one: liquidity supply
+
+The equilibrium payoff of liquidity provision
+
+$$\pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]}$$
+
+* For fixed liquidity demand $N$, there is a limit to block time above which markets shut down (Glosten and Milgrom (1985))
+$$
+M\,\mathbb{V}[\tilde{\delta}_{i}] \le \frac{\pi\,N}{4\,\theta}\,.
 $$
 
 
-$\implies$ Block time has two opposing effects
-1. Block time increases the variance of signals $\rightarrow$ drive liquidity levels down 
-2. liquidity demand accumulates $\rightarrow$ drive liquidity levels up
 
-
-
--->
+---
 
 # Stage zero: information acquisition
 The number of informed traders is determined endogenously
@@ -440,21 +644,35 @@ $$
 C=H(M)=\underbrace{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}\left(v_{i}\right)]}}\,\left(\frac1M \left(\mathbb{E}_{0}\left[M\, \tilde{\delta}\left(v_{(M)}\right)^{2}\right]-\mathbb{E}_{0}\left[M\,\tilde{\delta}\left(v_{(M-1)}\right)^{2}\right]\right)\right)}_\text{trading profits net of execution costs and priority fees}
 $$
 * The function $H$ decreases to zero as $M$ goes to infinity
-* Equilibrium number of informed traders
-    * $M$ increases in the profitability of uninformed demand
+* If $H(2) > C$ 
+    * $M \geq 2$
+    * $M$ increases in the blockchain validation reward $R$
+    * $M$ increases in the size $N$ and elasticity $\theta$ of uninformed liquidity demand
     * $M$ decreases in the  information cost $C$ 
+
+---
+
+# Stage zero: information acquisition
+
 * As $M$ grows
     1. (weak-form) price efficiency improves
     2. prices are more informative, and uninformed traders trade at prices closer to the fundamental price
-
+$$
+\text{price impact = } 2\,\mathbb{E}\left[\Delta\right]/\kappa =M\,\mathbb{E}\left[\frac{v_{i}-\pi}{1+M\left(1-F\left(v_{i}\right)^{M-1}\right)}\right] \underset{M\rightarrow\infty}{\longrightarrow} \mathbb E[v_i] - \pi   \,,
+$$
 
 ---
 
 # Effect of block time and priority fees
 
-* The CDF $\tilde G$ of $\tilde\delta$ is uniform over $[0, D/M]$ with probability $1/2$ and $[-D/M, 0]$ with probability $1/2$
+* Consider the case where $\tilde G$, the CDF of $\tilde\delta$, is uniform over $[0, D/M]$ with probability $1/2$ and $[-D/M, 0]$ with probability $1/2$
 
-*  Longer block times $\equiv$ larger values of $D$
+* $D$ is proportional to signal dispersion
+    * Longer block times $\equiv$ larger values of $D$
+
+---
+
+# Effect of block time and priority fees
 
 * The equilibrium number of informed traders is such that
 $$
@@ -474,20 +692,38 @@ $$
 # Illiquid markets, expensive information
 * $N = \$ 10000,  \pi =  0.3\%, \theta=0.1, \beta=1, R = \$ 10, C = \$ 10$
 
-![roughmarkets](./images/roughMarkets.png){style="transform: translate(70%, 0%); width: 380px"}
+![roughmarkets](./images/roughMarkets.png){style="transform: translate(50%, 0%); width: 400px"}
 
 ---
 
 # Liquid markets, cheap information
 * $N = \$ 100000,  \pi =  0.3\%, \theta=0.05, \beta=1, R = \$ 10, C = \$ 5$
 
-![niceMarkets](./images/niceMarkets.png){style="transform: translate(70%, 0%); width: 380px"}
+![niceMarkets](./images/niceMarkets.png){style="transform: translate(50%, 0%); width: 400px"}
+
+---
+
+# Effect of block time and priority fees
+
+* If $N$ grows linearly with block time (i.e. with $D$)
+* The equilibrium number of informed traders is such that
+$$
+C = \frac{\sqrt{24\,\pi\,\theta\,N\,M}}{M\left(2 + 3\,M + M^{2}\right)}\, D + \frac{\beta}{M}\,R \implies M(D) \sim D^{2/3}
+$$
+* The condition for markets to remain open is
+$$
+D^2 \leq \underbrace{\frac{3\,\pi\,N\,M}{\theta}}_{\sim D^{5/3}}\,
+$$
+* The equilibrium liquidity supply is
+$$
+\kappa^{\star}=\frac{12}{D}\,\pi\,M\,N\,\theta \sim D^{2/5}
+$$
 
 ---
 
 # Effect of block time and priority fees
 * If $N$ grows linearly with block time (i.e. with $D$)
-![betterMarkets](./images/betterMarkets.png){style="transform: translate(55%, 0%); width: 400px"}
+![betterMarkets](./images/betterMarkets.png){style="transform: translate(50%, 0%); width: 400px"}
 
 ---
 layout: end
@@ -499,34 +735,6 @@ Thank you !
 
 ---
 section: Appendix
----
-
-
-# The literature
-
-Studies AMMs in isolation
-* Lehar and Parlour (2021); Capponi and Jia (2021); Barbon and Ranaldo (2021); Cartea, Drissi, and Monga (2022); John, Kogan, and Saleh (2023)
-
-Studies empirics of blockchain infrastrcuture
-* Capponi, Jia and Yu (2024)
-
-Studies specific aspects of blockchain infrastrcture
-* private and public order flow: Capponi, Jia, and Wang (2024)
-* Just-in-time liquidity attacks: Capponi, Jia, and Zhu (2024)
-
----
-
-
-# Stage two: the online auction
-
-* Our results are related to pre-opening and closing auctions
-    * Preopening sessions are uniform price auctions (clearing prices maximise trading volume) 
-    * Blockchains: discriminatory pricing subject to queue ordering
-* Our findings support the *pure-noise hypothesis* of Biais, Hillion, and Spatt (1999)
-* Empirical support
-    * No information before the FPSB auction: Medrano and Vives (2001), Cao, Ghysels, and Hatheway (2000); Davies (2003)
-    * Late bidding: Roth and Ockenfels (2002); Yang and Kahng (2006)
-
 ---
 
 # Market frictions in Automated Market Makers
