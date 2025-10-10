@@ -92,8 +92,8 @@ section: Motivation
 ---
 
 # Blockchain protocol
-#### *Pre-trade transparency*: agents observe pending and unconfirmed transactions
-#### *Priority gas auctions*: agents submit/revise priority fees to compete for queue priority
+#### <u>*Pre-trade transparency*</u>: agents observe pending and unconfirmed transactions
+#### <u>*Priority gas auctions*</u>: agents submit/revise priority fees to compete for queue priority
 ![mempools](./images/mempools.jpeg){style="transform: translate(25%, 0%); width: 580px"}
 
 ---
@@ -154,9 +154,12 @@ section: Microstructure of blockchains
 
 # The market
 
-<v-clicks>
+
 
 - A DEX for a risky security $Y$ and a reference security $X$
+
+<v-clicks>
+
 - $V_0 = 0$: initial  price in the DEX of security $Y$ in units of $X$
 -  $V$: future (random) liquidation value
 - $\kappa$: liquidity supply in the DEX
@@ -178,7 +181,7 @@ $$V_0 + \delta / \kappa + \pi = \delta / \kappa + \pi$$
 - Cost to **buy** a quantity $\delta$: 
 $$\quad \delta\left(\delta / \kappa + \pi\right)$$
 - New DEX price after a buy of quantity $\delta$: 
-$$V_0 + \delta / \kappa = \delta / \kappa$$
+$$V_0 + 2\,\delta / \kappa = 2\,\delta / \kappa$$
 - Equivalent for sells
 
 </v-clicks>
@@ -244,7 +247,7 @@ priority fees and trading volumes <a name="defi"></a></h1>
 - At $T$:  final opportunity to update (upward) the priority fee and trading volumes  (<u>first-price sealed-bid auction</u>)
 - $v_i=\mathbb{E}_{i}\left[V\right]\in[\underline v, \overline v]$ is the <u>private</u> and <u>independent</u> signal of trader $i \in \{1,\dots,M\}$ at time $T$
 - <u>In equilibrium of stage two</u>; traders set 
-    * the **priority fee $\varphi_i$**
+    * **priority fee $\varphi_i$**
     * **trading volume $\delta_i$** 
 
 </v-clicks>
@@ -253,23 +256,29 @@ priority fees and trading volumes <a name="defi"></a></h1>
 
 # <ins>Stage two</ins>: optimisation problem
 
+
+
 - If trader $i$ wins the auction, i.e., if $\varphi_{i}>\varphi_{-i}$, the buy order is executed at $V_0 + \delta_i/\kappa + \pi$
 $$\small
 \mathbb E_i[W_{i}\left(\text{win}\right)]=-\varphi_{i}-\underbrace{\delta_{i}\,\left(\delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
 $$
 
-<v-clicks>
+<v-click>
 
 - If trader $i$ loses, the order is placed randomly among the $M-1$ losing bids
 $$\small
 \mathbb E_i[W_{i}\left(\text{lose}\right)]=-\underbrace{\delta_{i}\,\left(\frac{M}{2}\times\frac{2\,\delta_{i}}{\kappa} + \delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
 $$
 
+<v-click>
+
 - The expected utility of the risk-neutral trader is
 $$\small\begin{split}
 \mathbb{E}_i\left[W_{i}\right]= \mathbb E_i\left[ W_{i}\left(\text{lose}\right) \right]  + \,\underbrace{p_{i}}_{\text{win prob}}\times (\underbrace{-\varphi_{i}+M\,\delta_{i}^{2}/\kappa}_{\text{surplus}})
 \,,
 \end{split}$$
+
+<v-click>
 
 - Trader $i$ solves the problem
 $\quad\qquad
@@ -278,7 +287,9 @@ $
 
 - $\partial_{\delta_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0,\quad \partial_{\varphi_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0 \implies$ in equilibrium $\delta_i = \delta(v_i) \quad \text{and} \quad \varphi_i = \varphi(v_i)$
 
-</v-clicks>
+</v-click>
+</v-click>
+</v-click>
 
 
 
@@ -406,7 +417,7 @@ $$
 - The liquidity supply **increases in the number of competing informed traders**
 * The equilibrium payoff of liquidity provision
 $$\pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]} \underset{M\rightarrow\infty}{\longrightarrow} \pi\,N$$
-* For fixed signal variance, there exists $\overline M$ such that for all $M>\overline M$, markets do not shut down
+<!--* For fixed signal variance, there exists $\overline M$ such that for all $M>\overline M$, markets do not shut down-->
 
 ---
 
