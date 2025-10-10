@@ -428,14 +428,14 @@ $\implies$ Block time has two opposing effects
 
 # <ins>Stage zero</ins>: information acquisition
 
-* As number of informed traders $M$ who pay the cost of acquiring information  grows
+* As number of informed traders $M$ who pay the cost of acquiring information  grows (Grossman–Stiglitz)
     1. (weak-form) price efficiency improves
     $$
     \mathbb V[\hat V \mid \{v_1, \dots, v_M\}] = \frac{L - M}{L^2}\, \mathbb V[v] + \sigma^2,
     $$  
     2. prices are more informative, and uninformed traders trade at prices closer to the fundamental price
     $$
-    \text{price impact = } M\,\mathbb{E}\left[\frac{v_{i}-\pi}{1+M\left(1-F\left(v_{i}\right)^{M-1}\right)}\right] \underset{M\rightarrow\infty}{\longrightarrow} \mathbb E[v_i] - \pi   \,,
+    \text{price impact = } M\,\mathbb{E}\left[\frac{v_{i}-\pi}{1+M\left(1-F\left(v_{i}\right)^{M-1}\right)}\right] \underset{M\rightarrow\infty}{\longrightarrow} \mathbb E[V] - \pi   \,,
     $$
 <!-- Similar goal to that in Grossman and Stiglitz (1980) for traditional markets-->
 
