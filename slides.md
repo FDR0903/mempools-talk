@@ -138,7 +138,7 @@ section: Preview
 
 -->
 ---
-section: Microstructure of blockchains
+section: Microstructure of the consensus protocol of blockchains
 ---
 
 # The market
