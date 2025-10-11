@@ -22,7 +22,7 @@ date: '19/09/2025' # shows in infoLine, defaults to the current date
 mdc: true
 ---
 
-## Microstructure of blockchains
+## Microstructure of the consensus protocol of blockchains
 
 Agostino Capponi, Álvaro Cartea, Fayçal Drissi
 
@@ -138,7 +138,7 @@ section: Preview
 
 -->
 ---
-section: Microstructure of the consensus protocol of blockchains
+section: Microstructure of blockchains
 ---
 
 # The market
