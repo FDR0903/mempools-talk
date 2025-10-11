@@ -22,7 +22,7 @@ date: '19/09/2025' # shows in infoLine, defaults to the current date
 mdc: true
 ---
 
-## Do Longer Block Times Impair Market Efficiency in Decentralized Markets?
+## Microstructure of blockchains
 
 Agostino Capponi, Álvaro Cartea, Fayçal Drissi
 
