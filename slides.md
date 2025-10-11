@@ -17,7 +17,7 @@ theme: frankfurt
 infoLine: true # on by default, can be turned off
 #author: 'Your name here' # shows in infoLine
 #title: 'Title' # shows in infoLine
-date: '19/09/2025' # shows in infoLine, defaults to the current date
+date: '11/10/2025' # shows in infoLine, defaults to the current date
 
 mdc: true
 ---
