@@ -40,17 +40,6 @@ These slides: [https://www.faycaldrissi.com/mempools-talk](https://www.faycaldri
 section: Motivation
 ---
 
-# DEX Volume
-
-- Significant volumes on Decentralized Exchanges (DEXs)
-
-![blockchain1](./images/volumeDEX.png){style="transform: translate(20%, 3%); width: 680px"}
-
-- DEX efficiency actively influences discussions on blockchain design
-
-
----
-
 # Blockchain protocol
 ### The blockchain protocol determines the lifecycle of transactions
 
