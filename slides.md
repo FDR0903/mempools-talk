@@ -1,7 +1,7 @@
 ---
 layout: cover
 class: text-center
-title: Microstructure of blockchains
+title: Viability of blockchain markets
 #theme: academic
 titleTemplate: '%s'
 favicon: ./images/defiicon.png
@@ -17,492 +17,886 @@ theme: frankfurt
 infoLine: true # on by default, can be turned off
 #author: 'Your name here' # shows in infoLine
 #title: 'Title' # shows in infoLine
-date: '11/10/2025' # shows in infoLine, defaults to the current date
+date: '28/05/2026' # shows in infoLine, defaults to the current date
 
 mdc: true
 ---
 
-## Microstructure of the consensus protocol of blockchains
+## The Viability of Blockchain Markets under Discrete Clearing and Paid Priority
 
 Agostino Capponi, Álvaro Cartea, Fayçal Drissi
 
-*University of Oxford, Columbia University*
+*Columbia University, University of Oxford*
+
+<br>
+
+Mathematical Institute, University of Oxford. 28 May 2026
 
 <br>
 
 These slides: [https://www.faycaldrissi.com/mempools-talk](https://www.faycaldrissi.com/mempools-talk)
 
-<!--[my scholar](https://scholar.google.com/citations?user=njvyriQAAAAJ&hl=fr), 
-[my website](https://www.faycaldrissi.com/), [my github](https://github.com/FDR0903)-->
-
 
 ---
-section: Motivation
+section: Introduction
 ---
 
-# Blockchain protocol
-### The blockchain protocol determines the lifecycle of transactions
+# Blockchains
 
-* Transactions are sent to the network continuously, and stored in a memory pool
-<br><br><br>
+### Modern economies rely on trusted intermediaries (banks, clearing houses, platforms)
+- intermediaries reduce transaction costs and enforce contracts
+- they also introduce frictions: opacity, market power, exclusion, censorship
+<br><br>
+<v-click>
 
-![blockchain1](./images/blockchaincreation1.png){style="transform: translate(30%, 0%); width: 580px"}
+### Can economic activity be coordinated at scale with fewer intermediaries?
+- blockchains are a **technological response** to the **frictions** of centralisation
+- consensus replaces institutional trust with algorithmic and publicly verifiable rules
+<br><br>
+<v-click>
 
----
-
-# Blockchain protocol
-### The blockchain protocol determines the lifecycle of transactions
-
-* Transactions are sent to the network continuously, and stored in a memory pool
-* At each Epoch, with length block time, a validator is chosen
+### Consensus has a price
+- **block time**: consensus requires **time** to secure the chain
+- **priority fees**: consensus requires **incentives** to compensate block builders
 <br><br>
 
-![blockchain1](./images/blockchaincreation2.png){style="transform: translate(30%, 3%); width: 580px"}
-
-<!---
-
-#  Decentralised Exchanges
-
-* Liquidity supply and price of liquidity
-* Price dynamics-->
-
----
-
-# Blockchain protocol
-### The blockchain protocol determines the lifecycle of transactions
-
-* Transactions are sent to the network continuously, and stored in a memory pool
-* At each Epoch, with length block time, a validator is chosen
-* The validator creates a new block with transactions from the memory pool
-
-![blockchain1](./images/blockchaincreation3.png){style="transform: translate(30%, 0%); width: 580px"}
-
-
----
-
-# Blockchain protocol
-#### <u>*Pre-trade transparency*</u>: agents observe pending and unconfirmed transactions
-#### <u>*Priority gas auctions*</u>: agents submit/revise priority fees to compete for queue priority
-![mempools](./images/mempools.jpeg){style="transform: translate(25%, 0%); width: 580px"}
-
----
-
-# Contribution
-
-1. A model to describe the microstructure of DEXs within **blockchains**
-
-
-2. Charaterise the economic effects of **block time** and **priority fees** 
-
-
-<!--
-section: Preview
-
-
-
-# Preview: price discovery
-
-### Slow Information Dissemination in Blockchains
-
-- Information is disseminated at the end of block time, when markets clear  
-- In contrast to continuous information flow in traditional exchanges  
-  _(Kyle, 1985; Huddart, Hughes, and Levine, 2001)_
-
-
-
-
-# Preview: block time and market efficiency
-
-### Longer block time increases speculative rewards
-   
-   $\implies$  incentive to acquire private information 
-   
-   $\implies$ prices are more efficient
-
-
-
-# Preview: block time and liquidity
-
-### Longer block time increases risk and rewards for liquidity providers
-
-   $\implies$ **--** defensive liquidity supply
-   
-   $\implies$ **+** increased competition for priority / mitigation of adverse selection
-   
-   $\implies$ **+** incraesed noise trading
-
-* There is a threshod for block time beyond which adverse selection costs outweigh the benefits of priority fees 
-
-    $\implies$ liquidity freeze
-
-
--->
----
-section: Microstructure of blockchains
----
-
-# The market
-
-
-
-- A DEX for a risky security $Y$ and a reference security $X$
-
-<v-clicks>
-
-- $V_0 = 0$: initial  price in the DEX of security $Y$ in units of $X$
--  $V$: future (random) liquidation value
-- $\kappa$: liquidity supply in the DEX
-
-</v-clicks>
-
----
-
-
-# Execution prices in the DEX
-
-
-
-- Execution price to **buy** a quantity $\delta$:
-$$V_0 + \delta / \kappa + \pi = \delta / \kappa + \pi$$
-
-<v-clicks>
-
-- Cost to **buy** a quantity $\delta$: 
-$$\quad \delta\left(\delta / \kappa + \pi\right)$$
-- New DEX price after a buy of quantity $\delta$: 
-$$V_0 + 2\,\delta / \kappa = 2\,\delta / \kappa$$
-- Equivalent for sells
-
-</v-clicks>
-
----
-
-# The model: three-stage game
-- <u>**stage 0**</u>: $M< L$ traders acquire information for a fixed cost $C$
-<br><br>
-![model1](./images/model1.png){style="transform: translate(10%, 9%); width: 600px"}
-
----
-
-# The model: three-stage game
-- <u>**stage 0**</u>: $M< L$ traders acquire information for a fixed cost $C$
-- <u>**stage 1**</u>: liquidity supplier sets the AMM’s reserves ($\equiv$ setting $\kappa$)
-<br>
-![model1](./images/model2.png){style="transform: translate(10%, 9%); width: 600px"}
-
----
-
-# The model: three-stage game
-- <u>**stage 0**</u>: $M<L$ traders acquire information for a fixed cost $C$
-- <u>**stage 1**</u>: liquidity supplier sets the AMM’s reserves ($\equiv$ setting $\kappa$)
-- <u>**stage 2**</u>: $M$ informed traders compete with priority fees (only revised upward)
-![model1](./images/model3.png){style="transform: translate(10%,0%); width: 600px"}
-
----
-
-# The model: three-stage game
-- <u>**stage 0**</u>: $M<L$ traders acquire information for a fixed cost $C$
-- <u>**stage 1**</u>: liquidity supplier sets the AMM’s reserves ($\equiv$ setting $\kappa$)
-- <u>**stage 2**</u>: $M$ informed traders compete with priority fees (only revised upward)
-![model1](./images/model4.png){style="transform: translate(10%, 0%); width: 600px"}
-
----
-
-<!--
-<br /><br /><br /><br /><br /><br />
-<p style="text-align: center;"><h1>
-The model is solved by backward induction <a name="defi"></a></h1>
-</p>
-
-
-<br /><br /><br /><br /><br /><br />
-<p style="text-align: center;"><h1>
-Stage two<br><br>
-priority fees and trading volumes <a name="defi"></a></h1>
-</p>
-
--->
-
-
-
-
-# <ins>Stage two</ins>: assumptions
-- Number of traders $M$ and liquidity supply $\kappa$ are known
-<v-clicks>
-
-- $T$ is block time
-- <u>Informed traders all are either buyers or sellers</u> (buyers in this talk)
-- Competition throughout $[0, T]$: <u>English auction with a hard close</u>
-- At $T$:  final opportunity to update (upward) the priority fee and trading volumes  (<u>first-price sealed-bid auction</u>)
-- $v_i=\mathbb{E}_{i}\left[V\right]\in[\underline v, \overline v]$ is the <u>private</u> and <u>independent</u> signal of trader $i \in \{1,\dots,M\}$ at time $T$
-- <u>In equilibrium of stage two</u>; traders set 
-    * **priority fee $\varphi_i$**
-    * **trading volume $\delta_i$** 
-
-</v-clicks>
-
----
-
-# <ins>Stage two</ins>: optimisation problem
-
-
-
-- If trader $i$ wins the auction, i.e., if $\varphi_{i}>\varphi_{-i}$, the buy order is executed at $V_0 + \delta_i/\kappa + \pi$
-$$\small
-\mathbb E_i[W_{i}\left(\text{win}\right)]=-\varphi_{i}-\underbrace{\delta_{i}\,\left(\delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
-$$
-
 <v-click>
 
-- If trader $i$ loses, the order is placed randomly among the $M-1$ losing bids
-$$\small
-\mathbb E_i[W_{i}\left(\text{lose}\right)]=-\underbrace{\delta_{i}\,\left(\frac{M}{2}\times\frac{2\,\delta_{i}}{\kappa} + \delta_{i}/\kappa + \pi\right)}_{\text{initial trade}}\ \ \ +\underbrace{\delta_{i}\,\mathbb E_i[V]}_{\text{inventory}}-\underbrace{C}_{\text{information cost}}
-$$
+### This talk
+- what do these design choices imply for the markets that live on the chain?
 
-<v-click>
-
-- The expected utility of the risk-neutral trader is
-$$\small\begin{split}
-\mathbb{E}_i\left[W_{i}\right]= \mathbb E_i\left[ W_{i}\left(\text{lose}\right) \right]  + \,\underbrace{p_{i}}_{\text{win prob}}\times (\underbrace{-\varphi_{i}+M\,\delta_{i}^{2}/\kappa}_{\text{surplus}})
-\,,
-\end{split}$$
-
-<v-click>
-
-- Trader $i$ solves the problem
-$\quad\qquad
-\sup_{\delta_i}\,\sup_{\varphi_i}\mathbb{E}_i\left[W_{i}\right]
-$
-
-- $\partial_{\delta_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0,\quad \partial_{\varphi_{i}v_{i}}\mathbb{E}_{i}\left[W_{i}\right]\ne 0 \implies$ in equilibrium $\delta_i = \delta(v_i) \quad \text{and} \quad \varphi_i = \varphi(v_i)$
 
 </v-click>
 </v-click>
 </v-click>
 
 
+---
+
+# The price of consensus: block time
+### One consensus round **$=$ block time**
+<u>During the round</u>: network communications to verify transactions <br> transactions accumulate in a **memory pool** without being executed <br><br>
+<u>At the end of the round</u>:  consensus protocol selects a **builder** <br>
+The builder assembles the next block from the memory pool, ordered by **priority fees**
+
+
+![blockchain1](./images/blockchaincreation1.png){style="transform: translate(30%, -6%); width: 580px"}
+
+
+<v-click>
+
+![blockchain2](./images/blockchaincreation2.png){style="transform: translate(30%, -108.1%); width: 580px"}
+
+</v-click>
+
+<v-click>
+
+![blockchain3](./images/blockchaincreation3.png){style="transform: translate(30%, -216%); width: 580px"}
+
+</v-click>
+
 
 ---
 
+# The price of consensus: priority fees
+### The protocol lets traders pay **priority fees** for faster inclusion in a block
 
-# <ins>Stage two</ins>: equilibrium priority fees
-### FPSB auction at $T$
-* The Bayesian-Nash equilibrium priority fee is
-    $$
-    \varphi(\delta_i)=\bigg(\underbrace{\frac{M}{\kappa}\delta_{i}^{2}}_{\text{reservation priority fee}} - \underbrace{2\,\frac{M}{\kappa}\frac{\int_{\widetilde{\delta}}^{\delta_{i}}x\,G\left(x\right)^{M-1}dx}{G\left(\delta_{i}\right)^{M-1}}}_{\text{discount}}\bigg)\,\mathbf 1_{\delta_{i} \geq \widetilde{\delta}}\,,\quad \widetilde{\varphi} = \varphi(\tilde\delta) \text{ largest bid from the online auction}
-    $$
+![mempools](./images/mempools.jpeg){style="transform: translate(40%, 0%); width: 480px"}
 
-* Priority fee increasing in volume $\delta_i$, decreasing in  depth $\kappa$, increasing in number of informed traders $M$
+* Transactions are ordered by priority fee, not by submission time $\implies$ **auction with discriminatory pricing**
+* These fees go to builders, incentivising them to secure the chain
 
 <v-click>
+
+* Positive bids signal informed activity: informed traders **do not pool with noise traders** to hide their flow  
+ 
+</v-click>
+
+---
+
+# Consensus shapes microstructure
+### Traditional markets with continuous trading: cleared over multiple short rounds
+
+<div style="margin-top: 22px; padding: 0 30px;">
+
+<div style="position: relative; height: 60px;">
+  <div style="position: absolute; top: 38px; left: 0; right: 0; height: 2px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 6%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 6%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 6%; width: 2px; height: 18px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 19%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 19%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 19%; width: 2px; height: 18px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 32%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 32%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 32%; width: 2px; height: 18px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 45%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 45%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 45%; width: 2px; height: 18px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 58%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 58%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 58%; width: 2px; height: 18px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 71%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 71%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 71%; width: 2px; height: 18px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 84%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 84%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 84%; width: 2px; height: 18px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; left: 97%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 18px; left: 97%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
+  <div style="position: absolute; top: 30px; left: 97%; width: 2px; height: 18px; background: #333;"></div>
+</div>
+</div>
+
+<br> <br> 
+
+<v-click>
+
+### Blockchain markets with discrete trading: cleared in a single auction with discriminatory pricing
+
+<div style="margin-top: 22px; padding: 0 30px;">
+<div style="position: relative; height: 60px;">
+  <div style="position: absolute; top: 38px; left: 0; right: 0; height: 2px; background: #333;"></div>
+  <div style="position: absolute; top: 20px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: #333; transform: translate(-2px, 0);"></div>
+  <div style="position: absolute; top: 28px; left: 0; width: 3px; height: 22px; background: #333;"></div>
+  <div style="position: absolute; top: 6px; right: 0; font-size: 0.62em; color: #444;">MM ↔ IT/NT</div>
+  <div style="position: absolute; top: 20px; right: 0; width: 9px; height: 9px; border-radius: 50%; background: #333; transform: translate(2px, 0);"></div>
+  <div style="position: absolute; top: 28px; right: 0; width: 3px; height: 22px; background: #333;"></div>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-top: 2px;">
+  <span>   </span>
+  <span style="font-style: italic;">block time T</span>
+  <span>block creation</span>
+</div>
+</div>
 
 <br>
-
-### Online auction $[0, T]$
-* Priority fee  increasing in $\widetilde \varphi$, expected payoff  decreasing in $\widetilde\varphi$
-$$
-\partial_{\widetilde{\varphi}}\varphi_i=\frac{4\,\widetilde{\delta}}{\kappa}\,\frac{H\left(\widetilde{\varphi}\right)}{H\left(\delta_{i}\right)} > 0\,
-\qquad\qquad
-\partial_{\widetilde{\varphi}}\mathbb E[W_i]=-\frac{4\,\widetilde{\varphi}}{\kappa}\,H\left(\widetilde{\varphi}\right) < 0\,
-$$
-* <u>**In equilibrium, traders delay bidding until the last moment**</u>
 
 </v-click>
 
 ---
 layout: two-cols-header
 ---
+# Consensus shapes microstructure
 
-# <ins>Stage two</ins>: equilibrium priority fees
-### Late bidding is observed in practice
-* large priority fees are typically associated with informed trading  (Capponi, Jia, Yu 2023)
+
+### Traders wait until the end of block time $\implies$ the round at $T$ is a **sealed-bid auction**
+
+<div style="margin-top: 22px; padding: 0 30px;">
+<div style="position: relative; height: 60px;">
+  <div style="position: absolute; top: 38px; left: 0; right: 0; height: 2px; background: #333;"></div>
+  <div style="position: absolute; top: 20px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: #333; transform: translate(-2px, 0);"></div>
+  <div style="position: absolute; top: 28px; left: 0; width: 3px; height: 22px; background: #333;"></div>
+  <div style="position: absolute; top: 20px; right: 0; width: 9px; height: 9px; border-radius: 50%; background: #333; transform: translate(2px, 0);"></div>
+  <div style="position: absolute; top: 28px; right: 0; width: 3px; height: 22px; background: #333;"></div>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-top: 2px;">
+  <span></span>
+  <span style="font-style: italic;">block time T</span>
+  <span>sealed-bid auction among informed traders</span>
+</div>
+</div>
+
+<v-click>
+
+<br><br>
+
+### Two types of memory pools, late bidding in both
+
+</v-click>
+
 ::left::
 
-![PF1](./images/number_transactions.jpg){style="transform: translate(10%, -20%); width: 280px"}
-$\qquad\quad$ Number of transactions. <br>
-$\qquad\quad$ Ethereum memory pool transaction data<br> $\qquad\quad$ $10-16$ December $2022$<br>
-
-::right::
-
-![PF1](./images/gas_fees_mempool.jpg){style="transform: translate(20%, -20%); width: 280px"}
-$\qquad\qquad$ Level of priority fees.<br>
-$\qquad\qquad$ Ethereum transaction data<br> $\qquad\qquad$ $10-16$ December $2022$<br>
-
-
-
-
----
-
-# <ins>Stage two</ins>: equilibrium volumes
-
-$$
-\delta(v_i)=\kappa\times \,\tilde{\delta}(v_i)=\underbrace{\kappa}_\text{available liq}\,\ \ \times \ \ \underbrace{\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}}_\text{fraction transacted}\,
-$$
-
-<!--*  Signal dispersion, for fixed $v_i$ increases the probability $1-F(v_i)^{M-1}$ to lose the auction-->
 <v-clicks>
 
-* The fraction $\tilde\delta(v_i)$ increases in  signal (expected liquidation value, likelihood of winning)
-* $\delta(v_i)$ decreases to zero when $M\rightarrow\infty$
-* The equilibrium priority fee $\varphi(\delta(v))$, **accounting for strategically adjusted trading volumes** is
-    $$
-    \varphi(\delta_i) = \varphi(\delta(v_i))
-    $$
-    $\varphi(\delta(v_i))$ decreases to zero when $M\rightarrow\infty$
+* **Private memory pools**: bids are concealed until block creation $\implies$ traders submit at the last moment <br>
+
+* **Public memory pools.** Late bidding is the dominant strategy because (i) early bids leak information, (ii) revisions increase the priority fee,  (iii) waiting incorporates recent information
+  * *pure-noise hypothesis* of Biais, Hillion, and Spatt (1999)
 
 </v-clicks>
 
----
+::right::
 
-# <ins>Stage two</ins>: equilibrium volumes
+<v-click at="3">
 
-- Higher values of private signals correspond to larger trading volumes
 
-- They are also associated with higher priority fees and better queue positions. 
+![distribPF](./images/distribPF.png){style="transform: translate(0%, -25%); width: 100%;"}
 
-![PF1](./images/tradingvolumes.png){style="transform: translate(20%, 0%); width: 600px"}
-
-Average absolute trading volume of transactions across multiple Uniswap v3 pools as a function of their queue position within the block
-
----
-
-# <ins>Stage one</ins>: liquidity supply
-
-- A risk-neutral liquidity supplier sets the supply $\kappa$ by balancing
-    1. expected losses to informed traders 
-    $$
-     - M\, \mathbb{V}\left[{\delta}_{i}\right] \big/\kappa   =  - M\, \mathbb{V}[\tilde{\delta}_{i}]\,
-    $$
-    2. fee revenue from uninformed elastic demand (Garman (1976); Ho and Stoll (1981); Hendershott and Menkveld (2014))
-$$\pi\,{N}\,\left(1-\theta/\kappa\right)\,$$
-
-<v-click>
-
--  The equilibrium supply increases in the profitability of the uninformed trading flow, decreases in the variance of signals
-$$
-\kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}} \qquad \text{and}\qquad \pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]}
-$$
-
-<v-click>
-
-* There is a limit to block time above which markets shut down (Glosten and Milgrom (1985))
-$$
-M\,\mathbb{V}[\tilde{\delta}_{i}] \le \frac{\pi\,N}{4\,\theta}\,
-$$
-
-</v-click>
 
 </v-click>
 
 
 ---
 
-# <ins>Stage one</ins>: liquidity supply
-$$
-\kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}
- \qquad\text{and}\qquad \tilde\delta(v_i)=\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}
-$$
+# This paper
 
-- The liquidity supply **increases in the number of competing informed traders**
-* The equilibrium payoff of liquidity provision
-$$\pi\,N-2\,\sqrt{M\,\pi\,N\,\theta\,\mathbb{V}[\tilde{\delta}_{i}]} \underset{M\rightarrow\infty}{\longrightarrow} \pi\,N$$
-<!--* For fixed signal variance, there exists $\overline M$ such that for all $M>\overline M$, markets do not shut down-->
+### Can the blockchain itself be a venue for price formation?
 
----
+<v-clicks>
 
-<!--
-# Stage one: liquidity supply
-$$
-\kappa=\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}_i]}}
- \qquad\text{and}\qquad \tilde\delta(v_i)=\frac{v_i-\pi}{2\,\left(1+M\left(1-F\left(v_{i}\right)^{M-1}\right)\right)}
-$$
+1. A model of price formation and liquidity on a blockchain, with **discrete clearing** and **paid-priority** ordering
 
+2. We endogenise: information acquisition, liquidity supply, participation, trading volumes, priority fees
 
-$\implies$ Block time has two opposing effects
-1. Block time increases the variance of signals $\rightarrow$ drive liquidity levels down 
-2. liquidity demand accumulates $\rightarrow$ drive liquidity levels up
+3. The features that secure decentralisation (block time and priority fees) **undermine market viability**
 
-
-
--->
-
-# <ins>Stage zero</ins>: information acquisition
-
-* As number of informed traders $M$ who pay the cost of acquiring information  grows (Grossman–Stiglitz)
-    1. (weak-form) price efficiency improves
-    $$
-    \mathbb V[\hat V \mid \{v_1, \dots, v_M\}] = \frac{L - M}{L^2}\, \mathbb V[v] + \sigma^2,
-    $$  
-    2. prices are more informative, and uninformed traders trade at prices closer to the fundamental price
-    $$
-    \text{price impact = } M\,\mathbb{E}\left[\frac{v_{i}-\pi}{1+M\left(1-F\left(v_{i}\right)^{M-1}\right)}\right] \underset{M\rightarrow\infty}{\longrightarrow} \mathbb E[V] - \pi   \,,
-    $$
-<!-- Similar goal to that in Grossman and Stiglitz (1980) for traditional markets-->
-
+</v-clicks>
 
 
 ---
 
-# <ins>Stage zero</ins>: information acquisition
+# Finding 1: endogenous selection
+### **Endogenous selection:** paid priority creates a participation cutoff
 
-* The number of traders is constrained by the profitability of informed trading and the cost $C$
+* Trader i has valuation $v_i$
+
+<div style="margin: 4px auto 0; max-width: 820px;">
+
+<svg viewBox="0 0 800 110" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; display: block;">
+  <line x1="40" y1="6" x2="40" y2="96" stroke="#444" stroke-width="1"/>
+  <line x1="40" y1="96" x2="790" y2="96" stroke="#444" stroke-width="1"/>
+  <text x="6" y="12" style="font-size: 9px;" fill="#444">price</text>
+
+  <path d="M 40 90 L 110 90 L 110 55 L 180 55 L 180 41 L 250 41 L 250 30 L 320 30 L 320 25 L 390 25 L 390 22 L 790 22"
+        stroke="#1e40af" stroke-width="2" fill="none"/>
+
+  <line x1="40" y1="35" x2="790" y2="35" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="125" y="31" text-anchor="end" style="font-size: 10px; font-style: italic;" fill="#dc2626">trader i's valuation</text>
+
+  <circle cx="250" cy="35" r="4" fill="#dc2626"/>
+</svg>
+
+<div style="position: relative; border: 1.5px solid #4b5563; border-radius: 4px; padding: 10px 4px 4px 4px; margin: 14px 1.25% 0 5%;">
+<div style="position: absolute; top: -8px; left: 12px; background: white; padding: 0 6px; font-size: 10px; font-weight: 700; color: #4b5563; letter-spacing: 0.5px;">block</div>
+<div style="display: flex; gap: 2px;">
+  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 4px 2px; text-align: center; font-size: 10px; line-height: 1.35; color: #1e3a8a;">
+    <div style="font-weight: 700;">txn # 1</div>
+    <div>valuation: <i>v</i><sub>(1)</sub></div>
+  </div>
+  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 4px 2px; text-align: center; font-size: 10px; line-height: 1.35; color: #1e3a8a;">
+    <div style="font-weight: 700;">txn # 2</div>
+    <div>valuation: <i>v</i><sub>(2)</sub></div>
+  </div>
+  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 4px 2px; text-align: center; font-size: 10px; line-height: 1.35; color: #1e3a8a;">
+    <div style="font-weight: 700;">⋯</div>
+    <div>⋯</div>
+  </div>
+  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 4px 2px; text-align: center; font-size: 10px; line-height: 1.35; color: #1e3a8a;">
+    <div style="font-weight: 700;">txn # <i>N</i>−1</div>
+    <div>valuation: <i>v</i><sub>(<i>N</i>−1)</sub></div>
+  </div>
+  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 4px 2px; text-align: center; font-size: 10px; line-height: 1.35; color: #1e3a8a;">
+    <div style="font-weight: 700;">txn # <i>N</i></div>
+    <div>valuation: <i>v</i><sub>(<i>N</i>)</sub></div>
+  </div>
+  <div style="flex: 400; border: 1.5px solid #888; background: #f3f4f6; padding: 4px 6px; text-align: center; font-size: 10px; line-height: 1.35; color: #374151;">
+    <div style="margin-top: 2px;">uninformed demand</div>
+    <div>priority fee = 0</div>
+  </div>
+</div>
+</div>
+</div>
+<div style="margin: 8px 40px 0; font-size: 0.8em;">
+</div>
+
+* Low valuation $\implies$ small desired volume $\implies$ small priority fee
+* Trader $i$ expects to land late in the queue: if expected impact makes the price exceed her valuation, she has **no incentive to trade**
+
 <v-click>
 
-* The equilbrium $M$ is the integer part of the solution to 
-$$
-C=H(M)=\underbrace{\sqrt{\frac{\pi\,N\,\theta}{M\,\mathbb{V}[\tilde{\delta}\left(v_{i}\right)]}}\,\left(\frac1M \left(\mathbb{E}_{0}\left[M\, \tilde{\delta}\left(v_{(M)}\right)^{2}\right]-\mathbb{E}_{0}\left[M\,\tilde{\delta}\left(v_{(M-1)}\right)^{2}\right]\right)\right)}_\text{trading profits net of execution costs and priority fees}
-$$
-The function $H$ decreases to zero as $M$ goes to infinity
+$\implies$ only sufficiently aggressive traders trade <br>
+$\implies$ Prices are biased toward extreme valuations 
+
+</v-click>
+
+
+---
+
+# Finding 2: competition reduces liquidity
+
+### Traditional markets
+
+<div style="margin: 10px auto 0; max-width: 820px;">
+
+<svg viewBox="0 0 800 195" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; display: block;">
+  <!-- Rounds timeline -->
+  <line x1="40" y1="50" x2="790" y2="50" stroke="#333" stroke-width="2"/>
+
+  <text x="48" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="48" cy="36" r="3.5" fill="#333"/>
+  <line x1="48" y1="40" x2="48" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <text x="152" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="152" cy="36" r="3.5" fill="#333"/>
+  <line x1="152" y1="40" x2="152" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <text x="256" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="256" cy="36" r="3.5" fill="#333"/>
+  <line x1="256" y1="40" x2="256" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <text x="360" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="360" cy="36" r="3.5" fill="#333"/>
+  <line x1="360" y1="40" x2="360" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <text x="464" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="464" cy="36" r="3.5" fill="#333"/>
+  <line x1="464" y1="40" x2="464" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <text x="568" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="568" cy="36" r="3.5" fill="#333"/>
+  <line x1="568" y1="40" x2="568" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <text x="672" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="672" cy="36" r="3.5" fill="#333"/>
+  <line x1="672" y1="40" x2="672" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <text x="776" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
+  <circle cx="776" cy="36" r="3.5" fill="#333"/>
+  <line x1="776" y1="40" x2="776" y2="50" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Liquidity axes -->
+  <line x1="40" y1="70" x2="40" y2="180" stroke="#444" stroke-width="1"/>
+  <line x1="40" y1="180" x2="790" y2="180" stroke="#444" stroke-width="1"/>
+  <text x="6" y="76" style="font-size: 9px;" fill="#444">liquidity</text>
+  <text x="40" y="192" text-anchor="start" style="font-size: 9px;" fill="#444">t = 0</text>
+  <text x="790" y="192" text-anchor="end" style="font-size: 9px;" fill="#444">t = T</text>
+
+  <!-- Liquidity step function: 8 transitions aligned to the 8 rounds above -->
+  <path d="M 40 165 L 48 165 L 48 155 L 152 155 L 152 145 L 256 145 L 256 135 L 360 135 L 360 125 L 464 125 L 464 115 L 568 115 L 568 105 L 672 105 L 672 95 L 776 95 L 776 85 L 790 85"
+        stroke="#1e40af" stroke-width="2" fill="none"/>
+  <text x="500" y="80" text-anchor="start" style="font-size: 10px;" fill="#1e40af">traditional market: multiple rounds, depth improves</text>
+
+  <!-- Blockchain reference, flat from t = 0 -->
+  <line x1="40" y1="172" x2="790" y2="172" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="785" y="168" text-anchor="end" style="font-size: 10px;" fill="#dc2626">blockchain: single round, depth flat from t = 0</text>
+</svg>
+</div>
+
+
+<div style="margin: 8px 40px 0; font-size: 0.8em;">
+
+* **Traditional markets**: information leaks across rounds, liquidity improves over time (Holden and Subrahmanyam, 1992)
+* **Blockchain markets**: LP makes a single liquidity decision at $t = 0$ and absorbs all informed flow at once
 
 <v-click>
 
-* Equilibrium number of informed traders
-    * $M$ increases in the profitability of uninformed demand
-    * $M$ decreases in the  information cost $C$ 
+* Only aggressive traders participate $\implies$ defensive liquidity provision
+
+<v-click>
+
+* **More uninformed demand** $\implies$ more entry $\implies$ **less liquidity**
 
 </v-click>
 </v-click>
 
----
-section: Numerical example
----
-
-#  Effect of block time and priority fees
-
-* CDF of the equilibrium fraction $\tilde\delta$ is uniform over $[0, D/M]$ with probability $1/2$ and $[-D/M, 0]$ with probability $1/2$
-* $D=D(T)$ increasing in $T$ $\rightarrow$ longer block times $\equiv$ more variance in signals and volumes
-* The equilibrium number of informed traders is such that
-$$
-C = \frac{\sqrt{24\,\pi\,\theta\,N\,M}}{M\left(2 + 3\,M + M^{2}\right)}\, D + \frac{\beta}{M}\,R \implies M(D) \sim D^{2/5}
-$$
-* The condition for markets to remain open is
-$$
-D^2 \leq \underbrace{\frac{3\,\pi\,N\,M}{\theta}}_{\sim D^{2/5}}\,
-$$
-* The equilibrium liquidity supply is
-$$
-\kappa^{\star}=\frac{12}{D}\,\pi\,M\,N\,\theta \sim D^{-3/5}
-$$
+</div>
 
 ---
 
-# illiquid markets, expensive information
-* $N = \$ 10000,  \pi =  0.3\%, \theta=0.1, R = \$ 10, C = \$ 10$
+# Finding 3: block time worsens these effects
 
-![roughmarkets](./images/roughMarkets.png){style="transform: translate(70%, 0%); width: 380px"}
+### Block time is double-edged
+* longer blocks help consensus security
+* but 
+  - widen valuation dispersion
+  - shrink uninformed demand
+
+<v-click>
+
+- Beyond a critical $T$, markets shut down
+
+</v-click>
+
+---
+section: Model
+---
+
+# The market
+
+- A DEX for a risky asset $Y$ priced in a reference asset $X$ (e.g., a stablecoin)
+
+<v-clicks>
+
+- $V_0 = 0$: pre-block reference price (normalised w.l.o.g.)
+- $V$: future (random) liquidation value
+- $\kappa$: depth of liquidity in the DEX (chosen by the LP)
+- $\pi$: proportional DEX fee
+
+</v-clicks>
+
+
+---
+layout: two-cols-header
+---
+
+# From bonding curve to linear schedule
+### DEXs use a convex bonding curve $\Gamma$
+
+::left::
+
+![BC1](./images/BondingCurves1.png){style="width: 88%; display: block; margin: 0 auto;"}
+
+Buying $\delta$ units: <br>
+- price per unit $\frac{\Gamma(y-\delta) - \Gamma(y)}{\delta}$
+- impact per unit $\frac{-\Gamma'(y-\delta)+\Gamma'(y)}{\delta}$
+
+<v-click>
+
+Linear approximation for small $\delta$:
+$$\underbrace{\delta/\kappa}_{\text{slippage}} \qquad \underbrace{2\delta/\kappa}_{\text{impact}} \qquad  \kappa = 2/\Gamma''(y)$$
+
+</v-click>
+
+::right::
+
+<v-click>
+
+### The linear approximation is accurate in practice
+
+![cvxty](./images/convexity1(1).png){style="width: 100%;"}
+
+<font size="2">Realized slippage and price impact match the linear approximation for 2.6M Uniswap v3 trades (Jan to Dec 2023).</font>
+
+</v-click>
 
 ---
 
-# Liquid markets, cheap information
-* $N = \$ 100000,  \pi =  0.3\%, \theta=0.05, \beta=1, R = \$ 10, C = \$ 5$
+# Execution prices in the DEX
 
-![niceMarkets](./images/niceMarkets.png){style="transform: translate(70%, 0%); width: 380px"}
+#### <u>**Linear price schedule**</u>. Buying a quantity $\delta$ executes at
+
+$$\underbrace{V_0}_{=0} \;+\; \underbrace{\delta/\kappa}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{DEX fee}}\quad\text{ per unit},\qquad\text{cash paid: } \delta\,(\delta/\kappa + \pi)$$
+
+<v-click>
+
+#### <u>**Linear price update rule**</u>. After a buy of size $\delta$, the marginal price moves to
+
+$$
+2\,\delta/\kappa
+$$
+
+
+Deeper $\kappa$ $\implies$ cheaper liquidity and smaller impact
+
+<v-click>
+
+<br>
+
+### Example
+
+- Trader 1 buys $\delta_1$ first, then trader 2 buys $\delta_2$
+- Trader 1 pays $\delta_1/\kappa + \pi$ per unit
+- The marginal price moves to $2\delta_1/\kappa$
+- Trader 2 starts from $2\delta_1/\kappa$ and pays $\underbrace{2\delta_1/\kappa}_{\text{impact from trader 1}} \,+\, \underbrace{\delta_2/\kappa}_{\text{own slippage}} \,+\, \pi \quad\text{per unit}$ $\implies$ competition
+
+
+</v-click>
+
+
+</v-click>
+
 
 ---
 
-# Effect of block time and priority fees
-* If $N$ grows linearly with block time (i.e. with $D$)
-![betterMarkets](./images/betterMarkets.png){style="transform: translate(55%, 0%); width: 400px"}
+# The three-stage game
+
+- <u>**Stage one**</u>: $M$ traders pay an information cost $C$ to enter the blockchain
+- <u>**Stage two**</u>: liquidity supplier sets DEX depth $\kappa$
+- <u>**Stage three**</u>: informed traders compete in the priority gas auction (PGA)
+![model1](./images/model1.png){style="transform: translate(10%, 9%); width: 600px"} 
+<v-click>
+
+![model2](./images/model2.png){style="transform: translate(13%, -95%); width: 600px"}
+<v-click>
+
+![model3](./images/model3.png){style="transform: translate(13%, -200%); width: 600px"}
+<v-click>
+
+![model4](./images/model4.png){style="transform: translate(13%, -305%); width: 600px"}
+
+We solve by **backward induction**, starting from stage three and working back to stage one
+
+</v-click>
+</v-click>
+</v-click>
+
+
+
+---
+section: Solution
+---
+
+# <ins>Stage three</ins>: assumptions
+
+<v-clicks>
+
+* $M$ risk-neutral informed traders compete for queue priority in a **single** sealed-bid round at the end of block time
+* All informed traders are on the **same side** (block time is long enough for the sign of the innovation to be known). We discuss buyers (sellers symmetric)
+* Each trader $i$ observes a private valuation $v_i \sim F$ on $[0,\overline v]$, i.i.d. across traders, with density $f$
+* Trader $i$ chooses
+    * a **trading volume** $\delta_i$
+    * a **priority fee** $\varphi_i$
+* The PGA is **multi-prize all-pay sealed-bid**: every transaction is executed, the priority fee is paid, and the surplus depends on **rank**
+
+</v-clicks>
+
+
+---
+
+# <ins>Stage three</ins>: trader's wealth
+
+If trader $i$ ends up at position $j+1$ in the block (so $M-1-j$ rivals execute first), her execution price per unit is
+$$
+\underbrace{\delta_i/\kappa}_{\text{own slippage}} \;+\; \underbrace{\frac{2}{\kappa}\sum_{\ell=j+1}^{M-1}\delta_{(\ell)}}_{\text{adverse impact from rivals ahead}} \;+\; \pi
+$$
+
+<v-click>
+
+Taking expectations and rearranging across the $M$ rank events,
+$$\small
+\mathbb E_i[W_i] \;=\; \underbrace{-\varphi_i}_{\text{priority fee}} \;+\; \underbrace{\delta_i\bigl(v_i - \pi - \delta_i/\kappa\bigr)}_{\text{execution costs}} \;-\; \underbrace{C}_{\text{information cost}} \;-\; \underbrace{\frac{2\delta_i}{\kappa}\sum_{j=0}^{M-1}\mathbb E_i\!\left[\mathbf 1_{\varphi_{(j)}<\varphi_i<\varphi_{(j+1)}}\,\Delta_{(j+1:M-1)}\right]}_{\text{expected adverse price impact}}
+$$
+
+</v-click>
+
+<v-click>
+
+- The trader solves
+$$\sup_{\delta_i}\sup_{\varphi_i}\mathbb E_i[W_i]$$
+
+- In equilibrium: $\qquad\qquad\qquad\qquad\qquad\qquad\quad\delta_i^\star=\delta(v_i) \qquad \varphi_i^\star = \varphi(\delta_i)= \varphi(\delta(v_i))$
+
+</v-click>
+
+
+---
+
+# <ins>Stage three</ins>: a multi-prize all-pay contest
+
+### Step 1: fix a distribution of volumes G, solve the priority fee
+- Rewrite the wealth as
+$$\small
+\mathbb E_i[W_i] \;=\; \underbrace{\mathbb E_i[W_{i,(0)}]}_{\text{expected worst payoff}} \;+\; \underbrace{\frac{2\delta_i}{\kappa}\sum_{j=0}^{M-1}\mathbb E_i\!\left[\mathbf 1_{\{\varphi_{(j)}<\varphi_i<\varphi_{(j+1)}\}}\,\Delta_{(1:j)}\right]}_{\text{surplus} \;=\; \text{avoided price impact}}
+$$
+
+- Trader $i$ optimises $\varphi_i$ alone ($\delta_i$ fixed). Only $-\varphi_i$ and the surplus depend on $\varphi_i$, so
+$$\small
+\sup_{\varphi_i}\mathbb E_i[W_i] \;=\; \sup_{\varphi_i}\left\{-\varphi_i \;+\; \text{surplus}(\varphi_i)\right\}
+$$
+
+<v-click>
+
+- <span style="font-size: 1.15em;"><u>**Lemma:**</u></span> for $M\ge 2$,
+$$\small
+\text{surplus}(\varphi_i) = \frac{2\delta_i}{\kappa}\sum_{j=0}^{M-1}\mathbb E_i\!\left[\mathbf 1_{\{\varphi_{(j)}<\varphi_i<\varphi_{(j+1)}\}}\,\Delta_{(1:j)}\right] \;=\; \frac{2\delta_i}{\kappa}\,(M-1)\!\int_0^{\varphi^{-1}(\varphi_i)}\! x\,dG(x)
+$$
+the relevant statistic is the *unordered* set of competitors' volumes below the inverse bid
+</v-click>
+
+---
+
+# <ins>Stage three</ins>: equilibrium priority fee
+
+<span style="font-size: 1.15em;"><u>**Proposition:**</u></span> for $M\ge 2$ and a fixed distribution $G$ of volumes<br>
+Symmetric Bayesian-Nash priority fee: $\qquad\qquad\quad\varphi_i^\star = \dfrac{2}{\kappa}(M-1)\!\int_0^{\delta_i}\! x^2\,dG(x)$ <br><br>
+Equilibrium objective: $\qquad\qquad\qquad\qquad\quad\qquad\  -\varphi_i^\star + \dfrac{2\,\delta_i}{\kappa}(M-1)\!\int_0^{\delta_i}\!x\,dG(x)\ge 0$
+
+<br><br>
+<v-click>
+
+- The reservation fee $\frac{2\delta_i}{\kappa}(M-1)\!\int_0^{\delta_i}\!x\,dG(x)$ makes a trader with volume $\delta_i$ indifferent between participating and abstaining
+- Traders shade below the reservation fee, by an amount that grows with $\delta_i$
+- $\varphi$ is **increasing in $\delta_i$**, **increasing in $M$**, **decreasing in $\kappa$**
+
+</v-click>
+
+
+
+---
+
+# <ins>Stage three</ins>: endogenising volumes
+### Step 2: obtain the endogenous distribution of volumes G
+Substitute $\varphi(\delta_i)$ into the objective. Trader $i$'s optimisation in volume becomes
+$$\small
+\sup_{\delta_i}\!\left\{\delta_i\bigl(v_i-\pi-\delta_i/\kappa\bigr)\;-\;\frac{2(M-1)}{\kappa}\!\left(\int_0^{\delta_i}\!x^2 dG(x) + \delta_i\!\int_{\delta_i}^{\overline\delta}\! x\,dG(x)\right)\right\}
+$$
+
+<v-click>
+
+Using $G(x) = F(\delta^{-1}(x))$ (monotone volumes) yields the linear ODE in $\delta$:
+$$
+\delta'(v_i) \;=\; \frac{\kappa}{2} \;+\; (M-1)\,f(v_i)\,\delta(v_i)\,.
+$$
+<v-click>
+
+<span style="font-size: 1.15em;"><u>**Lemma (cutoff).**</u></span> Fix $M\ge 2$. There exists a unique $\underline v_M \in (0,\overline v)$ satisfying
+$$
+\delta(\underline v_M) = 0 \qquad  \qquad  \underline v_M - \pi \;=\; \int_{\underline v_M}^{\overline v}\!\Big(e^{(1-F(u))(M-1)} - 1\Big)\,du\;
+$$
+**Comparative statics.** 
+$$
+\partial_M\underline v_M \;>\; 0\,, \qquad \lim_{M\to\infty}\underline v_M = \overline v\,.
+$$
+
+</v-click>
+</v-click>
+
+
+---
+
+# <ins>Stage three</ins>: equilibrium volumes
+
+<span style="font-size: 1.15em;"><u>**Proposition.**</u></span> <br> For $v_i < \underline v_M$: $\qquad\qquad\qquad\qquad\qquad\qquad\quad\ \ \ \delta(v_i) = 0$ (trader abstains). <br> For $v_i \ge \underline v_M$:
+$$
+\delta(v_i) \;=\; \underbrace{\kappa}_{\text{available depth}}\times\;\tilde\delta(v_i)
+$$
+with
+$$\small
+\tilde\delta(v_i) \;=\; \frac{1}{2}\!\left[(\overline v - \pi)\,e^{-(M-1)(1-F(v_i))} \;-\; \int_{v_i}^{\overline v}\! e^{-(M-1)(F(u) - F(v_i))}\,du\right]
+$$
+
+<v-click>
+
+
+- $\delta(v_i)$ scales **linearly with depth** $\kappa$: deeper DEXs support bigger informed trades
+- **Increasing** in own valuation $v_i$ (more information induces more aggression)
+- **Decreasing** in $M$ for fixed $v_i$, with $\lim_{M\to\infty}\delta(v_i) = 0$ for every $v_i < \overline v$
+
+</v-click>
+
+<v-click>
+
+The equilibrium priority fee, with endogenous volumes:
+$$\small
+\varphi(v_i) \;=\; 2\kappa(M-1)\!\int_{\underline v_M}^{v_i}\!\tilde\delta(x)^2 dF(x)\,,\qquad \lim_{M\to\infty}\varphi(v_i) = 0\ \text{ for } v_i < \overline v.
+$$
+
+</v-click>
+
+
+---
+
+# <ins>Stage three</ins>: endogenous selection
+
+<span style="font-size: 1.15em;"><u>**Lemma.**</u></span> Aggregate active volume has a closed form:
+$$
+\kappa\,M\!\int_{\underline v_M}^{\overline v}\!\tilde\delta(x)\,dF(x) \;=\; \kappa\cdot\frac{M(\underline v_M - \pi)}{2(M-1)} \;\xrightarrow[M\to\infty]{}\; \kappa\cdot\frac{\overline v - \pi}{2}
+$$
+Expected DEX price at the end of the block also has a closed form:
+$$
+\frac{M(\underline v_M - \pi)}{M-1} \;\xrightarrow[M\to\infty]{}\; \underbrace{\overline v - \pi}_{\text{upper bound of valuation support net of fees}}
+$$
+
+
+<v-click>
+
+<br><br><br>
+
+### The mechanism: endogenous selection
+
+- As $M \uparrow$, $\underline v_M \uparrow$, and activity is trapped in the **upper tail** of $F$
+- Prices become **systematically biased upward** (downward, for sellers), irrespective of $F$
+- *More competition reveals* **less** *information,* not more
+
+</v-click>
+
+
+---
+
+# <ins>Stage three</ins>: empirical evidence
+
+- Only high-valuation traders participate: per-transaction trade size $\approx$ \$70k on Uniswap v3 vs $\approx$ \$1.2k on Binance for the same pair
+
+- Higher valuations lead to larger volumes, higher priority fees, and better queue positions:
+
+![PF1](./images/tradingvolumes.png){style="transform: translate(20%, 0%); width: 580px"}
+
+<font size="2">Average absolute trading volume across multiple Uniswap v3 pools, as a function of queue position in the block. Position 0 = first to execute, 1 = last.</font>
+
+
+---
+
+# <ins>Stage two</ins>: liquidity supplier's problem
+
+A representative risk-neutral LP balances **fee revenue** from price-sensitive uninformed demand against **adverse-selection losses** to informed traders
+
+<v-click>
+
+* Uninformed demand increasing and concave in the price of liquidity. Expected fee revenue:
+$$
+\pi\,N\,\frac{\kappa}{\kappa + \theta}
+$$
+
+</v-click>
+
+<v-click>
+
+* Adverse-selection cost on aggregate informed flow $\Delta_M = \sum_k \delta(v_k)$:
+$$
+\mathbb E\!\left[-\Delta_M^2/\kappa\right] \;=\; -\kappa\,M\,S_M\,,\qquad S_M \;=\; \int_{\underline v_M}^{\overline v}\!\tilde\delta(u)^2\,dF(u) \;+\; \frac{(\underline v_M-\pi)^2}{4(M-1)}
+$$
+
+</v-click>
+
+<v-click>
+
+$\implies$ Deeper $\kappa$ captures more uninformed flow (good), but also amplifies informed volumes since $\delta\propto\kappa$ (bad) <br>
+$\implies$ The LP picks $\kappa$ to balance the two
+
+</v-click>
+
+
+---
+
+# <ins>Stage two</ins>: equilibrium liquidity
+
+**Zero-profit condition** (free entry to liquidity supply):
+$$
+\pi\,N\,\frac{\kappa^\star}{\kappa^\star + \theta} \;=\; \kappa^\star\,M\,S_M
+\quad\Longrightarrow\quad
+\boxed{\;\kappa^\star \;=\; \frac{\pi\,N}{M\,S_M} \;-\; \theta\;}
+$$
+
+
+- $\kappa^\star$ rises with profitability $\pi N$ of uninformed flow
+- $\kappa^\star$ falls with dispersion $M\,S_M$ of informed flow
+- $\kappa^\star$ falls with price-sensitivity $\theta$ of uninformed demand
+
+<br>
+
+<v-click>
+
+**Limit.** As $M\to\infty$
+$$
+\kappa^\star \;\longrightarrow\; \frac{8\,\pi N}{3(\overline v - \pi)^2} \;-\; \theta\qquad \text{from above
+}
+$$
+The limit is **positive only if uninformed flow is large enough** relative to the variance of valuations
+
+</v-click>
+
+
+---
+
+# <ins>Stage two</ins>: competition reduces liquidity
+
+For uniform $F$, $\quad\kappa^\star(M)$ **strictly decreasing in $M$**.
+$$\footnotesize
+\kappa^\star(M) \;=\; \frac{8\pi N(M-1)^3}{M(\overline v-\pi)^2\bigl[(M-1)(3M-5) - 2(2M-3)\log M + 2(\log M)^2\bigr]}\;-\;\theta
+$$
+
+
+<br>
+
+<v-click>
+
+**Why competition hurts on a blockchain.**
+- Discrete clearing $\implies$ LP absorbs the full adverse-selection risk in **one decision**
+- Paid priority + endogenous selection $\implies$ realised informed flow concentrates near $\overline v$  $\implies$ prices are biased
+- Both effects amplify each other as $M$ grows
+
+
+<v-click>
+
+**Market viability.** Liquidity is non-negative only if
+  $$
+  \boxed{M\,S_M \le \frac{\pi N}{\theta}}
+  $$
+- If variance of valuations exceeds  extracted value from uninformed flow, the **market shuts down** (Glosten-Milgrom liquidity freeze)
+
+</v-click>
+</v-click>
+
+
+---
+
+# <ins>Stage one</ins>: information acquisition
+
+Traders enter and pay $C$ if expected profits cover the cost. The equilibrium number $M^\star$ is the **largest integer** such that
+$$
+C \;\le\; H(M)\,,\quad H(M) \;=\; \kappa^\star(M)\!\int_{\underline v_M}^{\overline v}\!\tilde\delta(v)^2\,\bigl[1 - 2(M-1)(1-F(v))\bigr]\,dF(v)
+$$
+
+
+
+$H(M)$ is the ex-ante trading profit per informed trader, net of execution costs and priority fees, and satisfies
+$$
+\limsup_{M\to\infty} H(M) \;\le\; 0\,.
+$$
+
+
+<v-click>
+
+**Comparative statics.**
+- $M^\star$ **increases** with $\pi N$ (more uninformed profit to extract)
+- $M^\star$ **decreases** with the information cost $C$
+
+</v-click>
+
+<v-click>
+
+**Paradox.**
+- Cheaper information or larger uninformed demand brings more entry $M^\star$ $\implies$ raises the **cutoff** $\underline v_M$ $\implies$ **less** price discovery
+- The opposite of what Grossman and Stiglitz (1980) predict
+
+</v-click>
+
+
+---
+section: Block time
+---
+
+# Block time, a tradeoff between security and efficiency
+
+Block time $T$ is the length of one clearing round. It is necessary for consensus, but it shapes the model primitives
+
+<v-click>
+
+<span style="font-size: 1.15em;"><u>**Assumption.**</u></span>
+1. **Valuation support widens with $T$**: <br>$\overline v(T)$ strictly increasing, and $F(\cdot\,;T')$ strictly first-order stochastically dominates $F(\cdot\,;T)$ for $T' > T$
+2. **Effective uninformed demand falls with $T$**:<br> $N(T)$ decreases
+
+</v-click>
+
+<br>
+
+<v-click>
+
+### Results
+
+* The participation cutoff $\underline v_M(T)$ is **strictly increasing in $T$**, so longer blocks magnify endogenous selection
+* The end-of-block price $\overline v(T) - \pi$ is **increasing in $T$**, so prices drift further from fundamentals
+
+</v-click>
+
+--- 
+
+# Block time: market shutdown
+
+* In the limit $M\to\infty$, the sustainable liquidity
+$$
+\kappa^\infty(T) \;=\; \frac{8\,\pi\,N(T)}{3\,(\overline v(T) - \pi)^2} \;-\; \theta
+$$
+is **strictly decreasing** in $T$
+
+<v-click>
+
+* For sufficiently large $T$, &nbsp;&nbsp; $\kappa^\infty(T) \;\le\; 0$ &nbsp; ⟶ &nbsp; **the market collapses**
+* The same channel reduces $M^\star$. Longer blocks deter entry into informed trading
+
+</v-click>
+
+<br>
+
+<v-click>
+
+**Takeaway.**
+- Block time is necessary for decentralised consensus, but it impairs markets
+- Blockchains are generally **not** viable as the sole venue for price formation under current design
+- To become credible infrastructure for price discovery, protocols must rethink **how** transactions are organised within a block
+
+</v-click>
 
 ---
 layout: end
@@ -510,165 +904,4 @@ layout: end
 Thank you !
 
 [faycaldrissi.com](https://www.faycaldrissi.com/)
-
-
----
-section: Appendix
----
-
-
-# The literature
-
-Studies AMMs in isolation
-* Lehar and Parlour (2021); Capponi and Jia (2021); Barbon and Ranaldo (2021); Cartea, Drissi, and Monga (2022); John, Kogan, and Saleh (2023)
-
-Studies empirics of blockchain infrastrcuture
-* Capponi, Jia and Yu (2024)
-
-Studies specific aspects of blockchain infrastrcture
-* private and public order flow: Capponi, Jia, and Wang (2024)
-* Just-in-time liquidity attacks: Capponi, Jia, and Zhu (2024)
-
----
-
-
-# Stage two: the online auction
-
-* Our results are related to pre-opening and closing auctions
-    * Preopening sessions are uniform price auctions (clearing prices maximise trading volume) 
-    * Blockchains: discriminatory pricing subject to queue ordering
-* Our findings support the *pure-noise hypothesis* of Biais, Hillion, and Spatt (1999)
-* Empirical support
-    * No information before the FPSB auction: Medrano and Vives (2001), Cao, Ghysels, and Hatheway (2000); Davies (2003)
-    * Late bidding: Roth and Ockenfels (2002); Yang and Kahng (2006)
-
----
-
-# Market frictions in Automated Market Makers
-
-* A liquidity pool for securities $X$ and $Y$
-* Available *reserves* $x$ and $y$
-
-![pool1](./images/pool1.png){style="transform: translate(165%, 20%); width: 200px"}
-
----
-
-# Automated Market Makers
-
-### Two types of participants
-
-* **Liquidity takers (LTs)** trade with the pool
-
-![pool2](./images/pool2.png){style="transform: translate(30%, 50%); width: 500px"}
-
----
-
-# Automated Market Makers
-### Two types of participants
-* **Liquidity providers (LPs)** *deposit* assets in the pool or *withdraw* assets from the pool
-
-![pool3](./images/pool3.png){style="transform: translate(31.5%, 51%); width: 500px"}
-
----
-
-# Automated Market Makers
-### Economic principle: bonding curves
-
-*  Iso-liquidity curve or indifference curve (points of same level of liquidity)
-$$
-\qquad
-$$
-
-![BC1](./images/BondingCurves1.png){style="transform: translate(18%, 10%); width: 630px"}
-
----
-
-# Automated Market Makers
-### Liquidity takers
-
-* To buy a quantity $\Delta y$, one pays
-$$
-\frac{\Delta x}{\Delta y} = \frac{\Phi(y-\Delta y) - \Phi(y)}{\Delta y}
-$$
-
-![bc2](./images/bc2.png){style="transform: translate(18%, 10%); width: 630px"}
-
----
-
-# Automated Market Makers
-### Liquidity takers
-
-* To sell a quantity $\Delta y$, one receives
-$$
-\frac{\Delta x}{\Delta y} = \frac{\Phi(y) - \Phi(y+\Delta y)}{\Delta y}
-$$
-
-![bc3](./images/bc3.png){style="transform: translate(18%, 10%); width: 630px"}
-
-
-
-
-
----
-
-# Automated Market Makers
-### Liquidity takers
-* Let $\{x, y\} = \{\Phi(y), y\}$ be the state of the pool.
-* **Marginal Price** and **slippage**
-$$
-\underbrace{\frac{\Phi(y)-\Phi(y+\Delta y)}{\Delta y}
-    }_{\text{Price to sell }\Delta y}  \xrightarrow{\Delta y \longrightarrow 0} \underbrace{Z=-\Phi'(y) }_{\text{marginal price}}\xleftarrow{0\longleftarrow \Delta y} \underbrace{\frac{\Phi(y-\Delta y)-\Phi(y)}{\Delta y}}_{\text{Price to buy }\Delta y}
-$$
-* **Price impact**
-$$
--\Phi'(y+\Delta y)
-    \xleftarrow{\text{after a sell}}  \underbrace{Z=-\Phi'(y) }_{\text{marginal price}}\xrightarrow{\text{after a buy}} -\Phi'(y-\Delta y)
-$$
-* Approximations
-$$
-\begin{cases}
-\text{slippage} & \approx \frac12 \Phi''(y) \Delta y  \\
-\text{impact} & \approx  \Phi''(y) \Delta y
-\end{cases}
-$$
-
----
-
-# Automated Market Makers
-### Liquidity takers
-![cvxty](./images/convexity1(1).png){style="transform: translate(30%, 0%); width: 600px"}
-<font size ="1">
-Scatter plots of the execution cost and the price impact of 2.622 million LT transactions against approximations. The transactions  are between January 2023 and December 2023 in 38 different Uniswap v3 pools.
-</font>
-
----
-
-# Automated Market Makers
-### Transaction costs
-
-* Change in wealth of LPs
-$$
--\left(\Phi(y) - \Phi(y-\Delta y) - \Phi'(y)\,\Delta y\right) \approx - \frac12\, \Phi''(y)\, \Delta y^2
-$$
-
-* LPs earn proportional fees $\pi$
-
----
-
-# Automated Market Makers
-### Transaction costs
-
-* Convexity determines transaction costs
-
-* Convexity is inversely proportional to the size of the pool
-
-$$ \kappa = 2 / \Phi''(y) $$
-
-* Liquidity providers set the size of the pool
-
-$$ \text{Slippage } = \delta /\kappa  $$
-
-$$  \ \ \ \, \  \text{Impact }= 2 \, \delta /\kappa  $$
-
-$$ \quad \ \ \, \text{LP loss } = - \delta^2 / \kappa  $$
 
