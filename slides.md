@@ -47,8 +47,8 @@ section: Motivation
 # Blockchains
 
 ### Blockchains promise to coordinate economic activity at scale without intermediaries
-- blockchains replace *institutional trust* with *algorithmic, publicly verifiable rules*
 - **financial markets are central to this promise**: whether the chain can host *viable* markets is a fundamental test
+- blockchains replace *institutional trust* with *algorithmic, publicly verifiable rules*
 
 <br>
 
@@ -354,7 +354,7 @@ Deeper $L$ $\implies$ smaller impact
   <path d="M 0 48 L 35 48 L 35 38 L 105 38 L 105 30 L 175 30 L 175 23 L 245 23 L 245 18 L 600 18" stroke="#1e40af" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
   <line x1="0" y1="26" x2="600" y2="26" stroke="#dc2626" stroke-width="1" stroke-dasharray="6,4" vector-effect="non-scaling-stroke"/>
   <circle cx="175" cy="26" r="3.5" fill="#dc2626"/>
-  <text x="596" y="22" text-anchor="end" style="font-size: 9px; font-style: italic;" fill="#dc2626">trader i's valuation</text>
+  <text x="596" y="35" text-anchor="end" style="font-size: 9px; font-style: italic;" fill="#dc2626">trader i's valuation</text>
   <text x="4" y="11" style="font-size: 9px;" fill="#444">price</text>
 </svg>
 
@@ -379,7 +379,7 @@ $$
 
 <div v-click>
 
-**Proposition.** For all $v_i < \underline v_M$: $\qquad\qquad\qquad\qquad\qquad\footnotesize
+**Proposition.** For sufficiently low valuations $v_i < \underline v_M$: $\qquad\qquad\qquad\qquad\qquad\footnotesize
 \boxed{\text{volume }=\text{ priority fee }=0\qquad \forall v_i<\underline v_M}$
 
 </div>
@@ -394,7 +394,6 @@ $$\footnotesize
 $$
 </div>
 </div>
-
 
 ---
 layout: two-cols-header
@@ -414,8 +413,9 @@ layout: two-cols-header
 
 - the end-of-block price and aggregate informed volume  **increase**
 $$\small
-\underbrace{L\times\frac{M(\underline v_M-\pi)}{2(M-1)}}_{\text{aggregate informed volume}}\;\xrightarrow[M\to\infty]{}\;L\,\frac{\overline v-\pi}{2} \qquad\qquad
-\underbrace{\frac{M(\underline v_M-\pi)}{M-1}}_{\text{end-of-block price}}\;\xrightarrow[M\to\infty]{}\;\overline v-\pi
+\underbrace{\frac{M(\underline v_M-\pi)}{M-1}}_{\text{end-of-block price}}\;\xrightarrow[M\to\infty]{}\;\overline v-\pi 
+\qquad\qquad
+\underbrace{L\times\frac{M(\underline v_M-\pi)}{2(M-1)}}_{\text{aggregate informed volume}}\;\xrightarrow[M\to\infty]{}\;L\,\frac{\overline v-\pi}{2}
 $$
 </div>
 
@@ -432,6 +432,8 @@ $\implies$ more competition $\to$ less information + price bias $\to$ less liqui
 
 </div>
 </div>
+<br>
+<br>
 
 ::right::
 
@@ -457,6 +459,54 @@ $\implies$ more competition $\to$ less information + price bias $\to$ less liqui
 
 </div>
 
+---
+
+# Result 2: information paradox
+
+<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: -12px 22px 2px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
+
+**Proposition.** The equilibrium number of informed traders is the largest $M$ such that
+$$\small
+\underbrace{C}_\text{information cost}\;\le\;\underbrace{L^\star(M^\star)\!\int_{\underline v_M}^{\overline v}\!\tilde Q^*(v)^2\big[\,1-2(M^\star-1)(1-F(v))\,\big]\,dF(v)}_{\text{ex-ante payoff per informed trader}}
+$$
+
+</div>
+
+<br><br>
+
+-  **more noise trading** ($N\uparrow$) and **cheaper information** ($C\downarrow$) raise the equilibrium $M^\star$
+
+- paid-priority
+discriminatory pricing  $\implies$  **less information** revealed and biased prices
+
+
+
+---
+
+# Result 3: block time impairs efficiency
+
+
+
+<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: 8px 22px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
+
+**Assumption.** Longer block time $T$<br>
+(i) widens the valuation distribution (FOSD sense) <br> 
+(ii) shrinks price-sensitive uninformed demand
+
+</div>
+<br>
+
+<v-click>
+
+- the cutoff $\underline v_M(T)$ increases <br><br>
+- the end-of-block price $\overline v(T)-\pi$ increases<br><br>
+- sustainable liquidity $\;L^\infty(T) = \dfrac{8\,\pi\,N(T)}{3\,(\overline v(T)-\pi)^2} - \theta\;$ is **decreasing in $T$**
+<br>
+<br>
+
+- beyond a critical block time $T$, the **market collapses**
+
+</v-click>
 
 
 ---
@@ -556,54 +606,6 @@ Condition for markets to operate: $\qquad\qquad \text{adverse selection from }M\
 </div>
 </v-click>
 -->
-
----
-
-# Result 2: information paradox
-
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: -12px 22px 2px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
-
-**Proposition.** The equilibrium number of informed traders is the largest $M$ such that
-$$\small
-\underbrace{C}_\text{information cost}\;\le\;\underbrace{L^\star(M^\star)\!\int_{\underline v_M}^{\overline v}\!\tilde Q^*(v)^2\big[\,1-2(M^\star-1)(1-F(v))\,\big]\,dF(v)}_{\text{ex-ante payoff per informed trader}}
-$$
-
-</div>
-
-<br><br>
-
--  **more noise trading** ($N\uparrow$) and **cheaper information** ($C\downarrow$) raise the equilibrium $M^\star$
-
-- paid-priority
-discriminatory pricing  $\implies$  **less information** revealed and biased prices
-
-
-
----
-
-# Result 3: block time impairs efficiency
-
-
-
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: 8px 22px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
-
-**Assumption.** Longer block time $T$<br>
-(i) widens the valuation distribution (FOSD sense) <br> 
-(ii) shrinks price-sensitive uninformed demand
-
-</div>
-<br>
-
-<v-click>
-
-$\implies$ the cutoff $\underline v_M(T)$ increases <br>
-$\implies$ the end-of-block price $\overline v(T)-\pi$ increases<br>
-$\implies$ sustainable liquidity $\;L^\infty(T) = \dfrac{8\,\pi\,N(T)}{3\,(\overline v(T)-\pi)^2} - \theta\;$ is **decreasing in $T$**
-- beyond a critical $T$, the **market collapses**
-
-</v-click>
-
-
 
 ---
 section: conclusion
