@@ -65,7 +65,7 @@ section: Motivation
 <v-click>
 
 ### This talk
-- what does the **price of consensus** imply for the markets that live on the chain?
+- what does **consensus** imply for the markets that live on the chain?
 
 </v-click>
 
@@ -247,8 +247,8 @@ layout: two-cols-header
 
 # Position in the block matters
 
-##  Blockchain round with discriminatory pricing
-<div style="margin: 4px 30px 0;">
+##  Blockchain round: discriminatory pricing
+<div style="margin: 4px 150px 0;">
 <svg viewBox="0 0 600 72" preserveAspectRatio="none" style="width: 100%; height: 70px; display: block;">
   <path d="M 0 64 L 35 64 L 35 51 L 105 51 L 105 39 L 175 39 L 175 28 L 245 28 L 245 18 L 600 18" stroke="#1e40af" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
   <text x="4" y="12" style="font-size: 8px;" fill="#444">price</text>
@@ -307,7 +307,7 @@ layout: two-cols-header
 
 #### <u>**Linear price schedule**</u>. Buying a quantity $Q$ executes at
 
-$$\small \underbrace{Q/L}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{DEX fee}}\quad\text{ per unit}$$
+$$\small \underbrace{Q/L}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{fee}}$$
 <!--\qquad\implies\qquad\text{cash paid } = Q\,(Q/L + \pi)-->
 Deeper $L$ $\implies$ cheaper liquidity
 
@@ -346,9 +346,14 @@ Deeper $L$ $\implies$ smaller impact
 
 # The trading round
 
-**<u>Setup</u>**: $M\,$ buying traders<br> $\qquad\ \,$ Each trader has valuation $\,v \in [0, \overline v] \sim F\,$ chooses a volume $\, Q_i\,$ and a priority fee $\, \Phi_i$
+**<u>Setup</u>**: $M\,$ buying traders. $\qquad\ \,$ Each trader has valuation $\,v \in [0, \overline v] \sim F\,$ chooses a volume $\, Q_i\,$ and a priority fee $\, \Phi_i$
 
-<div style="margin: 4px 30px 0;">
+$$
+\boxed{\text{expected wealth of trader } i=  -\underbrace{C}_{\text{information cost}}-\underbrace{\Phi_i}_{\text{priority fee}} + \underbrace{Q_i\big(v_i-\pi-\dfrac{Q_i}{L}\big)}_{\text{trading profit, net of slippage}}  - \underbrace{\dfrac{2Q_i}{L}\sum_{j=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(j)}<\Phi_i<\Phi_{(j+1)}}\,\Delta_{(j+1:M-1)}\big]}_{\text{adverse impact of competitors}}}
+$$
+
+
+<div style="margin: 4px 130px 0;">
 
 <svg viewBox="0 0 600 54" preserveAspectRatio="none" style="width: 100%; height: 52px; display: block;">
   <path d="M 0 48 L 35 48 L 35 38 L 105 38 L 105 30 L 175 30 L 175 23 L 245 23 L 245 18 L 600 18" stroke="#1e40af" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
@@ -357,6 +362,7 @@ Deeper $L$ $\implies$ smaller impact
   <text x="596" y="35" text-anchor="end" style="font-size: 9px; font-style: italic;" fill="#dc2626">trader i's valuation</text>
   <text x="4" y="11" style="font-size: 9px;" fill="#444">price</text>
 </svg>
+
 
 <div style="position: relative; border: 1.5px solid #4b5563; border-radius: 4px; padding: 7px 0 3px; margin-top: 1px;">
 <div style="position: absolute; top: -8px; left: 12px; background: white; padding: 0 6px; font-size: 9px; font-weight: 700; color: #4b5563;">block</div>
@@ -371,11 +377,8 @@ Deeper $L$ $\implies$ smaller impact
 
 </div>
 
-$$\footnotesize
-\text{expected wealth of trader } i= \underbrace{-\Phi_i}_{\text{priority fee}} + \underbrace{Q_i\big(v_i-\pi-\dfrac{Q_i}{L}\big)}_{\text{trading profit, net of slippage}} - \underbrace{C}_{\text{information cost}} - \underbrace{\dfrac{2Q_i}{L}\sum_{j=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(j)}<\Phi_i<\Phi_{(j+1)}}\,\Delta_{(j+1:M-1)}\big]}_{\text{adverse impact of competitors}}
-$$
 
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: 0px 20px; background: #f8fafc; margin: -5px auto 0; max-width: 920px;">
+<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: 0px 20px; background: #f8fafc; margin: 10px auto 0; max-width: 920px;">
 
 <div v-click>
 
@@ -386,7 +389,7 @@ $$
 <div v-click>
 
 For all $v_i \ge \underline v_M$, the equilibrium priority fee and trading volume **increase in $v_i$**
-$$\footnotesize
+$$\scriptsize
 \underbrace{\Phi^*\left(v_{i}\right)=2L(M-1)\int_{\underline{v}_M}^{v_{i}}\tilde{Q}^*\left(x\right)^{2}dF\left(x\right)}_{\text{priority fee}} 
 \qquad 
 \text{payoff}=\text{reservation fee}-\Phi^*(v_i)\ge0\qquad 
