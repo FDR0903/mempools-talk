@@ -1,28 +1,26 @@
 ---
+theme: frankfurt
+colorSchema: light
 layout: cover
 class: text-center
 title: The Viability of Blockchain Markets
-#theme: academic
 titleTemplate: '%s'
 favicon: ./images/defiicon.png
 author: Fayçal Drissi
+fonts:
+  local: Montserrat, Roboto Mono, Roboto Slab
 themeConfig:
   paginationX: disabled
   paginationY: disabled
   paginationPagesDisabled: [1]
-fonts:
-  local: Montserrat, Roboto Mono, Roboto Slab # local fonts are used for legal reasons for deployment to https://slidev-theme-academic.alexeble.de and only set up for the example project, remove this line for your project to automatically have fonts imported from Google
-
-theme: frankfurt
-infoLine: true # on by default, can be turned off
-#author: 'Your name here' # shows in infoLine
-#title: 'Title' # shows in infoLine
-date: '04/06/2026' # shows in infoLine, defaults to the current date
-
+infoLine: true
+date: '18/07/2026'
+drawings:
+  enabled: false   # hides Slidev's floating pen/annotation toolbar
 mdc: true
 ---
 
-# Viability of Blockchain Markets
+# Viability of blockchain markets
 
 <br>
 <br>
@@ -32,185 +30,435 @@ mdc: true
 
 <br>
 
-### 6th Annual CBER Conference, NYU Stern
+###  NBER Summer Institute 2026 -- Financial Market Structure 
 
-<br>
+<br><br><br><br>
 
-#### These slides: [https://www.faycaldrissi.com/mempools-talk](https://www.faycaldrissi.com/mempools-talk)
+#### [https://www.faycaldrissi.com/mempools-talk](https://www.faycaldrissi.com/mempools-talk)
 
 
 
 ---
-section: Motivation
+section: Blockchain markets
 ---
 
 # Blockchains
 
-### Blockchains promise to coordinate economic activity at scale without intermediaries
-- **financial markets are central to this promise**: whether the chain can host *viable* markets is a fundamental test
-- blockchains replace *institutional trust* with *algorithmic, publicly verifiable rules*
+### A distributed, digital, permissionless, tamper-resistant ledger: stores and executes transactions
+- blockchains replace *institutional trust* with consensus: *algorithmic, publicly verifiable rules*
 
-<br>
+<v-click at="1">
+
+- consensus requires **time** to secure the chain $\implies$ **block time**
+
+</v-click>
+
+
+<div style="display:flex; justify-content:center; margin-top: 8px;">
+<v-switch at="0">
+<template #1>
+
+![blockchain](./images/block1.png){style="height: 250px;"}
+
+</template>
+<template #2>
+
+![block1](./images/block1.png){style="height: 250px;"}
+
+</template>
+<template #3>
+
+![block2](./images/block2.png){style="height: 250px;"}
+
+</template>
+<template #4>
+
+![block3](./images/block3.png){style="height: 250px;"}
+
+</template>
+<template #5>
+
+![block4](./images/block4.png){style="height: 250px;"}
+
+</template>
+</v-switch>
+</div>
+
+
+
+<br><br>
+
+---
+
+# Blockchains
+
+### A distributed, digital, permissionless, tamper-resistant ledger: stores and executes transactions
+- consensus requires economic **incentives** to compensate validators $\implies$ **priority fees**
+
+<div style="display:flex; justify-content:center; margin-top: 8px;">
+
+![mempools3](./images/mempool3.png){style="height: 300px;"}
+
+</div>
+
+---
+layout: two-cols-header
+---
+
+# Consensus shapes microstructure 
+
+::left::
+
+- <u>Traditional markets</u>: continuous trading, cleared over multiple short rounds
+
+![continuous_trading](./images/continuous_trading.gif){style="height: 250px;"}
+
+::right::
 
 <v-click>
 
-### Consensus has a price
-- requires **time** to secure the chain
-  $\implies$ **block time**
-- requires economic **incentives** to compensate validators
-  - **priority fees**
-  - others (gas fees, issuance ..)
+- <u>Blockchain markets</u>: liquidity is in a smart contract, orders are sequenced by priority fee
+
+![blockchain_trading](./images/blockchain_trading.gif){style="height: 250px;"}
+
+<br>
+<br>
+
+</v-click>
+
+---
+
+# Motivation
+
+
+### Blockchains promise to coordinate economic activity at scale *without intermediaries*
+- trust in institutions replaced by trust in **consensus**
+
+<br>
+<v-click>
+
+### Financial markets are a fundamental test
+
+<br>
+<v-click>
+
+### This paper
+- Can the blockchain host *viable* markets?
+- consensus imposes two frictions: **discrete clearing** (block time) and **paid-priority**<br>
+$\implies$ what does **consensus** imply for on-chain markets ?<br> 
+$\implies$  is the blockchain a good **venue for price formation**?
+
+<br>
+<v-click>
+
+
+- how ?<br>
+$\implies$ a model of a trading round within a **block**
+
+</v-click>
+</v-click>
+</v-click>
+
+---
+
+# Literature
+
+<div style="display:flex; gap:30px; font-size:0.62em; line-height:1.38; margin-top:4px;">
+
+<div style="flex:1;">
+
+<div style="font-weight:700; color:#334155; border-bottom:1px solid #cbd5e1; padding-bottom:2px; margin-bottom:5px;">Blockchain &amp; DEX microstructure</div>
+
+<div><b style="color:#1e293b;">Equilibrium liquidity provision</b></div>
+<div style="color:#475569; margin-bottom:5px;">Park (2023, <i>MS</i>) · Malinova–Park (2024) · Hasbrouck–Rivera–Saleh (2026, <i>MS</i>) · Lehar–Parlour (2025, <i>JF</i>)</div>
+
+<div><b style="color:#1e293b;">LP losses &amp; other markets</b></div>
+<div style="color:#475569; margin-bottom:5px;">Milionis et al. (2022) · Hasbrouck–Rivera–Saleh (2023) · Cartea–Drissi–Monga (2023, 2024, <i>SIAM</i>)</div>
+
+<div><b style="color:#1e293b;">Informed liquidity provision</b></div>
+<div style="color:#475569; margin-bottom:5px;">Klein et al. (2023)</div>
+
+<div><b style="color:#1e293b;">Blockchain infrastructure (gas fees)</b></div>
+<div style="color:#475569; margin-bottom:5px;">Capponi–Jia–Yu (2024, <i>RFS</i>)</div>
+
+<div><b style="color:#1e293b;">Others</b></div>
+<div style="color:#475569; margin-bottom:5px;">Angeris–Evans–Chitra (2021) · Capponi–Iyengar–Sethuraman (2023, <i>F&amp;T</i>)</div>
+
+<div style="font-weight:700; color:#334155; border-bottom:1px solid #cbd5e1; padding-bottom:2px; margin:9px 0 5px;">Classical microstructure</div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Information monopolist</b> <span style="color:#64748b;">— Kyle (1985, <i>Econometrica</i>)</span></div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Competition on information</b> <span style="color:#64748b;">— Holden–Subrahmanyam (1992, <i>JF</i>), Foster–Viswanathan (1996, <i>JF</i>)</span></div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Multi-stage inventory models</b> <span style="color:#64748b;">— Biais (1993, <i>JF</i>), De Frutos–Manzano (2002, <i>JF</i>)</span></div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Compete for queue position (not speed)</b> <span style="color:#64748b;">— O'Hara (1998, <i>book</i>)</span></div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Information processing costs</b> <span style="color:#64748b;">— Grossman–Stiglitz (1980, <i>AER</i>), Verrecchia (1982, <i>Econometrica</i>), Kyle (1989, <i>RES</i>), Baldauf–Mollner (2020, <i>JF</i>)</span></div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">DEX ≈ parametrized price schedule in electronic markets</b> <span style="color:#64748b;">— Glosten (1994, <i>JF</i>), Biais–Martimort–Rochet (2000, <i>Econometrica</i>)</span></div>
+<div style="margin-bottom:5px;"><b style="color:#1e293b;">Dealer markets / market making</b> <span style="color:#64748b;">— Ho–Stoll (1983, <i>JF</i>), Glosten–Milgrom (1985, <i>JFE</i>)</span></div>
+
+</div>
+
+<div style="flex:1;">
+
+<div style="font-weight:700; color:#334155; border-bottom:1px solid #cbd5e1; padding-bottom:2px; margin-bottom:5px;">Political contests (multi-prize)</div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Multi-prize contests</b> <span style="color:#64748b;"> — Lazear–Rosen (1981, <i>JPE</i>), Hillman–Riley (1989), Barut–Kovenock (1998), Klose–Kovenock (2015)</span></div>
+<div style="margin-bottom:5px;"><b style="color:#1e293b;">Multi-prize contests with a fixed prize vector</b> <span style="color:#64748b;">— Moldovanu–Sela (2001, <i>AER</i>)</span></div>
+
+<br>
+
+<div style="font-weight:700; color:#334155; border-bottom:1px solid #cbd5e1; padding-bottom:2px; margin:9px 0 5px;">Periodic auctions for markets</div> 
+<div><b style="color:#1e293b;">Uniform-price batch auctions</b> <span style="color:#64748b;">— Madhavan (1992, <i>JF</i>), Budish–Cramton–Shim (2015, <i>QJE</i>); we use discriminatory pricing, LP absent</span></div>
+
+<br>
+
+
+<div style="font-weight:700; color:#334155; border-bottom:1px solid #cbd5e1; padding-bottom:2px; margin:9px 0 5px;">Opening / closing auctions</div>
+<div><b style="color:#1e293b;">Information revelation accelerates toward the close</b> <span style="color:#64748b;">— Medrano–Vives (2001, <i>RAND J. Econ</i>)</span></div>
+
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Transparency &amp; ending times of call auctions</b> <span style="color:#64748b;">— Van Bommel–Hoffmann (2011)</span></div>
+<div style="margin-bottom:4px;"><b style="color:#1e293b;">Preopening price discovery &amp; learning (pure-noise hypothesis)</b> <span style="color:#64748b;">— Biais–Hillion–Spatt (1999, <i>JPE</i>)</span></div>
+
+
+</div>
+
+</div>
+
+---
+section: Empirical facts
+class: fact-c
+---
+
+# Fact 1 / 4 -- informed flow arrives just before block creation
+
+Traders who submit high priority fees submit **late** 
+$\ \implies\,$ Competition among informed traders is effectively **blind**
+
+<br>
+
+<div style="display:flex; justify-content:center;">
+
+![distribPF](./images/distribPF.png){style="height: 250px; margin-top: 8px;"}
+
+</div>
+
+<div class="fig-cap" style="max-width:4500px;">Priority fee distribution as a function of submission time over a blockchain slot. &nbsp;<br><b>Data</b>: Ethereum public mempool, ≈10 million transactions, 20–21 March 2024 (source: EthPandaOps).</div>
+
+<br>
+
+
+
+---
+class: fact-c
+---
+
+# Fact 2 / 4 -- the largest trades come first
+
+
+When price formation happens on-chain: <br>
+absolute volume **decreases** with queue position
+$\ \implies\,$ aggressive, high-volume traders secure the earliest positions
+<br><br>
+<div style="display:flex; justify-content:center;">
+
+![abs](./images/tradingvolumes_abs.png){style="height: 190px; margin-top: 8px;"}
+
+</div>
+
+<div class="fig-cap" style="max-width:360px;">Distribution of normalized absolute volume as a function of queue position. &nbsp;<b>Data</b>: 75 Uniswap v3 pools whose asset is <i>not</i> on Binance: 317,901 trades in 36,692 blocks, 2021–2026.</div>
+
+<br>
+
+
+---
+class: fact-c
+---
+
+# Fact 3 / 4 -- top of the block is one-sided
+
+- Early trades take the same direction
+- Back of block $\to$ two-sided **noise** <br><br>
+$\implies\,$ informed traders do not hide with noise
+
+<br><br>
+
+<div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin-top:8px;">
+<div style="text-align:center;">
+
+![signed](./images/tradingvolumes_signed.png){style="height: 205px;"}
+
+
+</div>
+
+<v-click>
+<div style="text-align:center;">
+
+![pricemove](./images/pricemove.png){style="height: 205px;"}
+
+</div>
+</v-click>
+</div>
+
+
+
+
+---
+class: fact-c
+---
+
+# Fact 4 / 4: prices overshoot on the blockchain
+
+higher standard deviation (all 8 assets) and 99th percentile (most) of the absolute one-block return
+<br> $\implies$ price changes in blockchain markets are more extreme
+
+<br>
+
+<div style="display:flex; justify-content:center; margin-top:10px;">
+<table class="overshoot-tbl" style="font-size:0.72em;">
+<thead>
+<tr>
+<th style="text-align:left;">Asset</th>
+<th colspan="2" class="cmid">Blockchain (bp)</th>
+<th colspan="2" class="cmid">Binance (bp)</th>
+</tr>
+<tr>
+<th></th><th>std</th><th>99%</th><th>std</th><th>99%</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>ETH/BTC</td><td><b>7.72</b></td><td><b>30.71</b></td><td>6.00</td><td>23.26</td></tr>
+<tr><td>ETH</td><td><b>8.71</b></td><td><b>29.86</b></td><td>6.87</td><td>26.10</td></tr>
+<tr><td>BTC</td><td><b>24.94</b></td><td><b>89.33</b></td><td>17.83</td><td>69.27</td></tr>
+<tr><td>LINK</td><td><b>27.35</b></td><td><b>79.51</b></td><td>13.45</td><td>48.35</td></tr>
+<tr><td>UNI</td><td><b>29.41</b></td><td><b>81.29</b></td><td>18.29</td><td>78.74</td></tr>
+<tr><td>APE</td><td><b>36.34</b></td><td>99.50</td><td>28.63</td><td><b>108.52</b></td></tr>
+<tr><td>MATIC</td><td><b>43.07</b></td><td><b>99.61</b></td><td>18.77</td><td>73.19</td></tr>
+<tr><td>1INCH</td><td><b>84.11</b></td><td><b>182.40</b></td><td>34.84</td><td>119.70</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 trades · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
+
+<br>
+
+
+
+---
+section: Model
+---
+
+# Model
+
+
+<div style="text-align:center; font-weight:600; color:#1e293b; margin: 20px 0 8px;">
+
+### A static, three-stage game
+</div>
+
+<div style="display:flex; align-items:stretch; justify-content:center; gap:6px; margin: 14px 24px 0;">
+<div style="flex:1; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
+<div style="font-weight:700; color:#1e293b;">Stage 1 · Entry</div>
+<div style="font-size:0.78em; color:#334155; margin-top:5px;">M traders pay information cost C</div>
+</div>
+<div style="align-self:center; color:#94a3b8; font-size:1.5em; padding:0 3px;">→</div>
+<div style="flex:1; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
+<div style="font-weight:700; color:#1e293b;">Stage 2 · Liquidity</div>
+<div style="font-size:0.78em; color:#334155; margin-top:5px;">supplier sets reserves L</div>
+</div>
+<div style="align-self:center; color:#94a3b8; font-size:1.5em; padding:0 3px;">→</div>
+<div style="flex:1.35; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
+<div style="font-weight:700; color:#1e293b;">Stage 3 · Trading (PGA)</div>
+<div style="font-size:0.78em; color:#334155; margin-top:5px;">informed traders set priority fees Φ and volumes Q</div>
+</div>
+</div>
+
 <br><br>
 
 <v-click>
+<div style="text-align:center; font-weight:600; color:#1e293b; margin: 20px 0 8px;">
 
-### This talk
-- what does **consensus** imply for the markets that live on the chain?
+### Solved backward
+</div>
 
+<div style="display:flex; align-items:stretch; justify-content:center; gap:6px; margin: 0 16px;">
+<div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
+<div style="font-weight:700; color:#334155;">① priority fees Φ</div>
+</div>
+<div style="align-self:center; color:#94a3b8; font-size:1.3em;">→</div>
+<div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
+<div style="font-weight:700; color:#334155;">② volumes Q</div>
+</div>
+<div style="align-self:center; color:#94a3b8; font-size:1.3em;">→</div>
+<div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
+
+<div style="font-weight:700; color:#334155;">③ liquidity L</div>
+</div>
+<div style="align-self:center; color:#94a3b8; font-size:1.3em;">→</div>
+<div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
+<div style="font-weight:700; color:#334155;">④ entry M</div>
+</div>
+</div>
 </v-click>
 
-</v-click>
 
 ---
-
-# Consensus shapes microstructure
-### <u>Traditional markets</u>: continuous trading, cleared over multiple short rounds
-
-<div style="margin-top: 22px; padding: 0 30px;">
-
-<div style="position: relative; height: 60px;">
-  <div style="position: absolute; top: 38px; left: 0; right: 0; height: 2px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 0%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 0%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 0%; width: 2px; height: 18px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 14.29%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 14.29%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 14.29%; width: 2px; height: 18px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 28.57%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 28.57%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 28.57%; width: 2px; height: 18px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 42.86%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 42.86%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 42.86%; width: 2px; height: 18px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 57.14%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 57.14%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 57.14%; width: 2px; height: 18px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 71.43%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 71.43%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 71.43%; width: 2px; height: 18px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 85.71%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 85.71%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 85.71%; width: 2px; height: 18px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; left: 100%; transform: translateX(-50%); font-size: 0.62em; color: #444; white-space: nowrap;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 18px; left: 100%; width: 7px; height: 7px; border-radius: 50%; background: #333; transform: translate(-50%, 0);"></div>
-  <div style="position: absolute; top: 30px; left: 100%; width: 2px; height: 18px; background: #333;"></div>
-</div>
-</div>
-
-<br> <br> 
-
-<v-click>
-
-### <u>Blockchain markets</u>: discrete clearing, orders are sequenced by priority fee
-
-<div style="margin-top: -3px; padding: 0 30px;">
-<div style="position: relative; height: 50px;">
-  <div style="position: absolute; top: 38px; left: 0; right: 0; height: 2px; background: #333;"></div>
-  <div style="position: absolute; top: 20px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: #333; transform: translate(-2px, 0);"></div>
-  <div style="position: absolute; top: 28px; left: 0; width: 3px; height: 22px; background: #333;"></div>
-  <div style="position: absolute; top: 6px; right: 0; font-size: 0.62em; color: #444;">MM ↔ IT/NT</div>
-  <div style="position: absolute; top: 20px; right: 0; width: 9px; height: 9px; border-radius: 50%; background: #333; transform: translate(2px, 0);"></div>
-  <div style="position: absolute; top: 28px; right: 0; width: 3px; height: 22px; background: #333;"></div>
-</div>
-<div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-top: 2px;">
-  <span>   </span>
-  <span style="font-style: italic;">block time T</span>
-  <span>block creation</span>
-</div>
-</div>
-
-<v-click>
-
-<div style="position: relative; border: 1.5px solid #4b5563; border-radius: 4px; padding: 10px 4px 4px 4px; margin: 30px 30px 0;">
-<div style="position: absolute; top: -8px; left: 12px; background: white; padding: 0 6px; font-size: 10px; font-weight: 700; color: #4b5563; letter-spacing: 0.5px;">block</div>
-<div style="display: flex; gap: 2px;">
-  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 6px 2px; text-align: center; font-size: 10px; line-height: 1.4; color: #1e3a8a;">
-    <div style="font-weight: 700;">txn # 1</div>
-    <div>priority fee Φ<sub>(1)</sub></div>
-  </div>
-  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 6px 2px; text-align: center; font-size: 10px; line-height: 1.4; color: #1e3a8a;">
-    <div style="font-weight: 700;">txn # 2</div>
-    <div>priority fee Φ<sub>(2)</sub></div>
-  </div>
-  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 6px 2px; text-align: center; font-size: 10px; line-height: 1.4; color: #1e3a8a;">
-    <div style="font-weight: 700;">⋯</div>
-    <div>⋯</div>
-  </div>
-  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 6px 2px; text-align: center; font-size: 10px; line-height: 1.4; color: #1e3a8a;">
-    <div style="font-weight: 700;">...</div>
-    <div>...</div>
-  </div>
-  <div style="flex: 70; border: 1.5px solid #1e40af; background: #dbeafe; padding: 6px 2px; text-align: center; font-size: 10px; line-height: 1.4; color: #1e3a8a;">
-    <div style="font-weight: 700;">txn # <i>N</i></div>
-    <div>priority fee Φ<sub>(<i>N</i>)</sub></div>
-  </div>
-  <div style="flex: 400; border: 1.5px solid #888; background: #f3f4f6; padding: 6px 6px; text-align: center; font-size: 10px; line-height: 1.4; color: #374151;">
-    <div>priority fee = 0</div>
-  </div>
-</div>
-</div>
-
-<div style="text-align: center; font-size: 0.85em; color: #555; margin-top: 8px;">higher priority fee &nbsp;⟹&nbsp; earlier execution</div>
-
-<br>
-
-</v-click>
-</v-click>
-
+layout: two-cols-header
 ---
 
-# This paper
+# Execution prices
 
-### Can the blockchain itself be a venue for price formation?
+::left::
 
-- A model of price formation and liquidity on a blockchain with **discrete clearing** and **paid-priority** ordering 
+#### <u>**Linear price schedule**</u>: buying a quantity $Q$ executes at
 
-<br>
+$$ \underbrace{Q/L}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{fee}}$$
+<!--\qquad\implies\qquad\text{cash paid } = Q\,(Q/L + \pi)-->
+Larger liquidity $L$ $\implies$ smaller slippage
 
-<!--
 <v-click>
 
-### Findings
+<br><br><br>
 
-1. **Endogenous selection**: only aggressive traders participate $\implies$ prices are biased, less information in markets
-2. Cheaper information and benign trading flow **impair** price formation
-3. Block time impairs markets
+#### <u>**Linear price update rule**</u>: After a buy of size $Q$, the marginal price moves to
+
+$$ 
+\underbrace{2\,Q/L}_\text{price impact}
+$$
+
+
+Larger liquidity $L$ $\implies$ smaller impact
+
+<br><br>
 
 </v-click>
--->
+
+::right::
 
 <v-click>
 
-### The model: three stages
-<u>**Stage one**</u>: $M$ traders pay an information cost $C$<br>
-<u>**Stage two**</u>: liquidity supplier sets liquidity supply $L$ <br>
-<u>**Stage three**</u>: informed traders compete for queue position and price-sensitive traders submit transactions
+#### <u>**Why compete ?**</u>
 
-![model1](./images/model1.png){style="transform: translate(43%, 0%); width: 450px"} 
+- Trader 1 buys $Q_1$ first, then trader 2 buys $Q_2$
+
+<div style="display:flex; justify-content:center; margin: 10px 0 2px;">
+<div style="position:relative; border:1.5px solid #4b5563; border-radius:5px; padding:9px 5px 5px;">
+<div style="position:absolute; top:-8px; left:10px; background:white; padding:0 5px; font-size:9px; font-weight:700; color:#4b5563;">block</div>
+<div style="display:flex; gap:4px;">
+<div style="border:1.5px solid #334155; background:#eef2f6; color:#1e293b; padding:6px 18px; text-align:center; font-size:12px; line-height:1.35;"><b>Trader 1</b><br>buys Q<sub>1</sub></div>
+<div style="border:1.5px solid #334155; background:#eef2f6; color:#1e293b; padding:6px 18px; text-align:center; font-size:12px; line-height:1.35;"><b>Trader 2</b><br>buys Q<sub>2</sub></div>
+</div>
+</div>
+</div>
+<div style="text-align:center; font-size:0.62em; color:#64748b; margin-top:2px;">execution order →</div>
+
 <v-click>
 
+- Trader 1 pays 
+$$Q_1/L + \pi\quad\text{per unit}$$
 
-![model2](./images/model2.png){style="transform: translate(43%, -106%); width: 450px"}
 <v-click>
 
-![model3](./images/model3.png){style="transform: translate(43%, -211%); width: 450px"}
-<v-click>
+- Trader 2  pays 
+$$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\text{own slippage}} \,+\, \pi \quad\text{per unit}$$
 
-![model4](./images/model4.png){style="transform: translate(43%, -318%); width: 450px"}
 
-We solve by **backward induction**, starting from stage three and working back to stage one
-
-</v-click>
 </v-click>
 </v-click>
 </v-click>
@@ -218,400 +466,272 @@ We solve by **backward induction**, starting from stage three and working back t
 
 ---
 section: Results
----
-
-# Result 1: endogenous selection
-
-
-
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: 18px 26px; background: #f8fafc; margin: 34px auto 0; max-width: 840px;">
-
-**Proposition (endogenous selection).** Only aggressive informed traders participate
-
-$\longleftrightarrow$ 
-
-There is a cutoff valuation $\underline v_M$ below which informed traders do not participate.
-
-
-<!-- As the number $M$ of informed traders on the blockchain rises:
-
-1. &nbsp; the participation **cutoff rises** $\implies$ fraction of the valuation distribution that generates transactions shrinks
-2. &nbsp; aggregate trading volume increases
-3. &nbsp; prices becomes systematically biased -->
-
-</div>
-
----
 layout: two-cols-header
 ---
 
-# Position in the block matters
+# <span style="font-size:0.56em; font-weight:600;">① priority fees <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
-##  Blockchain round: discriminatory pricing
+
+### <u>Setup</u>
+- $M$ buying traders with private volumes $\,Q_i \in [0, \overline  Q] \sim G$
+- DEX liquidity $L$
+
+<v-click>
+<br>
+
+###  <u>Expected wealth</u>
+
+
+$$
+\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\big(\dfrac{Q_i}{L}+\pi\big)}_{\text{slippage \& DEX fee}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ \underbrace{\dfrac{2Q_i}{L}\sum_{j=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(j)}<\Phi_i<\Phi_{(j+1)}}\,\Delta_{(j+1:M-1)}\big]}_{\text{adverse impact of competitors}} - \underbrace{C}_{\text{information cost}}}
+$$
+
 <div style="margin: 4px 150px 0;">
 <svg viewBox="0 0 600 72" preserveAspectRatio="none" style="width: 100%; height: 70px; display: block;">
-  <path d="M 0 64 L 35 64 L 35 51 L 105 51 L 105 39 L 175 39 L 175 28 L 245 28 L 245 18 L 600 18" stroke="#1e40af" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
+  <path d="M 0 64 L 35 64 L 35 51 L 105 51 L 105 39 L 175 39 L 175 28 L 245 28 L 245 18 L 600 18" stroke="#334155" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
   <text x="4" y="12" style="font-size: 8px;" fill="#444">price</text>
 </svg>
 
 <div style="position: relative; border: 1.5px solid #4b5563; border-radius: 4px; padding: 7px 0 3px; margin-top: 1px;">
 <div style="position: absolute; top: -8px; left: 12px; background: white; padding: 0 6px; font-size: 9px; font-weight: 700; color: #4b5563;">block</div>
 <div style="display: flex;">
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">txn 1 · Φ<sub>(1)</sub></div>
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">txn 2 · Φ<sub>(2)</sub></div>
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">⋯</div>
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">txn N · Φ<sub>(N)</sub></div>
+  <div style="flex: 70; border-right: 1px solid #cbd5e1; background: #eef2f6; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e293b;">txn 1 · Φ<sub>(1)</sub></div>
+  <div style="flex: 70; border-right: 1px solid #cbd5e1; background: #eef2f6; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e293b;">txn 2 · Φ<sub>(2)</sub></div>
+  <div style="flex: 70; border-right: 1px solid #cbd5e1; background: #eef2f6; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e293b;">⋯</div>
+  <div style="flex: 70; border-right: 1px solid #cbd5e1; background: #eef2f6; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e293b;">txn N · Φ<sub>(N)</sub></div>
   <div style="flex: 320; background: #f3f4f6; padding: 3px 6px; text-align: center; font-size: 9px; color: #374151;">fee = 0</div>
 </div>
 </div>
 
 </div>
 
-<br>
-
-<v-click>
-
-### $\implies$ blockchain trading round is a single **sealed-bid multi-prize auction**
 
 </v-click>
 
-::left::
+
+---
+
+
+
+# <span style="font-size:0.56em; font-weight:600;">① priority fees <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+
+
+
+### <u>Trader $i$ chooses the priority fee $\Phi_i$</u>
+
+<br>
+
+$$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\dfrac{2Q_i}{L}\,(M-1)\!\int_0^{\,\Phi^{-1}(\Phi_i)}\! x\,dG(x)}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
+
+- the surplus grows with volume $Q_i$, with the number of competitors $M$, and with thinner liquidity $L$
 
 <v-click>
-
 
 <br><br>
 
-## Not an online auction
 
-1. **Private memory pools**: bids are concealed until block creation
-<v-click>
+<div class="prop-box">
 
-2. **Public memory pools**: late bidding is dominant
+### Equilibrium fee
 
-</v-click>
-</v-click>
+1. larger volume $Q$ $\Rightarrow$ larger fee $\Phi^\star(Q)$
+2. priority fees increase with **competition** $M$ and **fall with liquidity** $L$
 
-::right::
+</div>
 
-<v-click at="3">
 
-![distribPF](./images/distribPF.png){style="transform: translate(25%, 0%); width: 90%;"}
 
 </v-click>
 
 
 ---
 
-# Execution prices in the DEX
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
-#### <u>**Linear price schedule**</u>. Buying a quantity $Q$ executes at
+### <u>Setup</u>
+- $M$ buying traders with private valuations $\,v_i \in [0, \overline  v] \sim F$
+- DEX liquidity $L$
 
-$$\small \underbrace{Q/L}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{fee}}$$
-<!--\qquad\implies\qquad\text{cash paid } = Q\,(Q/L + \pi)-->
-Deeper $L$ $\implies$ cheaper liquidity
-
-<v-click>
-
-#### <u>**Linear price update rule**</u>. After a buy of size $Q$, the marginal price moves to
-
-$$ \small
-2\,Q/L
-$$
-
-
-Deeper $L$ $\implies$ smaller impact
-
-<v-click>
-
-<br>
-
-#### <u>**Why compete ?**</u>
-
-- Trader 1 buys $Q_1$ first, then trader 2 buys $Q_2$ 
-<v-click>
-
-- Trader 1 pays $Q_1/L + \pi$ per unit, and the marginal price moves to $2Q_1/L$
-<v-click>
-
-- Trader 2  pays $\qquad \qquad \qquad \qquad \qquad \qquad \small \underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\text{own slippage}} \,+\, \pi \quad\text{per unit}$
-
-</v-click>
-</v-click>
-</v-click>
-</v-click>
-
-
----
-
-# The trading round
-
-**<u>Setup</u>**: $M\,$ buying traders. $\qquad\ \,$ Each trader has valuation $\,v \in [0, \overline v] \sim F\,$ chooses a volume $\, Q_i\,$ and a priority fee $\, \Phi_i$
-
-$$
-\boxed{\text{expected wealth of trader } i=  -\underbrace{C}_{\text{information cost}}-\underbrace{\Phi_i}_{\text{priority fee}} + \underbrace{Q_i\big(v_i-\pi-\dfrac{Q_i}{L}\big)}_{\text{trading profit, net of slippage}}  - \underbrace{\dfrac{2Q_i}{L}\sum_{j=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(j)}<\Phi_i<\Phi_{(j+1)}}\,\Delta_{(j+1:M-1)}\big]}_{\text{adverse impact of competitors}}}
-$$
-
-
-<div style="margin: 4px 130px 0;">
-
-<svg viewBox="0 0 600 54" preserveAspectRatio="none" style="width: 100%; height: 52px; display: block;">
-  <path d="M 0 48 L 35 48 L 35 38 L 105 38 L 105 30 L 175 30 L 175 23 L 245 23 L 245 18 L 600 18" stroke="#1e40af" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
-  <line x1="0" y1="26" x2="600" y2="26" stroke="#dc2626" stroke-width="1" stroke-dasharray="6,4" vector-effect="non-scaling-stroke"/>
-  <circle cx="175" cy="26" r="3.5" fill="#dc2626"/>
-  <text x="596" y="35" text-anchor="end" style="font-size: 9px; font-style: italic;" fill="#dc2626">trader i's valuation</text>
-  <text x="4" y="11" style="font-size: 9px;" fill="#444">price</text>
-</svg>
-
-
-<div style="position: relative; border: 1.5px solid #4b5563; border-radius: 4px; padding: 7px 0 3px; margin-top: 1px;">
-<div style="position: absolute; top: -8px; left: 12px; background: white; padding: 0 6px; font-size: 9px; font-weight: 700; color: #4b5563;">block</div>
-<div style="display: flex;">
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">txn 1 · Φ<sub>(1)</sub></div>
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">txn 2 · Φ<sub>(2)</sub></div>
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">⋯</div>
-  <div style="flex: 70; border-right: 1px solid #93c5fd; background: #dbeafe; padding: 3px 1px; text-align: center; font-size: 9px; color: #1e3a8a;">txn N · Φ<sub>(N)</sub></div>
-  <div style="flex: 320; background: #f3f4f6; padding: 3px 6px; text-align: center; font-size: 9px; color: #374151;">uninformed demand · fee = 0</div>
-</div>
-</div>
-
-</div>
-
-
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: 0px 20px; background: #f8fafc; margin: 10px auto 0; max-width: 920px;">
-
-<div v-click>
-
-**Proposition.** For sufficiently low valuations $v_i < \underline v_M$: $\qquad\qquad\qquad\qquad\qquad\footnotesize
-\boxed{\text{volume }=\text{ priority fee }=0\qquad \forall v_i<\underline v_M}$
-
-</div>
-<div v-click>
-
-For all $v_i \ge \underline v_M$, the equilibrium priority fee and trading volume **increase in $v_i$**
-$$\scriptsize
-\underbrace{\Phi^*\left(v_{i}\right)=2L(M-1)\int_{\underline{v}_M}^{v_{i}}\tilde{Q}^*\left(x\right)^{2}dF\left(x\right)}_{\text{priority fee}} 
-\qquad 
-\text{payoff}=\text{reservation fee}-\Phi^*(v_i)\ge0\qquad 
-\underbrace{Q^*(v_i)=L\tilde Q^*(v_i)=L\dfrac{\overline v-\pi}{2(M-1)}\big(e^{(M-1)(v_i-\underline v_M)/(\overline v-\pi)}-1\big)}_{\text{trading volume}}
-$$
-</div>
-</div>
-
----
-layout: two-cols-header
----
-
-# More competition raises the cutoff
-
-::left::
-
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: -8px 22px 2px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
-
-**Propositions.** As $M$ rises
-
-- the **cutoff** increases and $\quad \underline v_M \xrightarrow[M\to\infty]{}\;\overline v.$
-
-<div v-click>
-
-- the end-of-block price and aggregate informed volume  **increase**
-$$\small
-\underbrace{\frac{M(\underline v_M-\pi)}{M-1}}_{\text{end-of-block price}}\;\xrightarrow[M\to\infty]{}\;\overline v-\pi 
-\qquad\qquad
-\underbrace{L\times\frac{M(\underline v_M-\pi)}{2(M-1)}}_{\text{aggregate informed volume}}\;\xrightarrow[M\to\infty]{}\;L\,\frac{\overline v-\pi}{2}
-$$
-</div>
-
-<div v-click>
-
-- equilibrium liquidity $L^\star(M)$ is decreasing in $M$
-  
-  $$L^\star(M)  \xrightarrow[M\to\infty]{} \quad \underbrace{\frac{8\,\pi\,N}{3\,(\overline{v}-\pi)^2}}_\text{ratio of revenue to adverse selection}-\underbrace{\theta}_\text{price sensitivity}$$
-
-</div>
-<div v-click>
-
-$\implies$ more competition $\to$ less information + price bias $\to$ less liquidity
-
-</div>
-</div>
 <br>
 <br>
 
-::right::
+<v-click>
 
-<div style="margin: 6px auto 0; max-width: 100%;">
+### <u>Trader $i$ chooses volume $Q_i$, anticipating the fee </u>
+<br>
 
-<svg viewBox="0 0 600 480" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; display: block;">
-  <defs><marker id="arrM" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#dc2626"/></marker></defs>
-  <line x1="75" y1="410" x2="585" y2="410" stroke="#444" stroke-width="1.2"/>
-  <line x1="75" y1="30" x2="75" y2="410" stroke="#444" stroke-width="1.2"/>
-  <text x="82" y="26" text-anchor="start" style="font-size: 21px;" fill="#444">density</text>
-  <text x="330" y="467" text-anchor="middle" style="font-size: 21px;" fill="#444">valuation</text>
-  <text x="75" y="435" text-anchor="middle" style="font-size: 21px;" fill="#444">0</text>
-  <text x="575" y="435" text-anchor="middle" style="font-size: 21px;" fill="#444">v̄</text>
-  <path d="M 325 410 L 325 318 L 375 351 L 425 377 L 475 395 L 525 406 L 575 410 Z" fill="#1e40af" fill-opacity="0.16"/>
-  <path d="M 75 40 L 125 110 L 175 173 L 225 229 L 275 277 L 325 318 L 375 351 L 425 377 L 475 395 L 525 406 L 575 410" stroke="#1e40af" stroke-width="2.5" fill="none"/>
-  <line x1="325" y1="318" x2="325" y2="410" stroke="#dc2626" stroke-width="2"/>
-  <text x="325" y="435" text-anchor="middle" style="font-size: 21px;" fill="#dc2626">v<tspan baseline-shift="sub" style="font-size: 14px;">M</tspan></text>
-  <line x1="405" y1="367" x2="405" y2="410" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,4"/>
-  <line x1="333" y1="392" x2="397" y2="392" stroke="#dc2626" stroke-width="2" marker-end="url(#arrM)"/>
-  <text x="365" y="380" text-anchor="middle" style="font-size: 23px; font-style: italic;" fill="#dc2626">M ↑</text>
-  <text x="455" y="288" text-anchor="middle" style="font-size: 21px;" fill="#1e40af">active traders</text>
-</svg>
+$$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2/L}_{\text{slippage}}-\underbrace{\Phi^\star(Q_i)}_{\text{priority fee}}-\underbrace{\dfrac{2Q_i}{L}(M-1)\!\int_{v_i}^{\overline v}\! x\,dF(x)}_{\text{impact of trades with better queue positions}}\ \Bigg\}$$
 
-</div>
+- profit incentivises **higher** volume $Q_i$
+- slippage, fees, and impact incentivise **lower**  $Q_i$
+
+</v-click>
 
 ---
 
-# Result 2: information paradox
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: -12px 22px 2px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
 
-**Proposition.** The equilibrium number of informed traders is the largest $M$ such that
-$$\small
-\underbrace{C}_\text{information cost}\;\le\;\underbrace{L^\star(M^\star)\!\int_{\underline v_M}^{\overline v}\!\tilde Q^*(v)^2\big[\,1-2(M^\star-1)(1-F(v))\,\big]\,dF(v)}_{\text{ex-ante payoff per informed trader}}
-$$
 
+<div class="prop-box">
+
+#### Equilibrium volume
+
+- increasing in valuation $v$ and liquidity $L$
+- decreasing in number of traders $M$
+
+<br>
 </div>
 
 <br><br>
 
--  **more noise trading** ($N\uparrow$) and **cheaper information** ($C\downarrow$) raise the equilibrium $M^\star$
-
-- paid-priority
-discriminatory pricing  $\implies$  **less information** revealed and biased prices
-
-
-
----
-
-# Result 3: block time impairs efficiency
-
-
-
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: 8px 22px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
-
-**Assumption.** Longer block time $T$<br>
-(i) widens the valuation distribution (FOSD sense) <br> 
-(ii) shrinks price-sensitive uninformed demand
-
-</div>
-<br>
-
 <v-click>
 
-- the cutoff $\underline v_M(T)$ increases <br><br>
-- the end-of-block price $\overline v(T)-\pi$ increases<br><br>
-- sustainable liquidity $\;L^\infty(T) = \dfrac{8\,\pi\,N(T)}{3\,(\overline v(T)-\pi)^2} - \theta\;$ is **decreasing in $T$**
-<br>
-<br>
+<div class="prop-box">
 
-- beyond a critical block time $T$, the **market collapses**
+
+#### Endogenous selection
+
+- Only aggressive traders trade: there is a participation cutoff $\underline v(M)$
+
+
+
+- the cutoff **rises with competition** and $\ \lim_{M\to\infty}\underline v(M)=\overline v$
+
+</div>
 
 </v-click>
 
 
 ---
 
-# Some empirics
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
-- only high-valuation traders participate
 
- per-transaction size $\approx$ \$70k on Uniswap v3 vs $\approx$ \$1.2k on Binance (same pair)
+### <u>Consequences</u>
+- Information is **truncated** as competition increases
 
+<br>
 <v-click>
 
-- higher valuations $\to$ larger volumes and higher fees $\to$ better queue positions:
-
-![PF1](./images/tradingvolumes.png){style="width: 70%; display: block; margin: 6px auto 0;"}
-<div style="text-align:center;"><font size="2">Average absolute trading volume vs queue position (Uniswap v3)</font></div>
+- end-of-block price is pushed to extremes as competition increases 
+$$\quad \lim_{M\to\infty}\underbrace{\dfrac{M(\underline v(M)-\pi)}{M-1}}_{\text{end-of-block price}\ }\ \ =\ \ \overline v-\pi$$
 
 </v-click>
-
-
-
-<!--
-
-# Result 2: competition reduces liquidity
-
-
-
-<div style="border: 1.5px solid #1e40af; border-radius: 6px; padding: -12px 22px 2px; background: #f8fafc; margin: 6px auto 0; max-width: 940px;">
-
-**Proposition.**  equilibrium liquidity $L^\star(M)$ is decreasing in $M$, increasing in noise  volume $\pi\,N$, decreasing in price sensitivity $\theta$
-$$\small
-L^\star(M)  \xrightarrow[M\to\infty]{} \quad \underbrace{\frac{8\,\pi\,N}{3\,(\overline{v}-\pi)^2}}_\text{ratio of revenue to adverse selection}-\underbrace{\theta}_\text{price sensitivity}
-$$
-
-Condition for markets to operate: $\qquad\qquad \text{adverse selection from }M\text{ traders} < \pi \, N / \theta$
-
-</div>
-
-<v-click>
-
-### <u>Traditional markets</u>: liquidity improves after early rounds
-### <u>Blockchain markets</u>: liquidity supply single decision
-
-
-<div style="margin: 4px auto 0; max-width: 720px;">
-
-<svg viewBox="0 0 800 195" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; display: block;">
-
-  <line x1="40" y1="50" x2="790" y2="50" stroke="#333" stroke-width="2"/>
-
-  <text x="48" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="48" cy="36" r="3.5" fill="#333"/>
-  <line x1="48" y1="40" x2="48" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <text x="152" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="152" cy="36" r="3.5" fill="#333"/>
-  <line x1="152" y1="40" x2="152" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <text x="256" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="256" cy="36" r="3.5" fill="#333"/>
-  <line x1="256" y1="40" x2="256" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <text x="360" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="360" cy="36" r="3.5" fill="#333"/>
-  <line x1="360" y1="40" x2="360" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <text x="464" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="464" cy="36" r="3.5" fill="#333"/>
-  <line x1="464" y1="40" x2="464" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <text x="568" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="568" cy="36" r="3.5" fill="#333"/>
-  <line x1="568" y1="40" x2="568" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <text x="672" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="672" cy="36" r="3.5" fill="#333"/>
-  <line x1="672" y1="40" x2="672" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <text x="776" y="22" text-anchor="middle" style="font-size: 9px;" fill="#444">MM ↔ IT/NT</text>
-  <circle cx="776" cy="36" r="3.5" fill="#333"/>
-  <line x1="776" y1="40" x2="776" y2="50" stroke="#333" stroke-width="1.5"/>
-
-  <line x1="40" y1="70" x2="40" y2="180" stroke="#444" stroke-width="1"/>
-  <line x1="40" y1="180" x2="790" y2="180" stroke="#444" stroke-width="1"/>
-  <text x="6" y="76" style="font-size: 9px;" fill="#444">liquidity</text>
-  <text x="40" y="192" text-anchor="start" style="font-size: 9px;" fill="#444">t = 0</text>
-  <text x="790" y="192" text-anchor="end" style="font-size: 9px;" fill="#444">t = T</text>
-
-  <path d="M 40 165 L 48 165 L 48 155 L 152 155 L 152 145 L 256 145 L 256 135 L 360 135 L 360 125 L 464 125 L 464 115 L 568 115 L 568 105 L 672 105 L 672 95 L 776 95 L 776 85 L 790 85"
-        stroke="#1e40af" stroke-width="2" fill="none"/>
-  <text x="500" y="80" text-anchor="start" style="font-size: 10px;" fill="#1e40af">traditional market: multiple rounds, depth improves</text>
-
-  <line x1="40" y1="172" x2="790" y2="172" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="785" y="168" text-anchor="end" style="font-size: 10px;" fill="#dc2626">blockchain: single round, depth flat from t = 0</text>
-</svg>
-
-</div>
-</v-click>
--->
 
 ---
-section: conclusion
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+
+### <u>Liquidity provision is competitive</u>
+
+$$\underbrace{\pi N\,\dfrac{L}{L+\theta}}_{\text{fee revenue from noise demand}}\qquad=\qquad \underbrace{L\,A(M)}_{\text{adverse-selection}}$$
+
+- deeper liquidity $L$ earns more fees 
+- deeper liquidity $L$ scales up  informed positions → more adverse selection
+- more informed traders  → more adverse selection
+
+---
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+
+
+
+<div class="prop-box">
+
+### Equilibrium liquidity
+
+$$L^\star(M)=\underbrace{\frac{\pi N}{A(M)}}_{\text{noise revenue / adverse selection}}\ -\ \underbrace{\theta}_{\text{demand price-sensitivity}}$$
+
+- $L^\star(M)$ decreases in $M$ $\rightarrow$ competition **reduces liquidity** (Holden–Subrahmanyam, 1992, JF)
+
+- market viability condition (Glosten–Milgrom, 1985, JFE) 
+
+$$A(M)\ \le\ \dfrac{\pi N}{\theta}$$
+
+</div>
+
+
+
+
+---
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
+
+### Before seeing valuations, a trader pays $C$ iff expected profit covers it
+
+$$\boxed{\underbrace{H(M)}_{\text{ex-ante profit per informed trader}}=L^\star(M)\!\int_{\underline v(M)}^{\overline v}\!\tilde Q(v)^2\,\underbrace{\big[\,1-2(M-1)(1-F(v))\,\big]}_{\text{own profit}\ - \ \text{losses due to competitors}}\,dF(v)}$$
+
+<br><br>
+
+<div class="prop-box">
+
+### Equilibrium number of traders
+- $M^\star$ increases in noise $N$ 
+- $M^\star$ decreases in information cost $C$
+
+</div>
+
+---
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
+
+### The information paradox
+
+$$\underbrace{C\downarrow\ \ }_{\text{cheaper info}}\ \Rightarrow\ \underbrace{M\uparrow}_\text{more traders}\ \Rightarrow\ \underbrace{\underline v(M)\uparrow\ }_\text{higher cutoff} \Rightarrow\ \underbrace{\text{less information revealed, prices more biased}}_{\text{efficiency deteriorates}}$$
+
+---
+
+# Block time
+
+### <u>Block time $T$: length of a trading round</u>
+- time needed to run **consensus** (Ethereum $\approx 12$s)
+- a primitive **specific to blockchains**
+
+<br>
+
+<v-click>
+
+### <u>A longer block reshapes two primitives</u>
+- **valuations dispersion** 
+  - more time $\Rightarrow$ larger price moves $\Rightarrow$  extreme valuations  more likely
+  - execution over a long block is riskier for the uninformed $\Rightarrow$ **noise trading thins**
+
+</v-click>
+
+---
+
+# Block time
+
+### <u>A longer block amplifies every friction</u>
+- the participation cutoff $\underline v(T)$ **rises**: information is more truncated 
+<v-click>
+
+- the end-of-block price is pushed **further to the extreme**
+<v-click>
+
+- **liquidity** and **entry** $M^\star$ both fall
+<v-click>
+
+- **beyond a critical block time the market shuts down**
+
+
+
+<br>
+
+<v-click>
+
+### <u>Security vs. market efficiency</u>
+- longer blocks **secure consensus** and preserve **decentralization**
+- yet they **undermine the market**
+
+</v-click>
+</v-click>
+</v-click>
+</v-click>
+
+---
+section: Conclusion
 layout: end
 ---
 
