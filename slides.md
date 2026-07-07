@@ -40,19 +40,43 @@ mdc: true
 
 ---
 section: Blockchain markets
+layout: two-cols-header
 ---
 
 # Blockchains
 
-### A distributed, digital, permissionless, tamper-resistant ledger: stores and executes transactions
-- blockchains replace *institutional trust* with consensus: *algorithmic, publicly verifiable rules*
-
+### A distributed, digital, permissionless ledger that stores and executes transactions
 <v-click at="1">
 
-- consensus requires **time** to secure the chain $\implies$ **block time**
+- blockchains replace *institutional trust* with consensus: *algorithmic rules*
+- consensus requires **time** to secure the chain $\implies$ blockchain is updated periodically $\implies$ **block time**
 
 </v-click>
 
+
+
+::left::
+
+<v-click at="2">
+
+<br>
+<br>
+<br>
+
+### The **blockchain round** (*slot*) 
+- orders collect during block time (≈12s)
+</v-click>
+<v-click at="3">
+
+- network communications to validate transactions
+</v-click>
+<v-click at="4">
+
+- transactions are executed
+</v-click>
+
+
+::right::
 
 <div style="display:flex; justify-content:center; margin-top: 8px;">
 <v-switch at="0">
@@ -92,8 +116,8 @@ section: Blockchain markets
 
 # Blockchains
 
-### A distributed, digital, permissionless, tamper-resistant ledger: stores and executes transactions
-- consensus requires economic **incentives** to compensate validators $\implies$ **priority fees**
+### A distributed, digital, permissionless ledger that stores and executes transactions
+- consensus requires economic **incentives** $\implies$ **priority fees**
 
 <div style="display:flex; justify-content:center; margin-top: 8px;">
 
@@ -111,20 +135,43 @@ layout: two-cols-header
 
 - <u>Traditional markets</u>: continuous trading, cleared over multiple short rounds
 
+<br>
+<br>
+
 ![continuous_trading](./images/continuous_trading.gif){style="height: 250px;"}
 
 ::right::
 
-<v-click>
 
-- <u>Blockchain markets</u>: liquidity is in a smart contract, orders are sequenced by priority fee
+- <u>Blockchain markets</u>: trading in a blockchain round
 
-![blockchain_trading](./images/blockchain_trading.gif){style="height: 250px;"}
+<v-clicks at="1">
 
-<br>
-<br>
+1. liquidity provider deposits liquidity in a smart contract
+2. traders submit transactions
+3. block is created and market cleared against liquidity pool
 
-</v-click>
+</v-clicks>
+
+<div style="display:flex; justify-content:center; margin-top:8px;">
+<v-switch at="1">
+<template #1>
+
+![bc](./images/bc_1.gif){style="height: 220px;"}
+
+</template>
+<template #2>
+
+![bc](./images/bc_2.gif){style="height: 220px;"}
+
+</template>
+<template #3>
+
+![bc](./images/bc_3.gif){style="height: 220px;"}
+
+</template>
+</v-switch>
+</div>
 
 ---
 
@@ -609,6 +656,10 @@ $$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2
 
 
 ### <u>Consequences</u>
+
+<div style="display:flex; gap:26px; align-items:flex-start; margin-top:6px;">
+<div style="flex:1; min-width:0;">
+
 - Information is **truncated** as competition increases
 
 <br>
@@ -618,6 +669,32 @@ $$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2
 $$\quad \lim_{M\to\infty}\underbrace{\dfrac{M(\underline v(M)-\pi)}{M-1}}_{\text{end-of-block price}\ }\ \ =\ \ \overline v-\pi$$
 
 </v-click>
+
+</div>
+<div style="flex:1; min-width:0; display:flex; justify-content:center; align-items:flex-start;">
+
+<div style="max-width:410px; width:100%;">
+<svg viewBox="0 0 600 480" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: auto; display: block;">
+  <defs><marker id="arrM" markerWidth="7" markerHeight="7" refX="5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#dc2626"/></marker></defs>
+  <line x1="75" y1="410" x2="585" y2="410" stroke="#444" stroke-width="1.2"/>
+  <line x1="75" y1="30" x2="75" y2="410" stroke="#444" stroke-width="1.2"/>
+  <text x="82" y="26" text-anchor="start" style="font-size: 21px;" fill="#444">density</text>
+  <text x="330" y="467" text-anchor="middle" style="font-size: 21px;" fill="#444">valuation</text>
+  <text x="75" y="435" text-anchor="middle" style="font-size: 21px;" fill="#444">0</text>
+  <text x="575" y="435" text-anchor="middle" style="font-size: 21px;" fill="#444">v&#772;</text>
+  <path d="M 325 410 L 325 318 L 375 351 L 425 377 L 475 395 L 525 406 L 575 410 Z" fill="#334155" fill-opacity="0.15"/>
+  <path d="M 75 40 L 125 110 L 175 173 L 225 229 L 275 277 L 325 318 L 375 351 L 425 377 L 475 395 L 525 406 L 575 410" stroke="#334155" stroke-width="2.5" fill="none"/>
+  <line x1="325" y1="318" x2="325" y2="410" stroke="#dc2626" stroke-width="2"/>
+  <text x="325" y="435" text-anchor="middle" style="font-size: 21px;" fill="#dc2626"><tspan style="text-decoration: underline;">v</tspan>(M)</text>
+  <line x1="405" y1="367" x2="405" y2="410" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <line x1="333" y1="392" x2="397" y2="392" stroke="#dc2626" stroke-width="2" marker-end="url(#arrM)"/>
+  <text x="365" y="380" text-anchor="middle" style="font-size: 23px; font-style: italic;" fill="#dc2626">M &#8593;</text>
+  <text x="455" y="288" text-anchor="middle" style="font-size: 21px;" fill="#334155">active traders</text>
+</svg>
+</div>
+
+</div>
+</div>
 
 ---
 
