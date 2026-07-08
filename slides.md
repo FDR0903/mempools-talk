@@ -49,7 +49,7 @@ layout: two-cols-header
 <v-click at="1">
 
 - blockchains replace *institutional trust* with consensus: *algorithmic rules*
-- consensus requires **time** to secure the chain $\implies$ blockchain is updated periodically $\implies$ **block time**
+
 
 </v-click>
 
@@ -63,7 +63,7 @@ layout: two-cols-header
 <br>
 <br>
 
-### The **blockchain round** (*slot*) 
+### **Blockchain round** (*slot*) 
 - orders collect during block time (≈12s)
 </v-click>
 <v-click at="3">
@@ -74,7 +74,10 @@ layout: two-cols-header
 
 - transactions are executed
 </v-click>
+<v-click at="5">
 
+$\implies$ consensus requires **time** to secure the chain: **block time**
+</v-click>
 
 ::right::
 
@@ -101,6 +104,11 @@ layout: two-cols-header
 
 </template>
 <template #5>
+
+![block4](./images/block4.png){style="height: 250px;"}
+
+</template>
+<template #6>
 
 ![block4](./images/block4.png){style="height: 250px;"}
 
@@ -143,9 +151,13 @@ layout: two-cols-header
 ::right::
 
 
-- <u>Blockchain markets</u>: trading in a blockchain round
+<v-click>
 
-<v-clicks at="1">
+- <u>Blockchain markets</u>: blockchain round
+
+</v-click>
+
+<v-clicks at="2">
 
 1. liquidity provider deposits liquidity in a smart contract
 2. traders submit transactions
@@ -154,7 +166,7 @@ layout: two-cols-header
 </v-clicks>
 
 <div style="display:flex; justify-content:center; margin-top:8px;">
-<v-switch at="1">
+<v-switch at="2">
 <template #1>
 
 ![bc](./images/bc_1.gif){style="height: 220px;"}
@@ -179,28 +191,22 @@ layout: two-cols-header
 
 
 ### Blockchains promise to coordinate economic activity at scale *without intermediaries*
-- trust in institutions replaced by trust in **consensus**
 
 <br>
 <v-click>
 
 ### Financial markets are a fundamental test
+- the role of DEXs is likely to grow with **asset tokenization**, **central bank digital currencies**, and **cross-border settlement**
 
 <br>
 <v-click>
 
 ### This paper
 - Can the blockchain host *viable* markets?
-- consensus imposes two frictions: **discrete clearing** (block time) and **paid-priority**<br>
-$\implies$ what does **consensus** imply for on-chain markets ?<br> 
-$\implies$  is the blockchain a good **venue for price formation**?
 
-<br>
 <v-click>
 
-
-- how ?<br>
-$\implies$ a model of a trading round within a **block**
+- how ? a model to understand market outcomes of a **blockchain round** of trading
 
 </v-click>
 </v-click>
@@ -274,10 +280,10 @@ class: fact-c
 
 # Fact 1 / 4 -- informed flow arrives just before block creation
 
-Traders who submit high priority fees submit **late** 
-$\ \implies\,$ Competition among informed traders is effectively **blind**
+### Traders who submit high priority fees submit **late** 
+- Competition among informed traders is effectively **blind**
 
-<br>
+
 
 <div style="display:flex; justify-content:center;">
 
@@ -298,10 +304,11 @@ class: fact-c
 # Fact 2 / 4 -- the largest trades come first
 
 
-When price formation happens on-chain: <br>
-absolute volume **decreases** with queue position
-$\ \implies\,$ aggressive, high-volume traders secure the earliest positions
-<br><br>
+### When price formation happens on-chain: 
+- absolute volume **decreases** with queue position
+<!--$\ \implies\,$ aggressive, high-volume traders secure the earliest positions-->
+<br>
+
 <div style="display:flex; justify-content:center;">
 
 ![abs](./images/tradingvolumes_abs.png){style="height: 190px; margin-top: 8px;"}
@@ -319,27 +326,19 @@ class: fact-c
 
 # Fact 3 / 4 -- top of the block is one-sided
 
+### Structure of a block
 - Early trades take the same direction
 - Back of block $\to$ two-sided **noise** <br><br>
-$\implies\,$ informed traders do not hide with noise
 
-<br><br>
+<br>
 
 <div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin-top:8px;">
 <div style="text-align:center;">
 
 ![signed](./images/tradingvolumes_signed.png){style="height: 205px;"}
 
-
 </div>
 
-<v-click>
-<div style="text-align:center;">
-
-![pricemove](./images/pricemove.png){style="height: 205px;"}
-
-</div>
-</v-click>
 </div>
 
 
@@ -351,11 +350,9 @@ class: fact-c
 
 # Fact 4 / 4: prices overshoot on the blockchain
 
-higher standard deviation (all 8 assets) and 99th percentile (most) of the absolute one-block return
-<br> $\implies$ price changes in blockchain markets are more extreme
-
-<br>
-
+### When price formation is on-chain and off-chain
+- price changes in blockchain markets are more extreme
+<br><br>
 <div style="display:flex; justify-content:center; margin-top:10px;">
 <table class="overshoot-tbl" style="font-size:0.72em;">
 <thead>
@@ -381,7 +378,7 @@ higher standard deviation (all 8 assets) and 99th percentile (most) of the absol
 </table>
 </div>
 
-<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 trades · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
+<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transations · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
 
 <br>
 
