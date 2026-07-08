@@ -507,6 +507,33 @@ $$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\t
 </v-click>
 </v-click>
 
+---
+
+# Competition among informed traders (stage 3)
+
+
+### <u>Setup</u>
+- sealed-bid auction: $M$ buying traders with private valuations $\,v_i \in [0, \overline  v] \sim F$
+- DEX liquidity $L$
+
+<v-click>
+<br>
+
+###  <u>Expected wealth</u>
+$$
+\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\left(\dfrac{Q_i}{L}+\pi\right)}_{\text{slippage \& DEX fee}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ Q_i\times\underbrace{\dfrac{2}{L}\sum_{j=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(j)}<\Phi_i<\Phi_{(j+1)}}\,\Delta_{(j+1:M-1)}\big]}_{\text{adverse impact of competitors}} - \underbrace{C}_{\text{info. cost}}}
+$$
+
+<v-click>
+
+###  <u>Objective</u>
+$$
+\boxed{\sup_{\Phi_i, Q_i}\mathbb E_i[W_i]}
+$$
+
+</v-click>
+</v-click>
+
 
 ---
 section: Results
@@ -523,12 +550,15 @@ layout: two-cols-header
 <v-click>
 <br>
 
-###  <u>Expected wealth</u>
 
 
-$$
-\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\big(\dfrac{Q_i}{L}+\pi\big)}_{\text{slippage \& DEX fee}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ \underbrace{\dfrac{2Q_i}{L}\sum_{j=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(j)}<\Phi_i<\Phi_{(j+1)}}\,\Delta_{(j+1:M-1)}\big]}_{\text{adverse impact of competitors}} - \underbrace{C}_{\text{information cost}}}
-$$
+### <u>Trader $i$ chooses the priority fee $\Phi_i$</u>
+
+<br>
+
+$$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\dfrac{2Q_i}{L}\,(M-1)\!\int_0^{\,\Phi^{-1}(\Phi_i)}\! x\,dG(x)}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
+
+- the surplus grows with volume $Q_i$, with the number of competitors $M$, and with thinner liquidity $L$
 
 <div style="margin: 4px 150px 0;">
 <svg viewBox="0 0 600 72" preserveAspectRatio="none" style="width: 100%; height: 70px; display: block;">
@@ -549,29 +579,14 @@ $$
 
 </div>
 
-
 </v-click>
 
-
 ---
-
 
 
 # <span style="font-size:0.56em; font-weight:600;">① priority fees <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
 
-
-### <u>Trader $i$ chooses the priority fee $\Phi_i$</u>
-
-<br>
-
-$$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\dfrac{2Q_i}{L}\,(M-1)\!\int_0^{\,\Phi^{-1}(\Phi_i)}\! x\,dG(x)}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
-
-- the surplus grows with volume $Q_i$, with the number of competitors $M$, and with thinner liquidity $L$
-
-<v-click>
-
-<br><br>
 
 
 <div class="prop-box">
@@ -583,9 +598,6 @@ $$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underb
 
 </div>
 
-
-
-</v-click>
 
 
 ---
