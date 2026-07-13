@@ -274,117 +274,6 @@ layout: two-cols-header
 </div>
 
 ---
-section: Empirical facts
-class: fact-c
----
-
-# Fact 1 / 4 -- informed flow arrives just before block creation
-
-### Traders who submit high priority fees submit **late** 
-- Competition among informed traders is effectively **blind**
-
-
-
-<div style="display:flex; justify-content:center;">
-
-![distribPF](./images/distribPF.png){style="height: 250px; margin-top: 8px;"}
-
-</div>
-
-<div class="fig-cap" style="max-width:4500px;">Priority fee distribution as a function of submission time over a blockchain slot. &nbsp;<br><b>Data</b>: Ethereum public mempool, ≈10 million transactions, 20–21 March 2024 (source: EthPandaOps).</div>
-
-<br>
-
-
-
----
-class: fact-c
----
-
-# Fact 2 / 4 -- the largest trades come first
-
-
-### When price formation happens on-chain: 
-- absolute volume **decreases** with queue position
-<!--$\ \implies\,$ aggressive, high-volume traders secure the earliest positions-->
-<br>
-
-<div style="display:flex; justify-content:center;">
-
-![abs](./images/tradingvolumes_abs.png){style="height: 190px; margin-top: 8px;"}
-
-</div>
-
-<div class="fig-cap" style="max-width:360px;">Distribution of normalized absolute volume as a function of queue position. &nbsp;<b>Data</b>: 75 Uniswap v3 pools whose asset is <i>not</i> on Binance: 317,901 trades in 36,692 blocks, 2021–2026.</div>
-
-<br>
-
-
----
-class: fact-c
----
-
-# Fact 3 / 4 -- top of the block is one-sided
-
-### Structure of a block
-- Early trades take the same direction
-- Back of block $\to$ two-sided **noise** <br><br>
-
-<br>
-
-<div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin-top:8px;">
-<div style="text-align:center;">
-
-![signed](./images/tradingvolumes_signed.png){style="height: 205px;"}
-
-</div>
-
-</div>
-
-
-
-
----
-class: fact-c
----
-
-# Fact 4 / 4: prices overshoot on the blockchain
-
-### When price formation is on-chain and off-chain
-- price changes in blockchain markets are more extreme
-<br><br>
-<div style="display:flex; justify-content:center; margin-top:10px;">
-<table class="overshoot-tbl" style="font-size:0.72em;">
-<thead>
-<tr>
-<th style="text-align:left;">Asset</th>
-<th colspan="2" class="cmid">Blockchain (bp)</th>
-<th colspan="2" class="cmid">Binance (bp)</th>
-</tr>
-<tr>
-<th></th><th>std</th><th>99%</th><th>std</th><th>99%</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>ETH/BTC</td><td><b>7.72</b></td><td><b>30.71</b></td><td>6.00</td><td>23.26</td></tr>
-<tr><td>ETH</td><td><b>8.71</b></td><td><b>29.86</b></td><td>6.87</td><td>26.10</td></tr>
-<tr><td>BTC</td><td><b>24.94</b></td><td><b>89.33</b></td><td>17.83</td><td>69.27</td></tr>
-<tr><td>LINK</td><td><b>27.35</b></td><td><b>79.51</b></td><td>13.45</td><td>48.35</td></tr>
-<tr><td>UNI</td><td><b>29.41</b></td><td><b>81.29</b></td><td>18.29</td><td>78.74</td></tr>
-<tr><td>APE</td><td><b>36.34</b></td><td>99.50</td><td>28.63</td><td><b>108.52</b></td></tr>
-<tr><td>MATIC</td><td><b>43.07</b></td><td><b>99.61</b></td><td>18.77</td><td>73.19</td></tr>
-<tr><td>1INCH</td><td><b>84.11</b></td><td><b>182.40</b></td><td>34.84</td><td>119.70</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transations · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
-
-<br>
-
-
-
----
 section: Model
 ---
 
@@ -508,31 +397,72 @@ $$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\t
 </v-click>
 
 ---
+class: fact-c
+---
 
-# Competition among informed traders (stage 3)
+# Competition among informed traders
+
+### Informed flow arrives just before block creation
+
+- Traders who submit high priority fees submit **late** 
+- Competition among informed traders is effectively **blind**
+
+
+<div style="display:flex; justify-content:center;">
+
+![distribPF](./images/distribPF.png){style="height: 250px; margin-top: 8px;"}
+
+</div>
+
+<div class="fig-cap" style="max-width:4500px;">Priority fee distribution as a function of submission time over a blockchain slot. &nbsp;<br><b>Data</b>: Ethereum public mempool, ≈10 million transactions, 20–21 March 2024 (source: EthPandaOps).</div>
+
+<br>
+
+---
+
+# Competition among informed traders
 
 
 ### <u>Setup</u>
 - sealed-bid auction: $M$ buying traders with private valuations $\,v_i \in [0, \overline  v] \sim F$
 - DEX liquidity $L$
 
-<v-click>
+<div v-click="1">
 <br>
 
 ###  <u>Expected wealth</u>
+
+</div>
+
+<div style="display:grid; align-items:start;">
+
+<div style="grid-area:1/1;" v-click="[1,2]">
+
 $$
-\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\left(\dfrac{Q_i}{L}+\pi\right)}_{\text{slippage \& DEX fee}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ Q_i\times\underbrace{\dfrac{2}{L}\sum_{j=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(j)}<\Phi_i<\Phi_{(j+1)}}\,\Delta_{(j+1:M-1)}\big]}_{\text{adverse impact of competitors}} - \underbrace{C}_{\text{info. cost}}}
+\boxed{\mathbb{E}_{i}\left[W_{i}\right]= \sum_{n=0}^{M-1}\mathbb{E}_{i}\left[\mathbf{1}_{\Phi_{(n)}<\Phi_{i}<\Phi_{(n+1)}}\,W_{i,(n)}\right]}
 $$
 
-<v-click>
+</div>
+
+<div style="grid-area:1/1;" v-click="2">
+
+$$
+\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\left(\dfrac{Q_i}{L}+\pi\right)}_{\text{slippage \& DEX fee}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ Q_i\times\underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{adverse impact of competitors}} - \underbrace{C}_{\text{info. cost}}}
+$$
+
+</div>
+
+</div>
+
+<div v-click="3">
 
 ###  <u>Objective</u>
+
 $$
-\boxed{\sup_{\Phi_i, Q_i}\mathbb E_i[W_i]}
+\boxed{\sup_{\Phi_i, Q_i}\mathbb E_i[W_i] =\sup_{Q_i} \sup_{\Phi_i}\mathbb E_i[W_i]}
 $$
 
-</v-click>
-</v-click>
+</div>
 
 
 ---
@@ -544,26 +474,47 @@ layout: two-cols-header
 
 
 ### <u>Setup</u>
-- $M$ buying traders with private volumes $\,Q_i \in [0, \overline  Q] \sim G$
+- Exogenous private volumes distribution $Q \in [0, \overline  Q] \sim G$
+- $M$ buying traders
 - DEX liquidity $L$
 
-<v-click>
+
 <br>
 
+
+
+::left::
+
+<v-click>
 
 
 ### <u>Trader $i$ chooses the priority fee $\Phi_i$</u>
 
 <br>
 
-$$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\dfrac{2Q_i}{L}\,(M-1)\!\int_0^{\,\Phi^{-1}(\Phi_i)}\! x\,dG(x)}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
+$$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\frac{2\,Q_i}{L}\,\sum_{n=0}^{M-1}\mathbb{E}_{i}\left[ \mathbf{1}_{\{\Phi_{(n)}<\Phi_{i}<\Phi_{(n+1)}\}}\,\Delta_{(1:n)}\right]}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
 
 - the surplus grows with volume $Q_i$, with the number of competitors $M$, and with thinner liquidity $L$
 
-<div style="margin: 4px 150px 0;">
-<svg viewBox="0 0 600 72" preserveAspectRatio="none" style="width: 100%; height: 70px; display: block;">
-  <path d="M 0 64 L 35 64 L 35 51 L 105 51 L 105 39 L 175 39 L 175 28 L 245 28 L 245 18 L 600 18" stroke="#334155" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
+</v-click>
+
+::right::
+
+<br>
+<br>
+
+<v-click at="1">
+
+<div style="margin: 4px 30px 0;">
+<svg viewBox="0 0 600 100" preserveAspectRatio="none" style="width: 100%; height: 94px; display: block;">
+  <path d="M 175 58 L 175 44 L 245 44 L 245 30 L 560 30 L 560 58 Z" fill="#334155" fill-opacity="0.14"/>
+  <path d="M 0 90 L 35 90 L 35 74 L 105 74 L 105 58 L 175 58 L 175 44 L 245 44 L 245 30 L 600 30" stroke="#334155" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/>
+  <line x1="165" y1="58" x2="560" y2="58" stroke="#dc2626" stroke-width="1" stroke-dasharray="5 3" vector-effect="non-scaling-stroke"/>
+  <line x1="165" y1="60" x2="165" y2="100" stroke="#dc2626" stroke-width="0.8" stroke-dasharray="2 2" vector-effect="non-scaling-stroke"/>
+  <circle cx="165" cy="58" r="4" fill="#dc2626"/>
   <text x="4" y="12" style="font-size: 8px;" fill="#444">price</text>
+  <text x="150" y="50" text-anchor="middle" style="font-size: 8px; font-weight: 700;" fill="#dc2626">trader i</text>
+  <text x="378" y="46" text-anchor="middle" style="font-size: 8px; font-weight: 700;" fill="#334155">surplus = avoided impact</text>
 </svg>
 
 <div style="position: relative; border: 1.5px solid #4b5563; border-radius: 4px; padding: 7px 0 3px; margin-top: 1px;">
@@ -588,17 +539,46 @@ $$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underb
 
 
 
+<br><br>
+
+$$
+\Phi^\star\left(Q_{i}\right)=\frac{2}{L}\left(M-1\right)\int_{0}^{Q_{i}}x^{2}\,dG\left(x\right)
+$$
+
+
+<br><br><br>
 
 <div class="prop-box">
 
 ### Equilibrium fee
 
-1. larger volume $Q$ $\Rightarrow$ larger fee $\Phi^\star(Q)$
-2. priority fees increase with **competition** $M$ and **fall with liquidity** $L$
+1. larger volume $Q_i$ $\Rightarrow$ larger fee $\Phi^\star(Q_i)$
+2. priority fees **increase with competition** $M$ 
+3. priority fees **decrease with liquidity** $L$
 
 </div>
 
+---
+class: fact-c
+---
 
+# <span style="font-size:0.56em; font-weight:600;">① priority fees <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+
+
+### When price formation happens on-chain: 
+- absolute volume **decreases** with queue position
+<!--$\ \implies\,$ aggressive, high-volume traders secure the earliest positions-->
+<br>
+
+<div style="display:flex; justify-content:center;">
+
+![abs](./images/tradingvolumes_abs.png){style="height: 190px; margin-top: 8px;"}
+
+</div>
+
+<div class="fig-cap" style="max-width:360px;">Distribution of normalized absolute volume as a function of queue position. &nbsp;<b>Data</b>: 75 Uniswap v3 pools whose asset is <i>not</i> on Binance: 317,901 trades in 36,692 blocks, 2021–2026.</div>
+
+<br>
 
 ---
 
@@ -616,7 +596,7 @@ $$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underb
 ### <u>Trader $i$ chooses volume $Q_i$, anticipating the fee </u>
 <br>
 
-$$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2/L}_{\text{slippage}}-\underbrace{\Phi^\star(Q_i)}_{\text{priority fee}}-\underbrace{\dfrac{2Q_i}{L}(M-1)\!\int_{v_i}^{\overline v}\! x\,dF(x)}_{\text{impact of trades with better queue positions}}\ \Bigg\}$$
+$$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i\,v_i}_{\text{profit}}-\underbrace{Q_i\left(Q_i/L+\pi\right)}_{\text{slippage}}-\underbrace{\Phi^\star(Q_i)}_{\text{priority fee}}-\underbrace{\dfrac{2Q_i}{L}(M-1)\!\int_{v_i}^{\overline v}\! x\,dF(x)}_{\text{impact of trades with better queue positions}}\ \Bigg\}$$
 
 - profit incentivises **higher** volume $Q_i$
 - slippage, fees, and impact incentivise **lower**  $Q_i$
@@ -624,10 +604,21 @@ $$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2
 </v-click>
 
 ---
+layout: two-cols-header
+---
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
+<br>
 
+$$Q^\star(v_i)
+= L \times \frac{1}{2}\Bigg(\underbrace{\left(\overline v - \pi\right)e^{-(M-1)\left(1-F(v_i)\right)}}_{\text{profit net of fees}}
+- \underbrace{\int_{v_i}^{\overline v} e^{-(M-1)\left(F(u)-F(v_i)\right)}\,du}_\text{impact of competing orders} \Bigg)
+$$
+
+<br>
+
+::left::
 
 <div class="prop-box">
 
@@ -639,7 +630,9 @@ $$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2
 <br>
 </div>
 
-<br><br>
+<br>
+
+::right::
 
 <v-click>
 
@@ -650,13 +643,50 @@ $$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2
 
 - Only aggressive traders trade: there is a participation cutoff $\underline v(M)$
 
-
-
-- the cutoff **rises with competition** and $\ \lim_{M\to\infty}\underline v(M)=\overline v$
+- the cutoff **rises with competition** $\ \lim_{M\to\infty}\underline v(M)=\overline v$
 
 </div>
 
 </v-click>
+
+
+---
+class: fact-c
+---
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+
+
+### When price formation is on-chain and off-chain
+- price changes in blockchain markets are more extreme
+<br><br>
+<div style="display:flex; justify-content:center; margin-top:10px;">
+<table class="overshoot-tbl" style="font-size:0.72em;">
+<thead>
+<tr>
+<th style="text-align:left;">Asset</th>
+<th colspan="2" class="cmid">Blockchain (bp)</th>
+<th colspan="2" class="cmid">Binance (bp)</th>
+</tr>
+<tr>
+<th></th><th>std</th><th>99%</th><th>std</th><th>99%</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>ETH/BTC</td><td><b>7.72</b></td><td><b>30.71</b></td><td>6.00</td><td>23.26</td></tr>
+<tr><td>ETH</td><td><b>8.71</b></td><td><b>29.86</b></td><td>6.87</td><td>26.10</td></tr>
+<tr><td>BTC</td><td><b>24.94</b></td><td><b>89.33</b></td><td>17.83</td><td>69.27</td></tr>
+<tr><td>LINK</td><td><b>27.35</b></td><td><b>79.51</b></td><td>13.45</td><td>48.35</td></tr>
+<tr><td>UNI</td><td><b>29.41</b></td><td><b>81.29</b></td><td>18.29</td><td>78.74</td></tr>
+<tr><td>APE</td><td><b>36.34</b></td><td>99.50</td><td>28.63</td><td><b>108.52</b></td></tr>
+<tr><td>MATIC</td><td><b>43.07</b></td><td><b>99.61</b></td><td>18.77</td><td>73.19</td></tr>
+<tr><td>1INCH</td><td><b>84.11</b></td><td><b>182.40</b></td><td>34.84</td><td>119.70</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transations · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
+
 
 
 ---
@@ -674,8 +704,13 @@ $$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i(v_i-\pi)}_{\text{profit}}-\underbrace{Q_i^2
 <br>
 <v-click>
 
-- end-of-block price is pushed to extremes as competition increases 
+
+<div class="prop-box">
+
+End-of-block price is pushed to extremes as competition increases 
 $$\quad \lim_{M\to\infty}\underbrace{\dfrac{M(\underline v(M)-\pi)}{M-1}}_{\text{end-of-block price}\ }\ \ =\ \ \overline v-\pi$$
+
+</div>
 
 </v-click>
 
@@ -705,52 +740,130 @@ $$\quad \lim_{M\to\infty}\underbrace{\dfrac{M(\underline v(M)-\pi)}{M-1}}_{\text
 </div>
 </div>
 
+
+
 ---
-
-# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
-
-### <u>Liquidity provision is competitive</u>
-
-$$\underbrace{\pi N\,\dfrac{L}{L+\theta}}_{\text{fee revenue from noise demand}}\qquad=\qquad \underbrace{L\,A(M)}_{\text{adverse-selection}}$$
-
-- deeper liquidity $L$ earns more fees 
-- deeper liquidity $L$ scales up  informed positions → more adverse selection
-- more informed traders  → more adverse selection
-
+class: fact-c
 ---
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
 
+### Equilibrium structure of a block
+- Early trades take the same direction
+- Back of block $\to$ two-sided **noise** <br>
 
-<div class="prop-box">
+<div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin-top:8px;">
+<div style="text-align:center;">
 
-### Equilibrium liquidity
-
-$$L^\star(M)=\underbrace{\frac{\pi N}{A(M)}}_{\text{noise revenue / adverse selection}}\ -\ \underbrace{\theta}_{\text{demand price-sensitivity}}$$
-
-- $L^\star(M)$ decreases in $M$ $\rightarrow$ competition **reduces liquidity** (Holden–Subrahmanyam, 1992, JF)
-
-- market viability condition (Glosten–Milgrom, 1985, JFE) 
-
-$$A(M)\ \le\ \dfrac{\pi N}{\theta}$$
+![signed](./images/tradingvolumes_signed.png){style="height: 205px;"}
 
 </div>
 
+</div>
+<div class="fig-cap" style="max-width:360px;">Distribution of normalized volume as a function of queue position. &nbsp;<b>Data</b>: 75 Uniswap v3 pools whose asset is <i>not</i> on Binance: 317,901 trades in 36,692 blocks, 2021–2026.</div>
 
 
 
 ---
 
-# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
-### Before seeing valuations, a trader pays $C$ iff expected profit covers it
+### <u>setup</u>
 
-$$\boxed{\underbrace{H(M)}_{\text{ex-ante profit per informed trader}}=L^\star(M)\!\int_{\underline v(M)}^{\overline v}\!\tilde Q(v)^2\,\underbrace{\big[\,1-2(M-1)(1-F(v))\,\big]}_{\text{own profit}\ - \ \text{losses due to competitors}}\,dF(v)}$$
+<div style="float:right; width:300px; margin:4px 18px 6px 24px;">
+<svg viewBox="0 0 360 260" style="width:100%; height:auto; display:block;">
+  <rect x="0" y="0" width="360" height="260" fill="#ffffff"/>
+  <defs>
+    <marker id="ndah" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#000000"/>
+    </marker>
+  </defs>
+  <line x1="48" y1="69.1" x2="330" y2="69.1" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="48" y1="210" x2="340" y2="210" stroke="#000000" stroke-width="1.4" marker-end="url(#ndah)"/>
+  <line x1="48" y1="210" x2="48" y2="34" stroke="#000000" stroke-width="1.4" marker-end="url(#ndah)"/>
+  <path d="M 48.0 210.0 L 61.6 194.3 L 75.2 181.8 L 88.8 171.6 L 102.4 163.0 L 116.0 155.8 L 129.6 149.6 L 143.2 144.3 L 156.8 139.6 L 170.4 135.4 L 184.0 131.7 L 197.6 128.4 L 211.2 125.5 L 224.8 122.8 L 238.4 120.4 L 252.0 118.1 L 265.6 116.1 L 279.2 114.2 L 292.8 112.5 L 306.4 110.9 L 320.0 109.4" fill="none" stroke="#000000" stroke-width="2"/>
+  <text x="40" y="74" text-anchor="end" style="font-size:16px;" fill="#000000">N</text>
+  <text x="334" y="232" text-anchor="middle" style="font-size:16px;" fill="#000000">L</text>
+  <text transform="translate(16 132) rotate(-90)" text-anchor="middle" style="font-size:14px;" fill="#000000">noise demand</text>
+</svg>
+</div>
+
+- price-sensitive zero-mean noise demand, $\text{fee} = 0$
+$$
+N\,\dfrac{L}{L+\theta}
+$$
+<v-click>
+
+$\implies$ deeper liquidity $L$ → more revenue 
+
+<v-click>
+
+- adverse selection losses 
+$$
+L\,A(M)
+$$
+
+$\implies$ deeper liquidity $L$  → more adverse selection
+
+<v-click>
+
+-  liquidity provision is competitive
+    $$\underbrace{\pi N\,\dfrac{L}{L+\theta}}_{\text{fee revenue from noise demand}}\qquad=\qquad \underbrace{L\,A(M)}_{\text{adverse-selection}}$$
+    
+</v-click>
+</v-click>
+</v-click>
+
+---
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+
 
 <br><br>
 
+
+<br>
+
 <div class="prop-box">
+
+
+### Equilibrium liquidity
+
+- number of traders $M$ **decreases liquidity** 
+<br>
+(Holden & Subrahmanyam 1992)
+
+- market viability condition 
+<br>(Glosten & Milgrom 1985, Glosten 1989, Leach & Madhavan 1989) 
+$$A(M)\ \le\ \dfrac{\pi N}{\theta}$$
+
+
+</div>
+
+---
+
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
+
+### <u>setup</u>
+- trader pays $C$ iff expected ex-ante profit covers it
+
+$$C \le  \underbrace{H(M)}_{\text{ex-ante profit per informed trader}}=L^\star(M)\!\int_{\underline v(M)}^{\overline v}\!\tilde Q(v)^2\,\underbrace{\big[\,1-2(M-1)(1-F(v))\,\big]}_{\text{own profit}\ - \ \text{losses due to competitors}}\,dF(v)$$
+
+<v-click>
+<div class="prop-box">
+
+$H(M)$ decreasing in $M$
+
+</div>
+
+<br>
+
+<v-click>
+
+<div class="prop-box">
+
 
 ### Equilibrium number of traders
 - $M^\star$ increases in noise $N$ 
@@ -758,48 +871,39 @@ $$\boxed{\underbrace{H(M)}_{\text{ex-ante profit per informed trader}}=L^\star(M
 
 </div>
 
+</v-click>
+</v-click>
+
 ---
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
 
 ### The information paradox
 
-$$\underbrace{C\downarrow\ \ }_{\text{cheaper info}}\ \Rightarrow\ \underbrace{M\uparrow}_\text{more traders}\ \Rightarrow\ \underbrace{\underline v(M)\uparrow\ }_\text{higher cutoff} \Rightarrow\ \underbrace{\text{less information revealed, prices more biased}}_{\text{efficiency deteriorates}}$$
+$$\underbrace{C\downarrow\ \ }_{\text{cheaper info}}\ \Rightarrow\ \underbrace{M\uparrow}_\text{more traders}\ \Rightarrow\ \underbrace{\underline v(M)\uparrow\ }_\text{higher cutoff} \Rightarrow\ \begin{cases}\text{less information revealed}\\~\\\text{prices more biased}\end{cases}$$
 
 ---
 
 # Block time
 
-### <u>Block time $T$: length of a trading round</u>
-- time needed to run **consensus** (Ethereum $\approx 12$s)
-- a primitive **specific to blockchains**
+### Block time: time needed to run **consensus**
+- longer blocks $\rightarrow$ **security** and **decentralization**
 
 <br>
 
 <v-click>
 
-### <u>A longer block reshapes two primitives</u>
-- **valuations dispersion** 
-  - more time $\Rightarrow$ larger price moves $\Rightarrow$  extreme valuations  more likely
-  - execution over a long block is riskier for the uninformed $\Rightarrow$ **noise trading thins**
+### Block time: length of a trading round
+- extreme valuations  more likely
+- noise trading decraeses
 
-</v-click>
-
----
-
-# Block time
-
-### <u>A longer block amplifies every friction</u>
-- the participation cutoff $\underline v(T)$ **rises**: information is more truncated 
 <v-click>
 
-- the end-of-block price is pushed **further to the extreme**
-<v-click>
+<br>
 
-- **liquidity** and **entry** $M^\star$ both fall
-<v-click>
-
-- **beyond a critical block time the market shuts down**
+### A longer block amplifies every friction
+- the participation cutoff increases, information is more truncated, prices are more extreme
+- less liquidity, market shutdown more likely
 
 
 
@@ -807,21 +911,21 @@ $$\underbrace{C\downarrow\ \ }_{\text{cheaper info}}\ \Rightarrow\ \underbrace{M
 
 <v-click>
 
-### <u>Security vs. market efficiency</u>
-- longer blocks **secure consensus** and preserve **decentralization**
-- yet they **undermine the market**
+<div class="prop-box">
 
-</v-click>
+### Security vs. market efficiency
+
+</div>
+
 </v-click>
 </v-click>
 </v-click>
 
 ---
-section: Conclusion
 layout: end
 ---
 
-**Takeaway:** The features that secure decentralization (**block time** and **paid priority**) undermine the blockchain as a venue for **price formation**.
+**Takeaway:** The features of decentralization undermine blockchains as a venue for **price formation**.
 
 <v-click>
 
