@@ -146,7 +146,7 @@ layout: two-cols-header
 <br>
 <br>
 
-![continuous_trading](./images/continuous_trading.gif){style="height: 250px;"}
+![continuous_trading](./images/continuous_trading_hold.gif){style="height: 250px;"}
 
 ::right::
 
@@ -182,6 +182,11 @@ layout: two-cols-header
 ![bc](./images/bc_3.gif){style="height: 220px;"}
 
 </template>
+<template #4>
+
+![bc](./images/bc_3_last_frame.png){style="height: 220px;"}
+
+</template>
 </v-switch>
 </div>
 
@@ -192,23 +197,22 @@ layout: two-cols-header
 
 ### Blockchains promise to coordinate economic activity at scale *without intermediaries*
 
-<br>
-<v-click>
-
-### Financial markets are a fundamental test
-- the role of DEXs is likely to grow with **asset tokenization**, **central bank digital currencies**, and **cross-border settlement**
+- financial markets are a fundamental test
+- the role of DEXs is likely to grow with
+    - **asset tokenization** $\$$ 5.5T by 2030 (Citi)
+    - **stablecoins** $\$$ 310B today
+    - **FX cross-border settlement**
 
 <br>
 <v-click>
 
 ### This paper
-- Can the blockchain host *viable* markets?
+- can the blockchain host *viable* markets?
 
 <v-click>
 
 - how ? a model to understand market outcomes of a **blockchain round** of trading
 
-</v-click>
 </v-click>
 </v-click>
 
@@ -288,7 +292,7 @@ section: Model
 <div style="display:flex; align-items:stretch; justify-content:center; gap:6px; margin: 14px 24px 0;">
 <div style="flex:1; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
 <div style="font-weight:700; color:#1e293b;">Stage 1 · Entry</div>
-<div style="font-size:0.78em; color:#334155; margin-top:5px;">M traders pay information cost C</div>
+<div style="font-size:0.78em; color:#334155; margin-top:5px;">M traders pay information cost</div>
 </div>
 <div style="align-self:center; color:#94a3b8; font-size:1.5em; padding:0 3px;">→</div>
 <div style="flex:1; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
@@ -299,6 +303,7 @@ section: Model
 <div style="flex:1.35; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
 <div style="font-weight:700; color:#1e293b;">Stage 3 · Trading (PGA)</div>
 <div style="font-size:0.78em; color:#334155; margin-top:5px;">informed traders set priority fees Φ and volumes Q</div>
+<div style="font-size:0.78em; color:#334155; margin-top:4px;">uninformed noise traders pay zero fees</div>
 </div>
 </div>
 
@@ -310,7 +315,10 @@ section: Model
 ### Solved backward
 </div>
 
-<div style="display:flex; align-items:stretch; justify-content:center; gap:6px; margin: 0 16px;">
+<div style="display:flex; align-items:flex-start; justify-content:center; gap:6px; margin: 0 16px;">
+
+<div style="flex:2; display:flex; flex-direction:column;">
+<div style="display:flex; align-items:stretch; gap:6px;">
 <div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
 <div style="font-weight:700; color:#334155;">① priority fees Φ</div>
 </div>
@@ -318,13 +326,19 @@ section: Model
 <div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
 <div style="font-weight:700; color:#334155;">② volumes Q</div>
 </div>
-<div style="align-self:center; color:#94a3b8; font-size:1.3em;">→</div>
-<div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
+</div>
+<svg viewBox="0 0 100 9" preserveAspectRatio="none" style="width:100%; height:9px; display:block; margin-top:6px;">
+<path d="M0.6,0 L0.6,4 L48.5,4 L50,8 L51.5,4 L99.4,4 L99.4,0" fill="none" stroke="#334155" stroke-width="1.3" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+<div style="text-align:center; font-weight:600; color:#334155; margin-top:3px;">stage 3</div>
+</div>
 
+<div style="align-self:flex-start; margin-top:11px; color:#94a3b8; font-size:1.3em;">→</div>
+<div style="flex:1; align-self:flex-start; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
 <div style="font-weight:700; color:#334155;">③ liquidity L</div>
 </div>
-<div style="align-self:center; color:#94a3b8; font-size:1.3em;">→</div>
-<div style="flex:1; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
+<div style="align-self:flex-start; margin-top:11px; color:#94a3b8; font-size:1.3em;">→</div>
+<div style="flex:1; align-self:flex-start; border:1px solid #cbd5e1; border-radius:8px; background:white; padding:9px 8px; text-align:center;">
 <div style="font-weight:700; color:#334155;">④ entry M</div>
 </div>
 </div>
@@ -335,7 +349,7 @@ section: Model
 layout: two-cols-header
 ---
 
-# Execution prices
+# Assumption: smart contract and prices
 
 ::left::
 
@@ -400,7 +414,7 @@ $$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\t
 class: fact-c
 ---
 
-# Competition among informed traders
+# Assumption: competition among informed traders
 
 ### Informed flow arrives just before block creation
 
@@ -410,7 +424,7 @@ class: fact-c
 
 <div style="display:flex; justify-content:center;">
 
-![distribPF](./images/distribPF.png){style="height: 250px; margin-top: 8px;"}
+![distribPF](./images/distribPF.png){style="height: 220px; margin-top: 8px;"}
 
 </div>
 
@@ -418,6 +432,8 @@ class: fact-c
 
 <br>
 
+---
+section: Traders
 ---
 
 # Competition among informed traders
@@ -466,7 +482,6 @@ $$
 
 
 ---
-section: Results
 layout: two-cols-header
 ---
 
@@ -746,25 +761,38 @@ $$\quad \lim_{M\to\infty}\underbrace{\dfrac{M(\underline v(M)-\pi)}{M-1}}_{\text
 class: fact-c
 ---
 
-# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
 
 ### Equilibrium structure of a block
-- Early trades take the same direction
-- Back of block $\to$ two-sided **noise** <br>
 
-<div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin-top:8px;">
+- two kinds of takers: **informed** (compete on priority fees), uninformed **noise** (zero fees)
+
+<v-click>
+
+- **front of block**: informed (same direction, largest volumes first)
+- **back of block**: noise (two-sided, net volume ≈ 0)
+
+</v-click>
+
+<v-click>
+
+<div style="display:flex; justify-content:center; align-items:flex-start; gap:30px; margin-top:2px;">
 <div style="text-align:center;">
 
-![signed](./images/tradingvolumes_signed.png){style="height: 205px;"}
+![signed](./images/tradingvolumes_signed.png){style="height: 180px;"}
 
 </div>
 
 </div>
 <div class="fig-cap" style="max-width:360px;">Distribution of normalized volume as a function of queue position. &nbsp;<b>Data</b>: 75 Uniswap v3 pools whose asset is <i>not</i> on Binance: 317,901 trades in 36,692 blocks, 2021–2026.</div>
 
+</v-click>
 
 
+
+---
+section: Liquidity
 ---
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> ③ liquidity <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
@@ -795,7 +823,7 @@ N\,\dfrac{L}{L+\theta}
 $$
 <v-click>
 
-$\implies$ deeper liquidity $L$ → more revenue 
+deeper liquidity $L$ → more revenue 
 
 <v-click>
 
@@ -804,7 +832,7 @@ $$
 L\,A(M)
 $$
 
-$\implies$ deeper liquidity $L$  → more adverse selection
+deeper liquidity $L$  → more adverse selection
 
 <v-click>
 
@@ -842,14 +870,16 @@ $$A(M)\ \le\ \dfrac{\pi N}{\theta}$$
 </div>
 
 ---
-
+section: Information
+---
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
 
 ### <u>setup</u>
 - trader pays $C$ iff expected ex-ante profit covers it
+$$C \le  \underbrace{H(M)}_{\text{ex-ante profit per informed trader}}$$
 
-$$C \le  \underbrace{H(M)}_{\text{ex-ante profit per informed trader}}=L^\star(M)\!\int_{\underline v(M)}^{\overline v}\!\tilde Q(v)^2\,\underbrace{\big[\,1-2(M-1)(1-F(v))\,\big]}_{\text{own profit}\ - \ \text{losses due to competitors}}\,dF(v)$$
+<!--$$C \le  \underbrace{H(M)}_{\text{ex-ante profit per informed trader}}=L^\star(M)\!\int_{\underline v(M)}^{\overline v}\!\tilde Q(v)^2\,\underbrace{\big[\,1-2(M-1)(1-F(v))\,\big]}_{\text{own profit}\ - \ \text{losses due to competitors}}\,dF(v)$$-->
 
 <v-click>
 <div class="prop-box">
@@ -882,6 +912,8 @@ $H(M)$ decreasing in $M$
 
 $$\underbrace{C\downarrow\ \ }_{\text{cheaper info}}\ \Rightarrow\ \underbrace{M\uparrow}_\text{more traders}\ \Rightarrow\ \underbrace{\underline v(M)\uparrow\ }_\text{higher cutoff} \Rightarrow\ \begin{cases}\text{less information revealed}\\~\\\text{prices more biased}\end{cases}$$
 
+---
+section: Block time
 ---
 
 # Block time
