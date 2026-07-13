@@ -125,7 +125,7 @@ $\implies$ consensus requires **time** to secure the chain: **block time**
 # Blockchains
 
 ### A distributed, digital, permissionless ledger that stores and executes transactions
-- consensus requires economic **incentives** $\implies$ **priority fees**
+- Transactions are ranked by **priority fees**
 
 <div style="display:flex; justify-content:center; margin-top: 8px;">
 
@@ -301,9 +301,9 @@ section: Model
 </div>
 <div style="align-self:center; color:#94a3b8; font-size:1.5em; padding:0 3px;">→</div>
 <div style="flex:1.35; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
-<div style="font-weight:700; color:#1e293b;">Stage 3 · Trading (PGA)</div>
+<div style="font-weight:700; color:#1e293b;">Stage 3 · Trading</div>
 <div style="font-size:0.78em; color:#334155; margin-top:5px;">informed traders set priority fees Φ and volumes Q</div>
-<div style="font-size:0.78em; color:#334155; margin-top:4px;">uninformed noise traders pay zero fees</div>
+<div style="font-size:0.78em; color:#334155; margin-top:4px;">uninformed traders submit</div>
 </div>
 </div>
 
@@ -346,24 +346,22 @@ section: Model
 
 
 ---
-layout: two-cols-header
----
 
 # Assumption: smart contract and prices
 
-::left::
+
 
 #### <u>**Linear price schedule**</u>: buying a quantity $Q$ executes at
 
-$$ \underbrace{Q/L}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{fee}}$$
+$$ \underbrace{Q/L}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{revenue to LPs}}$$
 <!--\qquad\implies\qquad\text{cash paid } = Q\,(Q/L + \pi)-->
-Larger liquidity $L$ $\implies$ smaller slippage
+Larger liquidity $L$ $\implies$ smaller cost
 
 <v-click>
 
 <br><br><br>
 
-#### <u>**Linear price update rule**</u>: After a buy of size $Q$, the marginal price moves to
+#### <u>**Linear price update rule**</u>: after a buy of size $Q$, the marginal price moves to
 
 $$ 
 \underbrace{2\,Q/L}_\text{price impact}
@@ -376,9 +374,36 @@ Larger liquidity $L$ $\implies$ smaller impact
 
 </v-click>
 
-::right::
 
-<v-click>
+
+---
+class: fact-c
+---
+
+# Assumption: competition among informed traders
+
+### Informed flow arrives just before block creation
+
+- Traders who submit high priority fees submit **late** 
+- Competition among informed traders is effectively **blind**
+
+
+<div style="display:flex; justify-content:center;">
+
+![distribPF](./images/distribPF.png){style="height: 220px; margin-top: 8px;"}
+
+</div>
+
+<div class="fig-cap" style="max-width:4500px;">Priority fee distribution as a function of submission time over a blockchain slot. &nbsp;<br><b>Data</b>: Ethereum public mempool, ≈10 million transactions, 20–21 March 2024 (source: EthPandaOps).</div>
+
+<br>
+
+---
+section: Traders
+---
+
+# Stage 3: competition among informed traders
+
 
 #### <u>**Why compete ?**</u>
 
@@ -408,69 +433,73 @@ $$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\t
 
 </v-click>
 </v-click>
-</v-click>
+
 
 ---
-class: fact-c
----
 
-# Assumption: competition among informed traders
-
-### Informed flow arrives just before block creation
-
-- Traders who submit high priority fees submit **late** 
-- Competition among informed traders is effectively **blind**
-
-
-<div style="display:flex; justify-content:center;">
-
-![distribPF](./images/distribPF.png){style="height: 220px; margin-top: 8px;"}
-
-</div>
-
-<div class="fig-cap" style="max-width:4500px;">Priority fee distribution as a function of submission time over a blockchain slot. &nbsp;<br><b>Data</b>: Ethereum public mempool, ≈10 million transactions, 20–21 March 2024 (source: EthPandaOps).</div>
-
-<br>
-
----
-section: Traders
----
-
-# Competition among informed traders
+# Stage 3: competition among informed traders
 
 
 ### <u>Setup</u>
-- sealed-bid auction: $M$ buying traders with private valuations $\,v_i \in [0, \overline  v] \sim F$
-- DEX liquidity $L$
+- $M$ **<u>buying</u>** traders
+- private valuations $\,v_i \in [0, \overline  v] \sim F$
+- liquidity $L$
 
 <div v-click="1">
 <br>
 
 ###  <u>Expected wealth</u>
 
-</div>
+Wealth depends on the position in the block
 
-<div style="display:grid; align-items:start;">
-
-<div style="grid-area:1/1;" v-click="[1,2]">
-
-$$
-\boxed{\mathbb{E}_{i}\left[W_{i}\right]= \sum_{n=0}^{M-1}\mathbb{E}_{i}\left[\mathbf{1}_{\Phi_{(n)}<\Phi_{i}<\Phi_{(n+1)}}\,W_{i,(n)}\right]}
-$$
 
 </div>
 
-<div style="grid-area:1/1;" v-click="2">
+<div style="display:grid; align-items:start; margin-top:2px;">
+
+<div style="grid-area:1/1;" v-click="[2,3]">
+
+$$\text{if trader $i$ is first in the block} \qquad\qquad
+ W_{i}
+    = \underbrace{-\Phi_i}_\text{priority fee}
+    - \underbrace{Q_i \left( \frac{Q_i}{L} + \pi \right)}_{\text{exec. cost}}
+    + \underbrace{Q_i \,V}_{\text{terminal value of holdings}}
+    - \underbrace{C}_{\text{information cost}}$$
+
+
+<div style="text-align:center; color:#475569;">
+
+
+</div>
+
+</div>
+
+<div style="grid-area:1/1;" v-click="[3,4]">
+
+$$\text{if trader $i$ is mid-block} \qquad\quad W_{i}
+    = \underbrace{-\Phi_i}_{\text{priority fee}}
+       - \underbrace{Q_i \!\left( \frac{Q_i}{L}
+       + \pi \right)}_{\text{exec. costs}}
+       - Q_i \times \underbrace{\frac{2}{L} \Delta_{(j+1 : M-1)}}_{\text{adverse impact}}
+       + \underbrace{Q_i V}_{\text{terminal value of holdings}}
+       - \underbrace{C}_{\text{information cost}}$$
+
+
+</div>
+
+
+
+<div style="grid-area:1/1;" v-click="4">
 
 $$
-\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\left(\dfrac{Q_i}{L}+\pi\right)}_{\text{slippage \& DEX fee}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ Q_i\times\underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{adverse impact of competitors}} - \underbrace{C}_{\text{info. cost}}}
+\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\left(\dfrac{Q_i}{L}+\pi\right)}_{\text{exec. cost}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ Q_i\times\underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} - \underbrace{C}_{\text{info. cost}}}
 $$
 
 </div>
 
 </div>
 
-<div v-click="3">
+<div v-click="5">
 
 ###  <u>Objective</u>
 
@@ -554,11 +583,11 @@ $$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underb
 
 
 
-<br><br>
+<br>
 
-$$
+<!--$$
 \Phi^\star\left(Q_{i}\right)=\frac{2}{L}\left(M-1\right)\int_{0}^{Q_{i}}x^{2}\,dG\left(x\right)
-$$
+$$-->
 
 
 <br><br><br>
@@ -666,45 +695,6 @@ $$
 
 
 ---
-class: fact-c
----
-
-# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
-
-
-### When price formation is on-chain and off-chain
-- price changes in blockchain markets are more extreme
-<br><br>
-<div style="display:flex; justify-content:center; margin-top:10px;">
-<table class="overshoot-tbl" style="font-size:0.72em;">
-<thead>
-<tr>
-<th style="text-align:left;">Asset</th>
-<th colspan="2" class="cmid">Blockchain (bp)</th>
-<th colspan="2" class="cmid">Binance (bp)</th>
-</tr>
-<tr>
-<th></th><th>std</th><th>99%</th><th>std</th><th>99%</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>ETH/BTC</td><td><b>7.72</b></td><td><b>30.71</b></td><td>6.00</td><td>23.26</td></tr>
-<tr><td>ETH</td><td><b>8.71</b></td><td><b>29.86</b></td><td>6.87</td><td>26.10</td></tr>
-<tr><td>BTC</td><td><b>24.94</b></td><td><b>89.33</b></td><td>17.83</td><td>69.27</td></tr>
-<tr><td>LINK</td><td><b>27.35</b></td><td><b>79.51</b></td><td>13.45</td><td>48.35</td></tr>
-<tr><td>UNI</td><td><b>29.41</b></td><td><b>81.29</b></td><td>18.29</td><td>78.74</td></tr>
-<tr><td>APE</td><td><b>36.34</b></td><td>99.50</td><td>28.63</td><td><b>108.52</b></td></tr>
-<tr><td>MATIC</td><td><b>43.07</b></td><td><b>99.61</b></td><td>18.77</td><td>73.19</td></tr>
-<tr><td>1INCH</td><td><b>84.11</b></td><td><b>182.40</b></td><td>34.84</td><td>119.70</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transactions · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
-
-
-
----
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
@@ -754,6 +744,45 @@ $$\quad \lim_{M\to\infty}\underbrace{\dfrac{M(\underline v(M)-\pi)}{M-1}}_{\text
 
 </div>
 </div>
+
+
+
+---
+class: fact-c
+---
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
+
+
+### When price formation is on-chain and off-chain
+- price changes in blockchain markets are more extreme
+<br><br>
+<div style="display:flex; justify-content:center; margin-top:10px;">
+<table class="overshoot-tbl" style="font-size:0.72em;">
+<thead>
+<tr>
+<th style="text-align:left;">Asset</th>
+<th colspan="2" class="cmid">Blockchain (bp)</th>
+<th colspan="2" class="cmid">Binance (bp)</th>
+</tr>
+<tr>
+<th></th><th>std</th><th>99%</th><th>std</th><th>99%</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>ETH/BTC</td><td><b>7.72</b></td><td><b>30.71</b></td><td>6.00</td><td>23.26</td></tr>
+<tr><td>ETH</td><td><b>8.71</b></td><td><b>29.86</b></td><td>6.87</td><td>26.10</td></tr>
+<tr><td>BTC</td><td><b>24.94</b></td><td><b>89.33</b></td><td>17.83</td><td>69.27</td></tr>
+<tr><td>LINK</td><td><b>27.35</b></td><td><b>79.51</b></td><td>13.45</td><td>48.35</td></tr>
+<tr><td>UNI</td><td><b>29.41</b></td><td><b>81.29</b></td><td>18.29</td><td>78.74</td></tr>
+<tr><td>APE</td><td><b>36.34</b></td><td>99.50</td><td>28.63</td><td><b>108.52</b></td></tr>
+<tr><td>MATIC</td><td><b>43.07</b></td><td><b>99.61</b></td><td>18.77</td><td>73.19</td></tr>
+<tr><td>1INCH</td><td><b>84.11</b></td><td><b>182.40</b></td><td>34.84</td><td>119.70</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transactions · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
 
 
 
