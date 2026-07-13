@@ -685,7 +685,7 @@ class: fact-c
 </table>
 </div>
 
-<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transations · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
+<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transactions · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
 
 
 
@@ -895,7 +895,7 @@ $$\underbrace{C\downarrow\ \ }_{\text{cheaper info}}\ \Rightarrow\ \underbrace{M
 
 ### Block time: length of a trading round
 - extreme valuations  more likely
-- noise trading decraeses
+- noise trading decreases
 
 <v-click>
 
