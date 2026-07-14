@@ -351,28 +351,73 @@ section: Model
 
 
 
-#### <u>**Linear price schedule**</u>: buying a quantity $Q$ executes at
+<div style="display:flex; gap:26px; align-items:flex-start; margin-top:6px;">
 
-$$ \underbrace{Q/L}_{\text{slippage}} \;+\; \underbrace{\pi}_{\text{revenue to LPs}}$$
-<!--\qquad\implies\qquad\text{cash paid } = Q\,(Q/L + \pi)-->
+<div style="flex:1.1;">
+
+#### <u>**Linear price schedule**</u>: buying a quantity $Q$, incurs unitary costs
+
+$$ \underbrace{Q/L}_{\text{exec. costs}} \;+\; \underbrace{\pi}_{\text{revenue to LPs}}$$
+
 Larger liquidity $L$ $\implies$ smaller cost
 
-<v-click>
-
-<br><br><br>
-
-#### <u>**Linear price update rule**</u>: after a buy of size $Q$, the marginal price moves to
-
-$$ 
-\underbrace{2\,Q/L}_\text{price impact}
-$$
-
-
-Larger liquidity $L$ $\implies$ smaller impact
+<div v-click="1">
 
 <br><br>
 
-</v-click>
+#### <u>**Linear price update rule**</u>: after a buy of size $Q$, the marginal price moves to
+
+$$ \underbrace{2\,Q/L}_\text{price impact} $$
+
+Larger liquidity $L$ $\implies$ smaller impact
+
+</div>
+
+</div>
+
+<div style="flex:0.9; display:grid; align-items:center; justify-items:center; margin-top:100px;">
+
+<div style="grid-area:1/1;">
+<svg viewBox="0 0 380 250" style="width:100%; height:auto; display:block;">
+  <rect x="0" y="0" width="380" height="250" fill="#ffffff"/>
+  <defs><marker id="s8ps" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#000000"/></marker></defs>
+  <line x1="52" y1="205" x2="360" y2="205" stroke="#000000" stroke-width="1.4" marker-end="url(#s8ps)"/>
+  <line x1="52" y1="205" x2="52" y2="30" stroke="#000000" stroke-width="1.4" marker-end="url(#s8ps)"/>
+  <line x1="52" y1="178" x2="325" y2="66" stroke="#000000" stroke-width="2"/>
+  <line x1="52" y1="178" x2="325" y2="124" stroke="#64748b" stroke-width="2"/>
+  <circle cx="52" cy="178" r="2.5" fill="#000000"/>
+  <text x="45" y="183" text-anchor="end" style="font-size:15px;" fill="#000000">π</text>
+  <text x="331" y="69" text-anchor="start" style="font-size:15px;" fill="#000000">L</text>
+  <text x="331" y="128" text-anchor="start" style="font-size:15px;" fill="#64748b">L &gt; L</text>
+  <path d="M331 112 q2.6 -3.6 5.2 0 t5.2 0" stroke="#64748b" stroke-width="1.5" fill="none"/>
+  <text x="352" y="227" text-anchor="middle" style="font-size:15px;" fill="#000000">Q</text>
+  <text transform="translate(17 118) rotate(-90)" text-anchor="middle" style="font-size:13px;" fill="#000000">execution price</text>
+</svg>
+</div>
+
+<div style="grid-area:1/1;" v-click="1">
+<svg viewBox="0 0 380 250" style="width:100%; height:auto; display:block;">
+  <rect x="0" y="0" width="380" height="250" fill="#ffffff"/>
+  <defs><marker id="s8pu" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#000000"/></marker></defs>
+  <line x1="52" y1="205" x2="360" y2="205" stroke="#000000" stroke-width="1.4" marker-end="url(#s8pu)"/>
+  <line x1="52" y1="205" x2="52" y2="30" stroke="#000000" stroke-width="1.4" marker-end="url(#s8pu)"/>
+  <line x1="52" y1="58" x2="250" y2="58" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="52" y1="131" x2="250" y2="131" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="250" y1="205" x2="250" y2="58" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
+  <line x1="52" y1="205" x2="250" y2="58" stroke="#000000" stroke-width="2"/>
+  <circle cx="250" cy="58" r="3" fill="#000000"/>
+  <text x="46" y="63" text-anchor="end" style="font-size:15px;" fill="#000000">2Q/L</text>
+  <text x="46" y="136" text-anchor="end" style="font-size:15px;" fill="#000000">Q/L</text>
+  <text x="258" y="63" text-anchor="start" style="font-size:13px;" fill="#000000">price after trade</text>
+  <text x="258" y="136" text-anchor="start" style="font-size:13px;" fill="#000000">avg. price paid</text>
+  <text x="250" y="227" text-anchor="middle" style="font-size:15px;" fill="#000000">Q</text>
+  <text transform="translate(17 118) rotate(-90)" text-anchor="middle" style="font-size:13px;" fill="#000000">price</text>
+</svg>
+</div>
+
+</div>
+
+</div>
 
 
 
@@ -399,10 +444,8 @@ class: fact-c
 <br>
 
 ---
-section: Traders
----
 
-# Stage 3: competition among informed traders
+# Competition among informed traders
 
 
 #### <u>**Why compete ?**</u>
@@ -423,12 +466,12 @@ section: Traders
 <v-click>
 
 - Trader 1 pays 
-$$Q_1/L + \pi\quad\text{per unit}$$
+$$\underbrace{Q_1/L  \ + \ \pi}_\text{exec. costs}$$
 
 <v-click>
 
 - Trader 2  pays 
-$$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\text{own slippage}} \,+\, \pi \quad\text{per unit}$$
+$$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \ + \ \underbrace{Q_2/L  \ + \ \pi}_\text{exec. costs}$$
 
 
 </v-click>
@@ -436,76 +479,77 @@ $$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \,+\, \underbrace{Q_2/L}_{\t
 
 
 ---
+section: Traders
+---
 
 # Stage 3: competition among informed traders
 
 
 ### <u>Setup</u>
-- $M$ **<u>buying</u>** traders
-- private valuations $\,v_i \in [0, \overline  v] \sim F$
-- liquidity $L$
-
+- $M$ **<u>buying</u>** traders, private valuations $\,v_i \in [0, \overline  v] \sim F$
 <div v-click="1">
-<br>
 
-###  <u>Expected wealth</u>
-
-Wealth depends on the position in the block
-
+- set priority fees $\Phi_i$ and trading volumes $Q_i$
 
 </div>
 
-<div style="display:grid; align-items:start; margin-top:2px;">
+<div v-click="2">
+<br>
+
+###  <u>Expected wealth of trader $i$</u>
+
+</div>
+
+<div style="display:grid; align-items:center; justify-items:center;">
 
 <div style="grid-area:1/1;" v-click="[2,3]">
 
-$$\text{if trader $i$ is first in the block} \qquad\qquad
- W_{i}
-    = \underbrace{-\Phi_i}_\text{priority fee}
-    - \underbrace{Q_i \left( \frac{Q_i}{L} + \pi \right)}_{\text{exec. cost}}
-    + \underbrace{Q_i \,V}_{\text{terminal value of holdings}}
-    - \underbrace{C}_{\text{information cost}}$$
-
-
-<div style="text-align:center; color:#475569;">
-
-
-</div>
+$$
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} \phantom{- \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
+$$
 
 </div>
 
 <div style="grid-area:1/1;" v-click="[3,4]">
 
-$$\text{if trader $i$ is mid-block} \qquad\quad W_{i}
-    = \underbrace{-\Phi_i}_{\text{priority fee}}
-       - \underbrace{Q_i \!\left( \frac{Q_i}{L}
-       + \pi \right)}_{\text{exec. costs}}
-       - Q_i \times \underbrace{\frac{2}{L} \Delta_{(j+1 : M-1)}}_{\text{adverse impact}}
-       + \underbrace{Q_i V}_{\text{terminal value of holdings}}
-       - \underbrace{C}_{\text{information cost}}$$
-
-
-</div>
-
-
-
-<div style="grid-area:1/1;" v-click="4">
-
 $$
-\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{trading profit}} - \underbrace{Q_i\left(\dfrac{Q_i}{L}+\pi\right)}_{\text{exec. cost}} - \underbrace{\Phi_i}_{\text{priority fee}} -\ \ Q_i\times\underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} - \underbrace{C}_{\text{info. cost}}}
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} \phantom{- Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
 $$
 
 </div>
 
+<div style="grid-area:1/1;" v-click="[4,5]">
+
+$$
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\phantom{\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}}} \Bigg) \phantom{- \underbrace{C}_{\text{info. cost}}}
+$$
+
 </div>
 
-<div v-click="5">
-
-###  <u>Objective</u>
+<div style="grid-area:1/1;" v-click="[5,6]">
 
 $$
-\boxed{\sup_{\Phi_i, Q_i}\mathbb E_i[W_i] =\sup_{Q_i} \sup_{\Phi_i}\mathbb E_i[W_i]}
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) \phantom{- \underbrace{C}_{\text{info. cost}}}
 $$
+
+</div>
+
+<div style="grid-area:1/1;" v-click="6">
+
+$$
+\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
+$$
+
+</div>
+
+</div>
+
+
+<div v-click="7">
+
+###  <u>Objective</u> 
+
+$$\boxed{\sup_{\Phi_i, Q_i}\mathbb E_i[W_i] =\sup_{Q_i} \sup_{\Phi_i}\mathbb E_i[W_i]}$$
 
 </div>
 
@@ -518,9 +562,8 @@ layout: two-cols-header
 
 
 ### <u>Setup</u>
-- Exogenous private volumes distribution $Q \in [0, \overline  Q] \sim G$
-- $M$ buying traders
-- DEX liquidity $L$
+- $M$ traders with (exogenous) liquidity needs $Q \in [0, \overline  Q] \sim G$
+- set priority fees $\Phi_i$
 
 
 <br>
@@ -532,20 +575,19 @@ layout: two-cols-header
 <v-click>
 
 
-### <u>Trader $i$ chooses the priority fee $\Phi_i$</u>
+### <u>Trader $i$ solves</u>
 
-<br>
+<br><br>
 
-$$\sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\frac{2\,Q_i}{L}\,\sum_{n=0}^{M-1}\mathbb{E}_{i}\left[ \mathbf{1}_{\{\Phi_{(n)}<\Phi_{i}<\Phi_{(n+1)}\}}\,\Delta_{(1:n)}\right]}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
+$$\small \sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\frac{2\,Q_i}{L}\,\sum_{n=0}^{M-1}\mathbb{E}_{i}\left[ \mathbf{1}_{\{\Phi_{(n)}<\Phi_{i}<\Phi_{(n+1)}\}}\,\Delta_{(1:n)}\right]}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
 
-- the surplus grows with volume $Q_i$, with the number of competitors $M$, and with thinner liquidity $L$
 
 </v-click>
 
 ::right::
 
-<br>
-<br>
+
+<br><br>
 
 <v-click at="1">
 
@@ -597,8 +639,12 @@ $$-->
 ### Equilibrium fee
 
 1. larger volume $Q_i$ $\Rightarrow$ larger fee $\Phi^\star(Q_i)$
+<v-clicks>
+
 2. priority fees **increase with competition** $M$ 
 3. priority fees **decrease with liquidity** $L$
+
+</v-clicks>
 
 </div>
 
@@ -630,20 +676,20 @@ class: fact-c
 
 ### <u>Setup</u>
 - $M$ buying traders with private valuations $\,v_i \in [0, \overline  v] \sim F$
-- DEX liquidity $L$
+- set volumes $Q_i$
 
 <br>
 <br>
 
 <v-click>
 
-### <u>Trader $i$ chooses volume $Q_i$, anticipating the fee </u>
+### <u>Trader $i$ anticipates the fee and solves</u>
 <br>
 
-$$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i\,v_i}_{\text{profit}}-\underbrace{Q_i\left(Q_i/L+\pi\right)}_{\text{slippage}}-\underbrace{\Phi^\star(Q_i)}_{\text{priority fee}}-\underbrace{\dfrac{2Q_i}{L}(M-1)\!\int_{v_i}^{\overline v}\! x\,dF(x)}_{\text{impact of trades with better queue positions}}\ \Bigg\}$$
+$$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i\,v_i}_{\text{inventory}}-\underbrace{Q_i\left(Q_i/L+\pi\right)}_{\text{slippage}}-\underbrace{\Phi^\star(Q_i)}_{\text{priority fee}}-\underbrace{\dfrac{2Q_i}{L}(M-1)\!\int_{v_i}^{\overline v}\! x\,dF(x)}_{\text{impact of trades with better queue positions}}\ \Bigg\}$$
 
-- profit incentivises **higher** volume $Q_i$
-- slippage, fees, and impact incentivise **lower**  $Q_i$
+- higher valuation incentivises **higher** volume
+- slippage, fees, and impact incentivise **lower**  volume
 
 </v-click>
 
@@ -668,8 +714,14 @@ $$
 
 #### Equilibrium volume
 
-- increasing in valuation $v$ and liquidity $L$
+- increasing in valuation $v$ 
+
+<v-clicks>
+
+- increasing in liquidity $L$
 - decreasing in number of traders $M$
+
+</v-clicks>
 
 <br>
 </div>
@@ -678,7 +730,7 @@ $$
 
 ::right::
 
-<v-click>
+<v-click at="3">
 
 <div class="prop-box">
 
@@ -687,7 +739,12 @@ $$
 
 - Only aggressive traders trade: there is a participation cutoff $\underline v(M)$
 
+<v-click at="4">
+
 - the cutoff **rises with competition** $\ \lim_{M\to\infty}\underline v(M)=\overline v$
+
+</v-click>
+
 
 </div>
 
