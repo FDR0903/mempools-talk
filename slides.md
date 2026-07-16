@@ -51,18 +51,13 @@ layout: two-cols-header
 ### A distributed, digital, permissionless ledger 
 - stores and executes transactions
 
-<v-click>
 
-- without central authority
-<v-click>
-
-- with *algorithmic consensus*
 
 <br>
 
 <v-click>
 
-### Blockchains promise to coordinate economic activity at scale *without intermediaries*
+### Promise to coordinate economic activity, at scale, without intermediaries
 
 - financial markets are a fundamental test
 
@@ -73,14 +68,12 @@ layout: two-cols-header
     2.  **stablecoins** $\$$ 310B today
     3. **FX cross-border settlement**
 
-<br>
+<br><br>
 
 <v-click>
 
 $\implies$ important to study
 
-</v-click>
-</v-click>
 </v-click>
 </v-click>
 </v-click>
@@ -102,10 +95,10 @@ $\implies$ important to study
 layout: two-cols-header
 ---
 
-# What is consensus ?
+# How the blockchain executes transactions
 
-### how the blockchain executes transactions
-
+### Without central authority
+### With *algorithmic consensus*
 
 ::left::
 
@@ -115,20 +108,20 @@ layout: two-cols-header
 <br>
 <br>
 
-### **Blockchain round** (*slot*) 
-- orders collect during block time (≈12s)
+#### **Blockchain round**
+- orders collect, no execution
 </v-click>
 <v-click at="2">
 
-- network communications to validate transactions
+- network communications, cryptographic work
 </v-click>
 <v-click at="3">
 
-- transactions are executed
+- block created, transactions executed
 </v-click>
 <v-click at="4">
 
-$\implies$ consensus requires **time** to secure the chain: **block time**
+$\implies$ consensus requires **time** ($\approx$ 12s)
 </v-click>
 
 ::right::
@@ -176,7 +169,7 @@ $\implies$ consensus requires **time** to secure the chain: **block time**
 
 # Priority fees
 
-### block transactions cleared sequentially, according to **priority fees**
+### Block clears orders sequentially, according to **priority fees**
 
 <div style="display:flex; flex-direction:column; align-items:center; gap:2px; margin-top:18px;">
 
@@ -225,22 +218,74 @@ $\implies$ consensus requires **time** to secure the chain: **block time**
 
 ---
 
+
+# Blockchain trading round
+
+
+<v-click>
+
+
+
+1. liquidity provider deposits liquidity in a smart contract
+
+</v-click>
+
+<v-clicks>
+
+2. traders submit transactions
+3. block is cleared against liquidity pool
+
+</v-clicks>
+
+<div style="display:flex; justify-content:center; margin-top:8px;">
+<v-switch at="1">
+<template #1>
+
+![bc](./images/bc_1.gif){style="height:  300px;"}
+
+</template>
+<template #2>
+
+![bc](./images/bc_2.gif){style="height: 300px;"}
+
+</template>
+<template #3>
+
+![bc](./images/bc_3.gif){style="height: 300px;"}
+
+</template>
+<template #4>
+
+![bc](./images/bc_3_last_frame.png){style="height: 300px;"}
+
+</template>
+</v-switch>
+</div>
+
+
+---
+
+
 # Are blockchains different ?
 
-<div style="position:relative; margin-top:16px;">
+<style>
+.cmp-grid p { margin: 0.12em 0; line-height: 1.2; }
+</style>
+
+<div style="position:relative; margin-top:6px;">
 
 <div style="position:absolute; left:50%; top:0; bottom:0; border-left:2.5px solid #cbd5e1;"></div>
 
-<div style="display:grid; grid-template-columns:1fr 1fr; column-gap:56px; row-gap:8px; align-items:start; font-size:0.94em;">
+<div class="cmp-grid" style="display:grid; grid-template-columns:1fr 1fr; column-gap:56px; row-gap:6px; align-items:start; font-size:0.9em;">
 
 <div style="text-align:center; font-weight:700; color:#1e293b;"><u>Electronic markets</u></div>
-<div style="text-align:center; font-weight:700; color:#1e293b;"><u>Blockchains</u></div>
+<div style="text-align:center; font-weight:700; color:#1e293b;"><u>Blockchain markets</u></div>
 
 <div v-click="1" style="text-align:center;">
 
 **Continuous** trading
 
-<svg viewBox="0 0 200 96" style="width:196px; max-width:100%; height:auto; display:block; margin:6px auto 0;">
+<svg viewBox="0 0 200 96" style="width:150px; max-width:100%; height:auto; display:block; margin:2px auto 0;">
   <defs><marker id="wbdC" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#334155"/></marker></defs>
   <line x1="24" y1="84" x2="190" y2="84" stroke="#334155" stroke-width="1.1" marker-end="url(#wbdC)"/>
   <line x1="24" y1="84" x2="24" y2="12" stroke="#334155" stroke-width="1.1" marker-end="url(#wbdC)"/>
@@ -253,7 +298,7 @@ $\implies$ consensus requires **time** to secure the chain: **block time**
 
 **Discrete** trading
 
-<svg viewBox="0 0 200 96" style="width:196px; max-width:100%; height:auto; display:block; margin:6px auto 0;">
+<svg viewBox="0 0 200 96" style="width:150px; max-width:100%; height:auto; display:block; margin:2px auto 0;">
   <defs><marker id="wbdD" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="6.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#334155"/></marker></defs>
   <line x1="24" y1="84" x2="190" y2="84" stroke="#334155" stroke-width="1.1" marker-end="url(#wbdD)"/>
   <line x1="24" y1="84" x2="24" y2="12" stroke="#334155" stroke-width="1.1" marker-end="url(#wbdD)"/>
@@ -264,27 +309,27 @@ $\implies$ consensus requires **time** to secure the chain: **block time**
 
 <div v-click="2" style="text-align:center;">
 
-**Large** action space <br>
-liquidity takers & providers trade anytime
+Price discovery is **continuous**
 
 </div>
 
 <div v-click="2" style="text-align:center;">
 
+Price discovery is **delayed**
+
+</div>
+
+<div v-click="3" style="text-align:center;">
+
+**Large** action space <br>
+trade anytime
+
+</div>
+
+<div v-click="3" style="text-align:center;">
+
 **Restricted** action space <br>
 one trade per blockchain round
-
-</div>
-
-<div v-click="3" style="text-align:center;">
-
-Price discovery is **continuous**
-
-</div>
-
-<div v-click="3" style="text-align:center;">
-
-Price discovery is **delayed**
 
 </div>
 
@@ -296,8 +341,32 @@ Time priority
 </div>
 
 <div v-click="4" style="text-align:center;">
+ 
+Time + paid-priority
 
-Time + paid-priority 
+</div>
+
+<div v-click="5" style="text-align:center;">
+
+**Uniform** pricing
+
+</div>
+
+<div v-click="5" style="text-align:center;">
+
+**Discriminatory** pricing
+
+</div>
+
+<div v-click="6" style="text-align:center;">
+
+**Inferential** pricing
+
+</div>
+
+<div v-click="6" style="text-align:center;">
+
+**Rule-based** (algorithmic) pricing
 
 </div>
 
@@ -305,9 +374,9 @@ Time + paid-priority
 
 </div>
 
-<v-click at="5">
+<v-click at="7">
 
-<div style="text-align:center; margin-top:24px; font-size:1.14em; color:#1e293b;">
+<div style="text-align:center; margin-top:12px; font-size:1.14em; color:#1e293b;">
 Are these differences good or bad for markets?
 </div>
 
@@ -317,7 +386,7 @@ Are these differences good or bad for markets?
 
 # Reasons to worry
 
-### Blockchain returns are more volatile
+### Blockchain amplifies price moves
 - One-block return volatility, on-chain vs off-chain
 
 <div style="display:flex; justify-content:center; margin-top:14px;">
@@ -346,22 +415,6 @@ Are these differences good or bad for markets?
 
 ---
 
-# Reasons to worry
-
-### Trading is in the **same direction**
-
-<div style="display:flex; justify-content:center; margin-top:10px;">
-<div style="text-align:center;">
-
-![signed](./images/tradingvolumes_signed.png){style="height: 224px;"}
-
-</div>
-</div>
-
-<div class="fig-cap" style="max-width:540px; margin:6px auto 0;">Normalized signed volume by queue position: the front of the block is one-sided (same direction as the first trade), the back is two-sided noise. &nbsp;<b>Data</b>: 75 Uniswap v3 pools not on Binance, 317,901 trades, 2021–2026.</div>
-
----
-
 # Contribution
 
 
@@ -375,7 +428,7 @@ Are these differences good or bad for markets?
 
 - show that
     - blockchain distorts price formation 
-    - blockchain biases prices towards extreme
+    - blockchain amplifies price moves
 
 <v-click>
 
@@ -451,52 +504,6 @@ section: Model
 ---
 
 
-# Blockchain trading round
-
-
-<v-click>
-
-
-
-1. liquidity provider deposits liquidity in a smart contract
-
-</v-click>
-
-<v-clicks>
-
-2. traders submit transactions
-3. block is cleared against liquidity pool
-
-</v-clicks>
-
-<div style="display:flex; justify-content:center; margin-top:8px;">
-<v-switch at="1">
-<template #1>
-
-![bc](./images/bc_1.gif){style="height:  300px;"}
-
-</template>
-<template #2>
-
-![bc](./images/bc_2.gif){style="height: 300px;"}
-
-</template>
-<template #3>
-
-![bc](./images/bc_3.gif){style="height: 300px;"}
-
-</template>
-<template #4>
-
-![bc](./images/bc_3_last_frame.png){style="height: 300px;"}
-
-</template>
-</v-switch>
-</div>
-
-
----
-
 # Smart contract
 
 
@@ -504,7 +511,7 @@ section: Model
 
 <div style="flex:1.1;">
 
-#### <u>**Linear price schedule**</u>: buying $Q$ incurs costs
+#### <u>**Linear marginal price**</u>: trading $Q$ incurs costs
 
 $$ \underbrace{|Q|/L}_{\text{exec. costs}} \;+\; \underbrace{\pi}_{\text{revenue to LPs}}$$
 
@@ -529,9 +536,9 @@ Larger liquidity $L$ $\implies$ smaller impact
 <div style="grid-area:1/1;">
 <svg viewBox="0 0 380 250" style="width:100%; height:auto; display:block;">
   <rect x="0" y="0" width="380" height="250" fill="#ffffff"/>
-  <defs><marker id="s8ps" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#000000"/></marker></defs>
-  <line x1="52" y1="205" x2="360" y2="205" stroke="#000000" stroke-width="1.4" marker-end="url(#s8ps)"/>
-  <line x1="52" y1="205" x2="52" y2="30" stroke="#000000" stroke-width="1.4" marker-end="url(#s8ps)"/>
+  <defs><marker id="s8ps2" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#000000"/></marker></defs>
+  <line x1="52" y1="205" x2="360" y2="205" stroke="#000000" stroke-width="1.4" marker-end="url(#s8ps2)"/>
+  <line x1="52" y1="205" x2="52" y2="30" stroke="#000000" stroke-width="1.4" marker-end="url(#s8ps2)"/>
   <line x1="52" y1="178" x2="325" y2="66" stroke="#000000" stroke-width="2"/>
   <line x1="52" y1="178" x2="325" y2="124" stroke="#64748b" stroke-width="2"/>
   <circle cx="52" cy="178" r="2.5" fill="#000000"/>
@@ -547,20 +554,37 @@ Larger liquidity $L$ $\implies$ smaller impact
 <div style="grid-area:1/1;" v-click="1">
 <svg viewBox="0 0 380 250" style="width:100%; height:auto; display:block;">
   <rect x="0" y="0" width="380" height="250" fill="#ffffff"/>
-  <defs><marker id="s8pu" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#000000"/></marker></defs>
-  <line x1="52" y1="205" x2="360" y2="205" stroke="#000000" stroke-width="1.4" marker-end="url(#s8pu)"/>
-  <line x1="52" y1="205" x2="52" y2="30" stroke="#000000" stroke-width="1.4" marker-end="url(#s8pu)"/>
-  <line x1="52" y1="58" x2="250" y2="58" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
-  <line x1="52" y1="131" x2="250" y2="131" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
-  <line x1="250" y1="205" x2="250" y2="58" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
-  <line x1="52" y1="205" x2="250" y2="58" stroke="#000000" stroke-width="2"/>
-  <circle cx="250" cy="58" r="3" fill="#000000"/>
-  <text x="46" y="63" text-anchor="end" style="font-size:15px;" fill="#000000">2Q/L</text>
-  <text x="46" y="136" text-anchor="end" style="font-size:15px;" fill="#000000">Q/L</text>
-  <text x="258" y="63" text-anchor="start" style="font-size:13px;" fill="#000000">price after trade</text>
-  <text x="258" y="136" text-anchor="start" style="font-size:13px;" fill="#000000">avg. price paid</text>
-  <text x="250" y="227" text-anchor="middle" style="font-size:15px;" fill="#000000">Q</text>
-  <text transform="translate(17 118) rotate(-90)" text-anchor="middle" style="font-size:13px;" fill="#000000">price</text>
+  <defs>
+    <marker id="s8lob" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="9" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#000000"/></marker>
+    <marker id="s8qa" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1e293b"/></marker>
+  </defs>
+  <line x1="40" y1="200" x2="362" y2="200" stroke="#000000" stroke-width="1.4" marker-end="url(#s8lob)"/>
+  <text x="349" y="219" text-anchor="middle" style="font-size:13px;" fill="#000000">price</text>
+  <rect x="56" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="75" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="94" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="113" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="132" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="151" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="170" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="189" y="110" width="13" height="90" fill="#94a3b8" stroke="#475569" stroke-width="0.8"/>
+  <rect x="212" y="110" width="13" height="90" fill="#eef2f6" stroke="#94a3b8" stroke-width="0.8"/>
+  <rect x="231" y="110" width="13" height="90" fill="#eef2f6" stroke="#94a3b8" stroke-width="0.8"/>
+  <rect x="250" y="110" width="13" height="90" fill="#eef2f6" stroke="#94a3b8" stroke-width="0.8"/>
+  <rect x="269" y="110" width="13" height="90" fill="#eef2f6" stroke="#94a3b8" stroke-width="0.8"/>
+  <rect x="288" y="110" width="13" height="90" fill="#eef2f6" stroke="#94a3b8" stroke-width="0.8"/>
+  <rect x="307" y="110" width="13" height="90" fill="#eef2f6" stroke="#94a3b8" stroke-width="0.8"/>
+  <line x1="58" y1="74" x2="204" y2="74" stroke="#1e293b" stroke-width="1.7" marker-end="url(#s8qa)"/>
+  <text x="128" y="67" text-anchor="middle" style="font-size:13px; font-style:italic;" fill="#1e293b">buy Q</text>
+  <line x1="56" y1="200" x2="56" y2="92" stroke="#64748b" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="56" y="86" text-anchor="middle" style="font-size:12px;" fill="#000000">best ask</text>
+  <line x1="130" y1="200" x2="130" y2="92" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="130" y="86" text-anchor="middle" style="font-size:12px;" fill="#000000">avg price</text>
+  <text x="130" y="221" text-anchor="middle" style="font-size:15px;" fill="#000000">Q/L</text>
+  <line x1="205" y1="200" x2="205" y2="92" stroke="#000000" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="205" y="86" text-anchor="middle" style="font-size:12px;" fill="#000000">new ask</text>
+  <text x="205" y="221" text-anchor="middle" style="font-size:15px;" fill="#000000">2Q/L</text>
+  <text x="188" y="240" text-anchor="middle" style="font-size:10px;" fill="#64748b">uniform depth at each price</text>
 </svg>
 </div>
 
@@ -571,10 +595,8 @@ Larger liquidity $L$ $\implies$ smaller impact
 
 ---
 
-# Competition among informed traders
+# Why compete ?
 
-
-#### <u>**Why compete ?**</u>
 
 - Trader 1 buys $Q_1$ first, then trader 2 buys $Q_2$
 
@@ -599,6 +621,7 @@ $$\underbrace{Q_1/L  \ + \ \pi}_\text{exec. costs}$$
 - Trader 2  pays 
 $$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \ + \ \underbrace{Q_2/L  \ + \ \pi}_\text{exec. costs}$$
 
+$\implies$ discriminatory pricing 
 
 </v-click>
 </v-click>
@@ -696,7 +719,7 @@ class: fact-c
 
 
 ---
-section: Traders
+section: Trading
 ---
 
 # Stage 3: competition among informed traders
@@ -717,44 +740,65 @@ section: Traders
 
 </div>
 
+<div style="display:flex; justify-content:space-around; align-items:center; margin-top:4px;">
+
+<div v-click="3">
+
+$$\small
+\text{expected volume ahead of trader i } = \overline{Q}(\Phi_i)=\mathbb E_i\Big[\,\underbrace{\textstyle\sum_{j:\,\Phi_j>\Phi_i} Q_j}_{\text{volume ahead of }i}\,\Big]
+$$
+
+</div>
+
+<div v-click="4">
+
+$$\small
+\text{expected adverse impact} = \Delta(\Phi_i) = \dfrac{2\,\overline{Q}(\Phi_i)}{L}
+$$
+
+</div>
+
+</div>
+
+
 <div style="display:grid; align-items:center; justify-items:center;">
-
-<div style="grid-area:1/1;" v-click="[2,3]">
-
-$$
-\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} \phantom{- \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
-$$
-
-</div>
-
-<div style="grid-area:1/1;" v-click="[3,4]">
-
-$$
-\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} \phantom{- Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
-$$
-
-</div>
-
-<div style="grid-area:1/1;" v-click="[4,5]">
-
-$$
-\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\phantom{\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}}} \Bigg) \phantom{- \underbrace{C}_{\text{info. cost}}}
-$$
-
-</div>
 
 <div style="grid-area:1/1;" v-click="[5,6]">
 
 $$
-\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) \phantom{- \underbrace{C}_{\text{info. cost}}}
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} \phantom{- \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\Delta(\Phi_i)}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
 $$
 
 </div>
 
-<div style="grid-area:1/1;" v-click="6">
+<div style="grid-area:1/1;" v-click="[6,7]">
 
 $$
-\boxed{\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\dfrac{2}{L}\sum_{n=0}^{M-1}\mathbb E_i\big[\mathbf 1_{\Phi_{(n)}<\Phi_i<\Phi_{(n+1)}}\,\Delta_{(n+1:M-1)}\big]}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} \phantom{- Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\Delta(\Phi_i)}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}}
+$$
+
+</div>
+
+<div style="grid-area:1/1;" v-click="[7,8]">
+
+$$
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\phantom{\ +\ \underbrace{\Delta(\Phi_i)}_{\text{expected adverse impact}}} \Bigg) \phantom{- \underbrace{C}_{\text{info. cost}}}
+$$
+
+</div>
+
+<div style="grid-area:1/1;" v-click="[8,9]">
+
+$$
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\Delta(\Phi_i)}_{\text{expected adverse impact}} \Bigg) \phantom{- \underbrace{C}_{\text{info. cost}}}
+$$
+
+</div>
+
+<div style="grid-area:1/1;" v-click="9">
+
+$$
+\mathbb E_i[W_i]=  \underbrace{Q_i\,v_i}_{\text{inventory}} - \underbrace{\Phi_i}_{\text{priority fee}} - Q_i\Bigg(\underbrace{\dfrac{Q_i}{L}+\pi}_{\text{exec. costs}}\ +\ \underbrace{\Delta(\Phi_i)}_{\text{expected adverse impact}} \Bigg) - \underbrace{C}_{\text{info. cost}}
 $$
 
 </div>
@@ -762,11 +806,10 @@ $$
 </div>
 
 
-<div v-click="7">
+<div v-click="10">
 
-###  <u>Objective</u> 
-
-$$\boxed{\sup_{\Phi_i, Q_i}\mathbb E_i[W_i] =\sup_{Q_i} \sup_{\Phi_i}\mathbb E_i[W_i]}$$
+###  <u>Objective</u>  
+$$\sup_{\Phi_i, Q_i}\mathbb E_i[W_i] =\sup_{Q_i} \sup_{\Phi_i}\mathbb E_i[W_i]$$
 
 </div>
 
@@ -796,7 +839,7 @@ layout: two-cols-header
 
 <br><br>
 
-$$\small \sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\frac{2\,Q_i}{L}\,\sum_{n=0}^{M-1}\mathbb{E}_{i}\left[ \mathbf{1}_{\{\Phi_{(n)}<\Phi_{i}<\Phi_{(n+1)}\}}\,\Delta_{(1:n)}\right]}_{\text{surplus }=\text{ avoided impact}}\Bigg\}$$
+$$\small \sup_{\Phi_i}\ \Bigg\{\ -\underbrace{\Phi_i}_{\text{priority fee}}\ +\ \underbrace{\text{impact avoided}(\Phi_i)}_{\text{surplus }}\Bigg\}$$
 
 
 </v-click>
@@ -865,15 +908,9 @@ $$-->
 
 </div>
 
-<div v-click="4">
+<div v-click="5">
 
 2\. priority fees **increase with competition** $M$
-
-</div>
-
-<div v-click="7">
-
-3\. priority fees **decrease with liquidity** $L$
 
 </div>
 
@@ -885,19 +922,17 @@ $$-->
 
 <div style="flex:1.18; display:grid; align-items:start; justify-items:center; margin-top:2px;">
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="[1,4]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">larger volume <i>Q</i></div></div>
-<div v-click="[2,4]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">larger loss from rivals' price impact</div></div>
-<div v-click="[3,4]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:6px 14px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.86em;">more to gain from priority → larger fee</div></div>
+<div v-click="[1,5]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">larger volume <i>Q</i></div></div>
+<div v-click="[2,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">larger loss Q Δ(Φ) from  adverse price impact</div></div>
+<div v-click="[3,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">more to gain from priority</div></div>
+<div v-click="[4,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:6px 14px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.86em;">larger fee</div></div>
 </div>
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="[4,7]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">more competitors <i>M</i></div></div>
-<div v-click="[5,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">higher expected impact from rivals ahead</div></div>
-<div v-click="[6,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:6px 14px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.86em;">more to gain from priority → higher fee</div></div>
-</div>
-<div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="7" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">deeper liquidity <i>L</i></div></div>
-<div v-click="8" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">smaller impact from rivals ahead</div></div>
-<div v-click="9" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:6px 14px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.86em;">less impact to avoid → lower fee</div></div>
+<div v-click="5" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">more competitors <i>M</i></div></div>
+<div v-click="6" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">more traders with higher priority fees</div></div>
+<div v-click="7" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">larger volume ahead</div></div>
+<div v-click="8" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">more to gain from priority</div></div>
+<div v-click="9" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:6px 14px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.86em;">higher fee</div></div>
 </div>
 </div>
 
@@ -913,7 +948,7 @@ class: fact-c
 ### When price formation happens on-chain: 
 - absolute volume **decreases** with queue position
 <!--$\ \implies\,$ aggressive, high-volume traders secure the earliest positions-->
-<br>
+
 
 <div style="display:flex; justify-content:center;">
 
@@ -926,51 +961,25 @@ class: fact-c
 <br>
 
 ---
-
-# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
-
-### <u>Setup</u>
-- $M$ buying traders with private valuations $\,v_i \in [0, \overline  v] \sim F$
-- set volumes $Q_i$
-
-<br>
-<br>
-
-<v-click>
-
-### <u>Trader $i$ anticipates the fee and solves</u>
-<br>
-
-$$\sup_{Q_i}\ \Bigg\{\underbrace{Q_i\,v_i}_{\text{inventory}}-\underbrace{Q_i\left(Q_i/L+\pi\right)}_{\text{slippage}}-\underbrace{\Phi^\star(Q_i)}_{\text{priority fee}}-\underbrace{\dfrac{2Q_i}{L}(M-1)\!\int_{v_i}^{\overline v}\! x\,dF(x)}_{\text{impact of trades with better queue positions}}\ \Bigg\}$$
-
-<!--
-- higher valuation incentivises **higher** volume
-- slippage, fees, and impact incentivise **lower**  volume
--->
-
-</v-click>
-
----
 layout: two-cols-header
 ---
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
+<u>Setup</u>: traders anticipate the fee $\Phi^\star(Q_i)$ and set $Q_i$
 
+<div v-click="1">
 
-$$\small Q^\star(v_i)
-= L \times \frac{1}{2}\Bigg(\underbrace{\left(\overline v - \pi\right)e^{-(M-1)\left(1-F(v_i)\right)}}_{\text{profit net of fees}}
-- \underbrace{\int_{v_i}^{\overline v} e^{-(M-1)\left(F(u)-F(v_i)\right)}\,du}_\text{impact of competing orders} \Bigg)
-$$
+$$\scriptsize Q^\star(v_i) = L \times \frac{1}{2}\Bigg(\underbrace{\left(\overline v - \pi\right)e^{-(M-1)\left(1-F(v_i)\right)}}_{\text{profit net of fees}} - \underbrace{\int_{v_i}^{\overline v} e^{-(M-1)\left(F(u)-F(v_i)\right)}\,du}_\text{impact of competing orders} \Bigg)$$
 
+</div>
 
-<br>
 
 ::left::
 
 <div class="prop-box">
 
-<div v-click="1">
+<div v-click="2">
 
 #### Equilibrium volume
 
@@ -978,19 +987,15 @@ $$
 
 </div>
 
-<div v-click="4">
-
-- increasing in liquidity $L$
-
-</div>
-
-<div v-click="7">
+<div v-click="5">
 
 - decreasing in number of traders $M$
 
 </div>
 
-<div v-click="10">
+<div v-click="8">
+
+<br>
 
 #### Endogenous selection
 
@@ -998,7 +1003,7 @@ $$
 
 </div>
 
-<div v-click="13">
+<div v-click="14">
 
 - cutoff **rises with competition**: $\lim_{M\to\infty}\underline v(M)=\overline v$
 
@@ -1011,31 +1016,29 @@ $$
 
 ::right::
 
-<div style="display:grid; align-items:start; justify-items:center; margin-top:2px;">
+<div style="display:grid; align-items:start; justify-items:center; margin-top:-20px;">
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="[1,4]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher valuation <i>v</i></div></div>
-<div v-click="[2,4]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">stronger incentive to trade</div></div>
-<div v-click="[3,4]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">higher volume</div></div>
+<div v-click="[2,5]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher valuation <i>v</i></div></div>
+<div v-click="[3,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">stronger incentive to trade</div></div>
+<div v-click="[4,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">higher volume</div></div>
 </div>
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="[4,7]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">deeper liquidity <i>L</i></div></div>
-<div v-click="[5,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">cheaper to trade → more profit</div></div>
-<div v-click="[6,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">higher volume</div></div>
+<div v-click="[5,8]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more competitors <i>M</i></div></div>
+<div v-click="[6,8]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more expensive to trade: higher fees &amp; price impact</div></div>
+<div v-click="[7,8]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">lower volume</div></div>
 </div>
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="[7,10]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more competitors <i>M</i></div></div>
-<div v-click="[8,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher expected fees &amp; price impact</div></div>
-<div v-click="[9,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">lower volume</div></div>
+<div v-click="[8,14]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">low valuation</div></div>
+<div v-click="[9,14]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">low desired volume - low priority fee</div></div>
+<div v-click="[10,14]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">anticipates high number of higher-valuation traders earlier in the block</div></div>
+<div v-click="[11,14]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">anticipates large adverse impact</div></div>
+<div v-click="[12,14]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">price pushed past your valuation</div></div>
+<div v-click="[13,14]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">stay out</div></div>
 </div>
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="[10,13]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">low valuation → weak priority bid</div></div>
-<div v-click="[11,13]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">sits behind aggressive traders → large adverse impact</div></div>
-<div v-click="[12,13]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">price pushed past your valuation → stay out</div></div>
-</div>
-<div style="grid-area:1/1; display:flex; flex-direction:column;">
-<div v-click="13" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more competitors <i>M</i></div></div>
-<div v-click="14" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher costs for low valuations</div></div>
-<div v-click="15" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">higher cutoff to participate</div></div>
+<div v-click="14" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more competitors <i>M</i></div></div>
+<div v-click="15" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more expensive to trade: higher fees &amp; price impact</div></div>
+<div v-click="16" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">higher valuation required to break even</div></div>
 </div>
 </div>
 
@@ -1054,6 +1057,8 @@ $$
 
 <br>
 <v-click>
+
+- Prices are biased
 
 
 <div class="prop-box">
@@ -1101,7 +1106,7 @@ class: fact-c
 
 
 ### When price formation is on-chain and off-chain
-- price changes in blockchain markets are more extreme
+- price changes in blockchain are amplified
 <br><br>
 <div style="display:flex; justify-content:center; margin-top:10px;">
 <table class="overshoot-tbl" style="font-size:0.72em;">
@@ -1110,22 +1115,23 @@ class: fact-c
 <th style="text-align:left;">Asset</th>
 <th class="cmid">Blockchain std (bp)</th>
 <th class="cmid">Binance std (bp)</th>
+<th class="cmid">DEX share of volume <span style="font-weight:400;">(Jun 2026)</span></th>
 </tr>
 </thead>
 <tbody>
-<tr><td>ETH/BTC</td><td><b>7.72</b></td><td>6.00</td></tr>
-<tr><td>ETH</td><td><b>8.71</b></td><td>6.87</td></tr>
-<tr><td>BTC</td><td><b>24.94</b></td><td>17.83</td></tr>
-<tr><td>LINK</td><td><b>27.35</b></td><td>13.45</td></tr>
-<tr><td>UNI</td><td><b>29.41</b></td><td>18.29</td></tr>
-<tr><td>APE</td><td><b>36.34</b></td><td>28.63</td></tr>
-<tr><td>MATIC</td><td><b>43.07</b></td><td>18.77</td></tr>
-<tr><td>1INCH</td><td><b>84.11</b></td><td>34.84</td></tr>
+<tr><td>ETH/BTC</td><td><b>7.72</b></td><td>6.00</td><td>&mdash;<sup>&dagger;</sup></td></tr>
+<tr><td>ETH</td><td><b>8.71</b></td><td>6.87</td><td>27.7%</td></tr>
+<tr><td>BTC</td><td><b>24.94</b></td><td>17.83</td><td>4.9%</td></tr>
+<tr><td>LINK</td><td><b>27.35</b></td><td>13.45</td><td>21.0%</td></tr>
+<tr><td>UNI</td><td><b>29.41</b></td><td>18.29</td><td>17.9%</td></tr>
+<tr><td>APE</td><td><b>36.34</b></td><td>28.63</td><td>3.4%</td></tr>
+<tr><td>MATIC</td><td><b>43.07</b></td><td>18.77</td><td>&mdash;<sup>&Dagger;</sup></td></tr>
+<tr><td>1INCH</td><td><b>84.11</b></td><td>34.84</td><td>42.4%</td></tr>
 </tbody>
 </table>
 </div>
 
-<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023). &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transactions · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
+<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023).<br> &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transactions · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.<br><span><b>DEX share of volume</b>: (Dune <code>dex.trades</code> and Binance spot).</span></div>
 
 
 
@@ -1135,14 +1141,13 @@ class: fact-c
 
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
+### Equilibrium structure of a block predicted by model
 
-### Equilibrium structure of a block
-
-- two kinds of takers: **informed** (compete on priority fees), uninformed **noise** (zero fees)
+two types of traders: **informed** (nonzero fees), uninformed **noise** (zero fees)
 
 <v-click>
 
-- **front of block**: informed (same direction, largest volumes first)
+- **front of block**: informed (same direction, decreasing volumes)
 - **back of block**: noise (two-sided, net volume ≈ 0)
 
 </v-click>
@@ -1153,15 +1158,12 @@ class: fact-c
 <div style="text-align:center;">
 
 ![signed](./images/tradingvolumes_signed.png){style="height: 180px;"}
-
+</div>
 </div>
 
-</div>
 <div class="fig-cap" style="max-width:360px;">Distribution of normalized volume as a function of queue position. &nbsp;<b>Data</b>: 75 Uniswap v3 pools whose asset is <i>not</i> on Binance: 317,901 trades in 36,692 blocks, 2021–2026.</div>
 
 </v-click>
-
-
 
 ---
 section: Liquidity
@@ -1189,31 +1191,14 @@ section: Liquidity
 </svg>
 </div>
 
-- price-sensitive zero-mean noise demand, $\text{fee} = 0$
+
+
+
+-  liquidity provision is competitive  $\ \ (\footnotesize \theta: \text{ elasticity}, \quad N: \text{ total volume}$)
+<br><br><br>
+
+$$\pi\,N\,\underbrace{f(L, \theta)}_{\text{reduced-form demand}}\qquad=\qquad \underbrace{L\,A(M)}_{\text{adverse selection}} 
 $$
-N\,\dfrac{L}{L+\theta}, \qquad \theta: \text{ elasticity}, \qquad N: \text{ maximum size}
-$$
-<v-click>
-
-deeper liquidity $L$ → more revenue 
-
-<v-click>
-
-- adverse selection losses 
-$$
-L\,A(M)
-$$
-
-deeper liquidity $L$  → more adverse selection
-
-<v-click>
-
--  liquidity provision is competitive
-    $$\underbrace{\pi N\,\dfrac{L}{L+\theta}}_{\text{fee revenue from noise demand}}\qquad=\qquad \underbrace{L\,A(M)}_{\text{adverse-selection}}$$
-    
-</v-click>
-</v-click>
-</v-click>
 
 ---
 
@@ -1230,14 +1215,15 @@ deeper liquidity $L$  → more adverse selection
 
 ### Equilibrium liquidity
 
-- number of traders $M$ **decreases liquidity**
+- liquidity decreases with number of traders $M$
 <br><span style="font-size:0.8em; color:#64748b;">(Holden & Subrahmanyam 1992)</span>
 
-<div v-click="5">
+<div v-click="6">
 
 - market viability condition
 <br><span style="font-size:0.8em; color:#64748b;">(Glosten & Milgrom 1985, Glosten 1989, Leach & Madhavan 1989)</span>
-$$A(M)\ \le\ \dfrac{\pi N}{\theta}$$
+
+$$\underbrace{A(M)}_\text{adverse selection}\ \le\ \underbrace{\dfrac{\pi N}{\theta}}_\text{revenue from noise demand}$$
 
 </div>
 
@@ -1246,10 +1232,11 @@ $$A(M)\ \le\ \dfrac{\pi N}{\theta}$$
 </div>
 
 <div style="flex:1.08; display:flex; flex-direction:column; align-items:center; margin-top:2px;">
-<div v-click="[1,5]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more competitors <i>M</i></div></div>
-<div v-click="[2,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher cutoff — only extreme valuations trade</div></div>
-<div v-click="[3,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">prices overshoot more</div></div>
-<div v-click="[4,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">more adverse selection → less liquidity</div></div>
+<div v-click="[1,6]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more competitors <i>M</i></div></div>
+<div v-click="[2,6]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher cutoff — only extreme valuations trade</div></div>
+<div v-click="[3,6]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">prices overshoot</div></div>
+<div v-click="[4,6]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more adverse selection</div></div>
+<div v-click="[5,6]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">less liquidity</div></div>
 </div>
 
 </div>
@@ -1261,24 +1248,34 @@ section: Information
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
 
 ### <u>setup</u>
-- trader pays $C$ iff expected ex-ante profit covers it
+- trader pays $C$ iff expected ex-ante profit covers $C$
 $$C \le  \underbrace{H(M)}_{\text{ex-ante profit per informed trader}}$$
 
 <!--$$C \le  \underbrace{H(M)}_{\text{ex-ante profit per informed trader}}=L^\star(M)\!\int_{\underline v(M)}^{\overline v}\!\tilde Q(v)^2\,\underbrace{\big[\,1-2(M-1)(1-F(v))\,\big]}_{\text{own profit}\ - \ \text{losses due to competitors}}\,dF(v)$$-->
 
 <v-click at="1">
-<div class="prop-box" style="display:inline-block;">
 
-$H(M)$ decreasing in $M$
+<div class="prop-box">
+
+ $H(M)$ decreasing in $M$
 
 </div>
+
 </v-click>
+
+---
+
+# <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">② volumes</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> ④ entry <i>M</i></span>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div style="display:flex; gap:40px; align-items:flex-start; margin-top:16px;">
 
 <div style="flex:0.92;">
-
-<v-click at="2">
 
 <div class="prop-box">
 
@@ -1294,15 +1291,15 @@ $H(M)$ decreasing in $M$
 
 </div>
 
-</v-click>
-
 </div>
 
-<div style="flex:1.08; display:flex; flex-direction:column; align-items:center; margin-top:2px;">
-<div v-click="[3,7]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more noise trading <i>N</i></div></div>
-<div v-click="[4,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more LP revenue → deeper liquidity</div></div>
-<div v-click="[5,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">informed traders' profits rise</div></div>
-<div v-click="[6,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">more traders cover the info cost → higher <i>M</i>*</div></div>
+<div style="flex:1.08; display:flex; flex-direction:column; align-items:center; margin-top:-116px;">
+<div v-click="[1,7]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more noise trading <i>N</i></div></div>
+<div v-click="[2,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more LP revenue</div></div>
+<div v-click="[3,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">deeper liquidity</div></div>
+<div v-click="[4,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">informed traders' profits rise</div></div>
+<div v-click="[5,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">more traders cover the info cost</div></div>
+<div v-click="[6,7]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">higher <i>M</i>*</div></div>
 </div>
 
 </div>
@@ -1357,6 +1354,7 @@ section: Block time
 </v-click>
 
 ---
+section: Conclusion
 layout: end
 ---
 
