@@ -653,7 +653,7 @@ class: fact-c
 </div>
 <div style="align-self:center; color:#94a3b8; font-size:1.5em; padding:0 3px;">→</div>
 <div style="flex:1.35; border:1.5px solid #334155; border-radius:8px; background:white; padding:10px; text-align:center;">
-<div style="font-weight:700; color:#1e293b;">Stage 3 · Trading (static)</div>
+<div style="font-weight:700; color:#1e293b;">Stage 3 · Trading</div>
 <div style="font-size:0.78em; color:#334155; margin-top:5px;">informed traders set priority fees Φ and volumes Q</div>
 <div style="font-size:0.78em; color:#334155; margin-top:4px;">uninformed traders submit</div>
 </div>
