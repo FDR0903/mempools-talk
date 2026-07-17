@@ -1276,7 +1276,11 @@ section: Conclusion
 layout: end
 ---
 
-**Takeaway:** The features of decentralization undermine blockchain markets
+**Takeaway:** 
+
+The features of decentralization undermine blockchain markets
+
+**paid priority + ex-ante schedule pricing  + heterogeneous valuations = selection**
 
 <v-click>
 
