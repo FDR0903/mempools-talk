@@ -428,16 +428,38 @@ Are these differences good or bad for markets?
 ### This paper
 
 - can the blockchain host *viable* markets?
-<v-click>    
-
-- we argue it can't: the features of blockchains (decentralization) distort price formation
+     
+<br>
 
 <v-click>
 
-- how ? a model of a **blockchain trading round**
+### Preview
+
+- Paid-priority + ex-ante schedule pricing + heterogeneous traders = endogenous selection
+<v-click>
+
+- endogenous selection
+    - revealed information is truncated
+    - price moves are amplified
+    - liquidity dries
+<v-click>
+
+- features of blockchain technology (decentralization) distort prices
+
+<br>
+
+<v-click>
+
+### How? 
+
+- a model of a **blockchain trading round**
 
 </v-click>
 </v-click>
+</v-click>
+</v-click>
+
+
 
 ---
 
@@ -592,7 +614,7 @@ class: fact-c
 <v-click at="1">
 <br>
 
-- Competition among informed traders is a **blind multi-prize auction** 
+- Competition among informed traders is a **<u>blind single-round multi-prize auction</u>** 
 
 </v-click>
 
