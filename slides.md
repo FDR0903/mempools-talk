@@ -41,24 +41,19 @@ mdc: true
 
 ---
 section: Blockchain
-layout: two-cols-header
 ---
 
 # Blockchains
-
-::left::
-
-
 
 ### Promise to coordinate economic activity, at scale, without intermediaries
 
 <v-click>
 
-- financial markets are a fundamental test
+- financial markets: fundamental test of this technology
 
 <v-click>
 
-- the role of DEXs is likely to grow
+- the role of blockchain markets is likely to grow
     1. **tokenization** $\$$ 5.5T by 2030 (Citi)
     2.  **stablecoins** $\$$ 310B today
     3. **FX cross-border settlement**
@@ -73,18 +68,8 @@ $\implies$ important to study
 </v-click>
 </v-click>
 
-::right::
-
-<br>
-
-<div style="display:flex; justify-content:center; margin-top: 50px;">
 
 
-![blockchain](./images/block1.png){style="height: 250px;"}
-<br>
-
-
-</div>
 
 ---
 layout: two-cols-header
@@ -220,15 +205,15 @@ section: Paper
 
 # Are blockchain markets different ? 
 
-### Yes: price impact is mechanical, liquidity provision is passive
-
 <div v-click="1">
+
+### price impact is mechanical, liquidity provision is passive
 
 <div style="display:flex; align-items:center; gap:26px; margin-top:24px;">
 
 <div style="flex:1;">
 
-1\. liquidity provider deposits liquidity in a smart contract
+1\. before the block is created, liquidity sits in a **<u>smart contract</u>**
 
 </div>
 
@@ -251,8 +236,8 @@ section: Paper
 <div style="margin-top:30px;">
 
 2\. block is cleared sequentially against the smart contract
-
-<div style="font-size:0.82em; color:#475569; margin-left:20px; margin-top:3px;">price impact between trades is <b>mechanical</b>, set by the smart-contract code</div>
+- price impact between trades is <b>mechanical</b>, set by the smart-contract code
+<div style="font-size:0.82em; color:#475569; margin-left:20px; margin-top:3px;"></div>
 
 </div>
 
@@ -359,50 +344,36 @@ price impact is **mechanical**
 
 </div>
 
-<div v-click="4" style="text-align:center;">
-
-**Large** action space <br>
-trade anytime
-
-</div>
 
 <div v-click="4" style="text-align:center;">
-
-**Restricted** action space <br>
-one trade per blockchain round
-
-</div>
-
-
-<div v-click="5" style="text-align:center;">
 
 Time priority
 
 </div>
 
-<div v-click="5" style="text-align:center;">
+<div v-click="4" style="text-align:center;">
  
 Time + paid-priority
 
 </div>
 
-<div v-click="6" style="text-align:center;">
+<div v-click="5" style="text-align:center;">
 
 **Uniform** pricing (model)
 
 </div>
 
-<div v-click="6" style="text-align:center;">
+<div v-click="5" style="text-align:center;">
 
-Model requires **discriminatory** pricing
-
-</div>
+**discriminatory** pricing
 
 </div>
 
 </div>
 
-<v-click at="7">
+</div>
+
+<v-click at="6">
 
 <br><br>
 
@@ -536,31 +507,32 @@ section: Model
 
 ### Input = trade size $Q$, liquidity $L$
 
-- <u>**Mechanical price update rule**</u>: after the trad, price updates by
+<div v-click="1">
+
+- <u>**Mechanical price update rule**</u>: after the trade, price updates by
 
 $$\underbrace{2\,Q/L}_\text{price impact}$$
-
-
 
 <div style="display:flex; gap:26px; align-items:flex-start; margin-top:6px;">
 
 <div style="flex:1.1;">
 
 
-
-<div v-click="1">
+<div v-click="2">
 
 - <u>**Price schedule**</u>: 
 $$Q\times\Big(\underbrace{Q/L}_{\text{marginal price}}\Big)$$
 
 
-<div v-click="2">
+<div v-click="3">
 
 <br><br>
 
 - <u>**Revenue to liquidity provider**</u>: 
 $$\pi\times Q$$
 
+
+</div>
 
 </div>
 
@@ -593,12 +565,12 @@ $$\pi\times Q$$
 <v-click>
 
 - Trader 1 pays 
-$$\underbrace{Q_1/L  \ + \ \pi}_\text{exec. costs}$$
+$$Q_1 \times \Big(\underbrace{Q_1/L  \ + \ \pi}_\text{exec. costs}\Big)$$
 
 <v-click>
 
-- Trader 2  pays 
-$$\underbrace{2Q_1/L}_{\text{impact from trader 1}} \ + \ \underbrace{Q_2/L  \ + \ \pi}_\text{exec. costs}$$
+- Trader 2 pays 
+$$Q_2 \times \Big(\underbrace{2Q_1/L}_{\text{impact from trader 1}} \ + \ \underbrace{Q_2/L  \ + \ \pi}_\text{exec. costs}\Big)$$
 
 
 </v-click>
@@ -884,6 +856,7 @@ $$-->
 <div v-click="2" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">larger loss Q Δ(Φ) from price impact</div></div>
 <div v-click="3" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">more to gain from priority</div></div>
 <div v-click="4" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:6px 14px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.86em;">larger fee</div></div>
+<div v-click="5" style="text-align:center;"><div style="color:#94a3b8; font-size:1.2em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:6px 14px; background:#f8fafc; color:#334155; font-size:0.86em;">earlier position in the block</div></div>
 </div>
 
 </div>
@@ -1001,14 +974,14 @@ $$\scriptsize Q^\star(v_i) = \underbrace{L}_{\text{liquidity}} \times \frac{1}{2
 <div style="display:grid; align-items:start; justify-items:center; margin-top:-20px;">
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
 <div v-click="[2,5]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher valuation <i>v</i></div></div>
-<div v-click="[3,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">stronger incentive to trade</div></div>
+<div v-click="[3,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">higher expected profit</div></div>
 <div v-click="[4,5]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">higher volume</div></div>
 </div>
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
 <div v-click="[5,10]" style="text-align:center;"><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">low valuation</div></div>
 <div v-click="[6,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">low desired volume - low priority fee</div></div>
-<div v-click="[7,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">anticipates high number of higher-valuation traders earlier in the block</div></div>
-<div v-click="[8,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">price pushed past your valuation</div></div>
+<div v-click="[7,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">anticipates higher-valuation traders earlier in the block</div></div>
+<div v-click="[8,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1px solid #cbd5e1; border-radius:7px; padding:5px 12px; background:#f8fafc; color:#334155; font-size:0.82em;">price may be pushed past valuation</div></div>
 <div v-click="[9,10]" style="text-align:center;"><div style="color:#94a3b8; font-size:1.1em; line-height:1.35;">↓</div><div style="display:inline-block; border:1.5px solid #334155; border-radius:7px; padding:5px 12px; background:#eef2f6; color:#1e293b; font-weight:600; font-size:0.82em;">stay out</div></div>
 </div>
 <div style="grid-area:1/1; display:flex; flex-direction:column;">
@@ -1029,12 +1002,12 @@ $$\scriptsize Q^\star(v_i) = \underbrace{L}_{\text{liquidity}} \times \frac{1}{2
 <div style="display:flex; gap:26px; align-items:flex-start; margin-top:6px;">
 <div style="flex:1; min-width:0;">
 
-- Information is **truncated**
+- information is **truncated**
 
 <br>
 <v-click>
 
-- end-of-block price is biased
+- price is biased
 
 
 <div class="prop-box">
@@ -1082,8 +1055,7 @@ section: Block structure
 # <span style="font-size:0.56em; font-weight:600;"><span style="opacity:0.45;">① priority fees</span> <span style="opacity:0.4;">→</span> ② volumes <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">③ liquidity</span> <span style="opacity:0.4;">→</span> <span style="opacity:0.45;">④ entry <i>M</i></span></span>
 
 
-### When price formation is on-chain and off-chain
-- price changes in blockchain are amplified
+### Blockchain amplifies price moves
 <br><br>
 <div style="display:flex; justify-content:center; margin-top:10px;">
 <table class="overshoot-tbl" style="font-size:0.72em;">
@@ -1221,7 +1193,7 @@ $$C \le  \underbrace{H(M)}_{\text{ex-ante profit per informed trader}}$$
 
 <v-click>
 
-- Information paradox
+- information paradox
 
 $$\underbrace{C\downarrow\ \ }_{\text{cheaper info}}\ \Rightarrow\ \underbrace{M\uparrow}_\text{more traders}\ \Rightarrow\ \underbrace{\underline v(M)\uparrow\ }_\text{higher cutoff} \Rightarrow\ \begin{cases}\text{less information revealed}\\~\\\text{prices more biased}\end{cases}$$
 
@@ -1280,15 +1252,15 @@ layout: end
 
 The features of decentralization undermine blockchain markets
 
-**paid priority + ex-ante schedule pricing  + heterogeneous valuations = selection**
+**paid priority + ex-ante schedule pricing + heterogeneous valuations = selection**
 
 <v-click>
 
-Thank you !
-
+<br>
+<br>
 <br>
 
-Capponi, Cartea, and Drissi (2025), *The Viability of Blockchain Markets under Discrete Clearing and Paid Priority*
+Thank you !
 
 <br>
 
