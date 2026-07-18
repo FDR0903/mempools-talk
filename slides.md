@@ -40,7 +40,7 @@ mdc: true
 
 
 ---
-section: Blockchain
+section: Blockchain markets
 ---
 
 # Blockchains
@@ -200,14 +200,17 @@ $\implies$ consensus requires **time** ($\approx$ 12s)
 
 
 ---
-section: Paper
----
+
 
 # Are blockchain markets different ? 
 
-<div v-click="1">
 
-### price impact is mechanical, liquidity provision is passive
+
+#### price impact is mechanical
+#### liquidity provision is passive
+#### paid-priority
+
+<div v-click="1">
 
 <div style="display:flex; align-items:center; gap:26px; margin-top:24px;">
 
@@ -233,7 +236,7 @@ section: Paper
 
 <div v-click="2">
 
-<div style="margin-top:30px;">
+<div style="margin-top:-30px;">
 
 2\. block is cleared sequentially against the smart contract
 - price impact between trades is <b>mechanical</b>, set by the smart-contract code
@@ -359,13 +362,13 @@ Time + paid-priority
 
 <div v-click="5" style="text-align:center;">
 
-**Uniform** pricing (model)
+
 
 </div>
 
 <div v-click="5" style="text-align:center;">
 
-**discriminatory** pricing
+$\implies$ models with **discriminatory** pricing
 
 </div>
 
