@@ -40,7 +40,7 @@ mdc: true
 
 
 ---
-section: Blockchain markets
+section: Blockchains
 ---
 
 # Blockchains
@@ -206,9 +206,9 @@ $\implies$ consensus requires **time** ($\approx$ 12s)
 
 
 
-#### price impact is mechanical
-#### liquidity provision is passive
-#### paid-priority
+#### - price impact is mechanical
+#### - liquidity provision is passive
+#### - paid-priority
 
 <div v-click="1">
 
@@ -422,9 +422,6 @@ Are these differences good or bad for markets?
 # Contribution
 
 
-<br>
-
-
 ### This paper
 
 - can the blockchain host *viable* markets?
@@ -435,7 +432,7 @@ Are these differences good or bad for markets?
 
 ### Preview
 
-- Paid-priority + ex-ante schedule pricing + heterogeneous traders = endogenous selection
+- Paid-priority $+$ ex-ante price-update schedule $+$ heterogeneous traders $=$ endogenous selection
 <v-click>
 
 - endogenous selection
@@ -705,12 +702,12 @@ section: Trading
 # Stage 3: competition among informed traders
 
 
+<div v-click="1">
+
 ### <u>Setup</u>
 - $M$ traders trading in the same direction
 - valuations $\,v_i \in [0, \overline  v] \sim F$
-<div v-click="1">
 
-- set priority fees $\Phi_i$ and trading volumes $Q_i$
 
 </div>
 
@@ -1104,7 +1101,7 @@ section: Block structure
 </table>
 </div>
 
-<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023).<br> &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance: ETH/BTC 148,624 transactions · ETH 1,703,611 · BTC 24,967 · LINK 31,663 · UNI 14,606 · APE 41,902 · MATIC 13,928 · 1INCH 3,751.</div>
+<div class="fig-cap" style="max-width:640px;">Distribution of absolute one-block returns in bp (1 Jan 2021 – 31 Dec 2023).<br> &nbsp;<b>Data</b>: 8 assets priced both on-chain (Uniswap v3) and on Binance.</div>
 
 
 ---
@@ -1277,7 +1274,7 @@ layout: end
 
 The features of decentralization undermine blockchain markets
 
-**paid priority + ex-ante schedule pricing + heterogeneous valuations = selection**
+**paid priority + ex-ante price update schedule + heterogeneous valuations = selection**
 
 <v-click>
 

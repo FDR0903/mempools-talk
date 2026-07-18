@@ -83,3 +83,9 @@
 .fact-c { text-align: center; }
 .fact-c h1 { text-align: left; }
 .fact-c ul, .fact-c ol { display: inline-block; text-align: left; }
+
+/* ===== NBER small-screen projection: enlarge all slide text =====
+   Frankfurt sets the base unit in `html { font-size: 10pt }` (frankfurt.css) and all
+   text + spacing cascades from it in rem. Bump the root to scale the whole deck
+   uniformly; :root outranks the theme's plain `html` selector regardless of load order. */
+:root { font-size: 10.5pt; }
