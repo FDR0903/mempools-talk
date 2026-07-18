@@ -441,7 +441,7 @@ Are these differences good or bad for markets?
 - endogenous selection
     - revealed information is truncated
     - price moves are amplified
-    - liquidity dries
+    - liquidity dries up
 <v-click>
 
 - features of blockchain technology (decentralization) distort prices
